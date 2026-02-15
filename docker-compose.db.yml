@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: bomnous-postgres
+    environment:
+      POSTGRES_USER: bomnous
+      POSTGRES_PASSWORD: bomnouspass
+      POSTGRES_DB: bomnous_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
