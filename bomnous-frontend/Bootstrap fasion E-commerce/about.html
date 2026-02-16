@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap E-commrece</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Remix Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Swiper Slider CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css">
+</head>
+
+<body>
+
+      <!-- Navbar -->
+      <div class="nav-container">
+        <!-- Top Bar -->
+        <div class="p-1 d-none d-lg-block border">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-4 text-start ps-4 top-bar-text text-dark">
+                        <i class="bi bi-phone text-dark"></i> (+01) - 2345 - 6789 &nbsp;| &nbsp; <i
+                            class="bi bi-geo-alt"></i>
+                        Our
+                        location
+                    </div>
+                    <div class="col-md-4 text-center text-secondary">
+                        Get great devices up to 50% off
+                    </div>
+                    <div class="col-md-4 text-end pe-4 top-bar-text ">
+                        <span class="me-3 top-bar-text"><i class="bi bi-globe-americas"></i> English</span>
+                        <a href="myaccount.html" class="top-bar-text text-dark text-decoration-none"><i
+                                class="bi bi-person"></i>
+                            Login</a> / <a href="myaccount.html"
+                            class="top-bar-text text-dark text-decoration-none">Signin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search & Categories -->
+        <div class="container my-3 gap-5 middle-navbar d-flex justify-content-between align-items-center">
+            <a class="navbar-brand logo" href="index.html">Tren<span>diFy</span></a>
+            <div class="input-group search-box d-none d-lg-flex">
+                <input type="text" class="form-control" placeholder="Search Products...">
+                <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
+            </div>
+            <div class="d-flex align-items-center  d-none d-lg-flex gap-2">
+                <a href="wishlist.html" class="me-3 text-dark middle-navbar-a text-decoration-none position-relative"><i
+                        class="bi bi-heart fs-3"></i> <span
+                        class="position-absolute text-white d-flex align-items-center justify-content-center wishlist-span qount-span">0</span></a>
+                <a href="carts.html" class="text-dark middle-navbar-a text-decoration-none position-relative"><i
+                        class="bi bi-bag fs-3"></i><span
+                        class="position-absolute text-white d-flex align-items-center justify-content-center cart-span qount-span">0</span></a>
+            </div>
+
+            <!-- Sidebar Toggle Button -->
+
+            <button class="btn btn-primary sidebar-menu-toggler d-block d-lg-none" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#Sidebar">
+                <i class="bi bi-list"></i> Menu
+            </button>
+        </div>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-white py-3 d-none d-lg-block">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav nav-menu">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="text-primary text-decoration-none text-dark"> <i class="bi bi-headset"></i> Hotline
+                    <span>1900 -
+                        888</span></a>
+            </div>
+        </nav>
+
+        <!-- Sidebar (Offcanvas) -->
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="Sidebar">
+            <div class="offcanvas-header">
+                <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column">
+                <div class="container my-5 gap-4 d-flex justify-content-between align-items-center">
+                    <div class="input-group search-box">
+                        <input type="text" class="form-control" placeholder="Search Products...">
+                        <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+                <!-- Sidebar Menu -->
+                <ul class="navbar-nav nav-menu">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                </ul>
+                <!-- Social Icons -->
+                <div class="mt-auto d-flex justify-content-around">
+                    <i class="bi bi-facebook fs-3"></i>
+                    <i class="bi bi-twitter fs-3"></i>
+                    <i class="bi bi-linkedin fs-3"></i>
+                    <i class="bi bi-instagram fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- page Section -->
+    <div class="page-section pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="d-flex align-items-center gap-3">
+                    <p>
+                        <a href="index.html" class="text-dark">Home &nbsp; ></a>
+                    <p class="text-secondary">About Us</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Company -->
+    <div class="our-company py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <span class="text-uppercase mb-2">Our Company</span>
+                        <h2 class="mb-4">We are Building The Destination For Getting Things Done</h2>
+                        <p>Tempus ultricies augue luctus et ut suscipit. Morbi arcu, ultrices purus dolor erat bibendum
+                            sapien metus.</p>
+                        <p>Tempus ultricies augue luctus et ut suscipit. Morbi arcu, ultrices purus dolor erat bibendum
+                            sapien metus. Sit mi, pharetra, morbi arcu id. Pellentesque dapibus nibh augue senectus.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-img">
+                        <img src="image/about-1.png" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Teams -->
+    <div class="our-teams border-bottom pb-5">
+        <div class="container">
+            <div class="row team-top">
+                <div class="col-lg-6">
+                    <span class="text-uppercase mb-2">Our Team</span>
+                    <h2>Top team of experts</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione optio perferendis sequi mollitia
+                        quis autem ea cupiditate possimus!</p>
+                </div>
+                <div
+                    class="col-lg-6 team-top-btn d-flex justify-content-lg-end justify-content-sm-start align-items-center">
+                    <button class="btn border">All Member</button>
+                </div>
+            </div>
+            <div class="row mt-5 ">
+                <div class="col-lg-3 col-md-6">
+                    <!-- team card 1 -->
+                    <div class="team-card overflow-hidden text-center d-flex flex-column align-items-center">
+                        <img src="image/avatar-1.jpg" class="img-fluid team-img rounded" alt="">
+                        <h4 class="mb-0 mt-4">Patric Adams</h4>
+                        <p class="mb-1">CEO & Co-Founder</p>
+                        <div class="team-social-icon d-flex align-items-center mb-sm-5 mb-md-0">
+                            <img src="image/icon-facebook.svg" class="img-fluid" alt="">
+                            <img src="image/icon-twitter.svg" class="img-fluid" alt="">
+                            <img src="image/icon-instagram.svg" class="img-fluid" alt="">
+                            <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <!-- team card 2 -->
+                    <div class="team-card overflow-hidden text-center d-flex flex-column align-items-center">
+                        <img src="image/avatar-2.jpg" class="img-fluid team-img rounded" alt="">
+                        <h4 class="mb-0 mt-4">Dilan Specter</h4>
+                        <p class="mb-1">Head Engineer</p>
+                        <div class="team-social-icon d-flex align-items-center mb-sm-5 mb-md-0">
+                            <img src="image/icon-facebook.svg" class="img-fluid" alt="">
+                            <img src="image/icon-twitter.svg" class="img-fluid" alt="">
+                            <img src="image/icon-instagram.svg" class="img-fluid" alt="">
+                            <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mt-3 mt-lg-0">
+                    <!-- team card 3 -->
+                    <div class="team-card overflow-hidden text-center d-flex flex-column align-items-center">
+                        <img src="image/avatar-3.jpg" class="img-fluid team-img rounded" alt="">
+                        <h4 class="mb-0 mt-4">Tomas Baker</h4>
+                        <p class="mb-1">Senior Planner</p>
+                        <div class="team-social-icon d-flex align-items-center mb-sm-5 mb-md-0">
+                            <img src="image/icon-facebook.svg" class="img-fluid" alt="">
+                            <img src="image/icon-twitter.svg" class="img-fluid" alt="">
+                            <img src="image/icon-instagram.svg" class="img-fluid" alt="">
+                            <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mt-3 mt-lg-0">
+                    <!-- team card 4 -->
+                    <div class="team-card overflow-hidden text-center d-flex flex-column align-items-center">
+                        <img src="image/avatar-4.jpg" class="img-fluid team-img rounded" alt="">
+                        <h4 class="mb-0 mt-4">Norton Mendos</h4>
+                        <p class="mb-1">Project Manager</p>
+                        <div class="team-social-icon d-flex align-items-center mb-sm-5 mb-md-0">
+                            <img src="image/icon-facebook.svg" class="img-fluid" alt="">
+                            <img src="image/icon-twitter.svg" class="img-fluid" alt="">
+                            <img src="image/icon-instagram.svg" class="img-fluid" alt="">
+                            <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- our-branch -->
+    <div class="our-branch border-bottom pb-5">
+        <div class="container mt-5 pb-2">
+            <div class="row">
+                <div class="title-info mb-4 d-flex flex-column justify-content-center align-items-center text-center">
+                    <span class="text-prim-color">Evara Coporation</span>
+                    <h2>Our main branches <br> around the world</h2>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus quiblanditiis praesentium. <br> ebitis
+                        nesciunt voluptatum dicta reprehenderit accusamus</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <!-- card 1 -->
+                        <div class="card-box text-center d-flex flex-column align-items-center">
+                            <img src="image/company-1.jpg" class="img-fluid rounded" alt="">
+                            <h4 class="mb-0 mt-4">New York, USA</h4>
+                            <p class="text-secondary mt-1 mb-1">27 Division St, New York <br> NY 10002, USA</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 mt-3 mt-md-0">
+                        <!-- card 2 -->
+                        <div class="card-box text-center d-flex flex-column align-items-center">
+                            <img src="image/company-2.jpg" class="img-fluid rounded" alt="">
+                            <h4 class="mb-0 mt-4">Paris, France</h4>
+                            <p class="text-secondary mt-1 mb-1">22 Rue des Carmes <br> 75005 Paris</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 mt-3 mt-lg-0">
+                        <!-- card 3 -->
+                        <div class="card-box text-center d-flex flex-column align-items-center">
+                            <img src="image/company-3.jpg" class="img-fluid rounded" alt="">
+                            <h4 class="mb-0 mt-4">Jakarta, Indonesia</h4>
+                            <p class="text-secondary mt-1 mb-1">2476 Raya Yogyakarta, <br> 89090 Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- testimonials -->
+    <div class="testimonials mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="title-info mb-4 d-flex flex-column justify-content-center align-items-center text-center">
+                    <span class="text-prim-color">some facts</span>
+                    <h2>Take a look what <br> our clients say about us</h2>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus quiblanditiis praesentium. ebitis <br>
+                        nesciunt voluptatum dicta reprehenderit accusamus</p>
+                </div>
+                <!-- col 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="test-box rounded d-flex align-items-start gap-3 border p-4">
+                        <img src="image/avatar-1.jpg" class="img-fluid rounded" alt="">
+                        <div class="test-content">
+                            <h3 class="m-0">J. Bezos</h3>
+                            <span class="text-secondary mb-2">Adobe Jsc</span>
+                            <p class="mt-2">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt
+                                voluptatum
+                                dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="test-box rounded d-flex align-items-start gap-3 border p-4">
+                        <img src="image/avatar-2.jpg" class="img-fluid rounded" alt="">
+                        <div class="test-content">
+                            <h3 class="m-0">B.Gates</h3>
+                            <span class="text-secondary mb-2">Adobe Jsc</span>
+                            <p class="mt-2">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt
+                                voluptatum
+                                dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="test-box rounded d-flex align-items-start gap-3 border p-4">
+                        <img src="image/avatar-3.jpg" class="img-fluid rounded" alt="">
+                        <div class="test-content">
+                            <h3 class="m-0">B. Meyers</h3>
+                            <span class="text-secondary mb-2">Adobe Jsc</span>
+                            <p class="mt-2">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt
+                                voluptatum
+                                dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 4 -->
+                <div class="col-md-6 col-lg-4 mt-3">
+                    <div class="test-box rounded d-flex align-items-start gap-3 border p-4">
+                        <img src="image/avatar-4.jpg" class="img-fluid rounded" alt="">
+                        <div class="test-content">
+                            <h3 class="m-0">J. Bezos</h3>
+                            <span class="text-secondary mb-2">Adobe Jsc</span>
+                            <p class="mt-2">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt
+                                voluptatum
+                                dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 5 -->
+                <div class="col-md-6 col-lg-4 mt-3">
+                    <div class="test-box rounded d-flex align-items-start gap-3 border p-4">
+                        <img src="image/avatar-5.jpg" class="img-fluid rounded" alt="">
+                        <div class="test-content">
+                            <h3 class="m-0">B.Gates</h3>
+                            <span class="text-secondary mb-2">Adobe Jsc</span>
+                            <p class="mt-2">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt
+                                voluptatum
+                                dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- col 6 -->
+                <div class="col-md-6 col-lg-4 mt-3">
+                    <div class="test-box rounded d-flex align-items-start gap-3 border p-4">
+                        <img src="image/avatar-1.jpg" class="img-fluid rounded" alt="">
+                        <div class="test-content">
+                            <h3 class="m-0">B. Meyers</h3>
+                            <span class="text-secondary mb-2">Adobe Jsc</span>
+                            <p class="mt-2">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis nesciunt
+                                voluptatum
+                                dicta reprehenderit accusamus voluptatibus voluptas."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <button class="btn test-btn text-white">View More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Newsletter -->
+    <div class="newsletter mt-5 p-4 d-flex align-items-center
+    justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 mb-md-3 mb-lg-0">
+                        <div class="row align-items-center flex-column flex-md-row">
+                            <div class="col d-flex align-items-center gap-2">
+                                <img src="image/icon-email.svg" class="img-fluid email-icon" alt="">
+                                <h4 class=" mb-0">Sign up to Newsletter</h4>
+                            </div>
+                            <div class="col my-4 my-md-0">
+                                <h5 class="mb-0 fs-6">...and receive $25 coupon for first
+                                    shopping.</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <form class="form-subcriber d-flex">
+                            <input type="email" class="form-control bg-white p-2" placeholder="Enter your email">
+                            <button class="btn bg-dark text-white " type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="mt-5 pb-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 footer-col">
+                    <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
+                    <h5 class="mt-3 text-secondary">Contact</h5>
+                    <p class="text-secondary mb-1"><span class="text-dark">Address: </span>562 Wellington Road, Street
+                        32, San Francisco</p>
+                    <p class="text-secondary mb-1"><span class="text-dark">Phone: </span>+01 2222 365 /(+91) 01 2345
+                        6789</p>
+                    <p class="text-secondary"><span class="text-dark">Hours: </span>10:00 - 18:00, Mon - Sat</p>
+                    <h5 class="mt-3 text-secondary">Follow Us</h5>
+                    <div class="footer-social-icon mb-sm-5 mb-md-0 mt-2 d-flex align-items-center gap-2">
+                        <img src="image/icon-facebook.svg" class="img-fluid" alt="">
+                        <img src="image/icon-twitter.svg" class="img-fluid" alt="">
+                        <img src="image/icon-instagram.svg" class="img-fluid" alt="">
+                        <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
+                        <img src="image/icon-youtube.svg" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 footer-col">
+                    <h3 class="fs-3 mb-4">About</h3>
+                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
+                        <li class="mb-2"><a href="#" class="text-dark">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Delivery Information</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Terms & Conditions</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Support Center</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h3 class="fs-3 mb-4">My Account</h3>
+                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
+                        <li class="mb-2"><a href="#" class="text-dark">Sign In</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">View Cart</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">My Wishlist</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Track My Order</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Help</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Order</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="fs-3 mb-4">Install App</h3>
+                    <p class="text-secondary mb-1">From App Store or Google Play</p>
+                    <div class="app-img my-3">
+                        <img src="image/app-store.jpg" class="img-fluid border rounded" alt="">
+                        <img src="image/google-play.jpg" class="img-fluid border rounded" alt="">
+                    </div>
+                    <p class="text-secondary mb-2 mt-5">Secured Payment Gateways</p>
+                    <img src="image/payment-method.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5 pt-3 border-top">
+            <div class="row">
+                <div class="footer-bottom d-flex justify-content-between align-items-center flex-column flex-md-row">
+                    <p>© copyright 2025. All Rights Reserved By <a href="#">K2infocom</a></p>
+                    <div class="footer-bottom-links d-flex gap-3">
+                        <a href="#" class="text-dark">Terms of Use</a>
+                        <a href="#" class="text-dark">privacy policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <!-- Swiper Slider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap E-commrece</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Remix Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Swiper Slider CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css">
+</head>
+
+<body>
+   <!-- Navbar -->
+   <div class="nav-container">
+    <!-- Top Bar -->
+    <div class="p-1 d-none d-lg-block border">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-start ps-4 top-bar-text text-dark">
+                    <i class="bi bi-phone text-dark"></i> (+01) - 2345 - 6789 &nbsp;| &nbsp; <i
+                        class="bi bi-geo-alt"></i>
+                    Our
+                    location
+                </div>
+                <div class="col-md-4 text-center text-secondary">
+                    Get great devices up to 50% off
+                </div>
+                <div class="col-md-4 text-end pe-4 top-bar-text ">
+                    <span class="me-3 top-bar-text"><i class="bi bi-globe-americas"></i> English</span>
+                    <a href="myaccount.html" class="top-bar-text text-dark text-decoration-none"><i
+                            class="bi bi-person"></i>
+                        Login</a> / <a href="myaccount.html"
+                        class="top-bar-text text-dark text-decoration-none">Signin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search & Categories -->
+    <div class="container my-3 gap-5 middle-navbar d-flex justify-content-between align-items-center">
+        <a class="navbar-brand logo" href="index.html">Tren<span>diFy</span></a>
+        <div class="input-group search-box d-none d-lg-flex">
+            <input type="text" class="form-control" placeholder="Search Products...">
+            <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
+        </div>
+        <div class="d-flex align-items-center  d-none d-lg-flex gap-2">
+            <a href="wishlist.html" class="me-3 text-dark middle-navbar-a text-decoration-none position-relative"><i
+                    class="bi bi-heart fs-3"></i> <span
+                    class="position-absolute text-white d-flex align-items-center justify-content-center wishlist-span qount-span">0</span></a>
+            <a href="carts.html" class="text-dark middle-navbar-a text-decoration-none position-relative"><i
+                    class="bi bi-bag fs-3"></i><span
+                    class="position-absolute text-white d-flex align-items-center justify-content-center cart-span qount-span">0</span></a>
+        </div>
+
+        <!-- Sidebar Toggle Button -->
+
+        <button class="btn btn-primary sidebar-menu-toggler d-block d-lg-none" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#Sidebar">
+            <i class="bi bi-list"></i> Menu
+        </button>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white py-3 d-none d-lg-block">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav nav-menu">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <a href="#" class="text-primary text-decoration-none text-dark"> <i class="bi bi-headset"></i> Hotline
+                <span>1900 -
+                    888</span></a>
+        </div>
+    </nav>
+
+    <!-- Sidebar (Offcanvas) -->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="Sidebar">
+        <div class="offcanvas-header">
+            <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div class="container my-5 gap-4 d-flex justify-content-between align-items-center">
+                <div class="input-group search-box">
+                    <input type="text" class="form-control" placeholder="Search Products...">
+                    <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+            <!-- Sidebar Menu -->
+            <ul class="navbar-nav nav-menu">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+            </ul>
+            <!-- Social Icons -->
+            <div class="mt-auto d-flex justify-content-around">
+                <i class="bi bi-facebook fs-3"></i>
+                <i class="bi bi-twitter fs-3"></i>
+                <i class="bi bi-linkedin fs-3"></i>
+                <i class="bi bi-instagram fs-3"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- page Section -->
+    <div class="page-section pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="d-flex align-items-center gap-3">
+                    <p>
+                        <a href="index.html" class="text-dark">Home &nbsp; ></a>
+                    <p class="text-secondary">Shop</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Shop -->
+    <section class="Shop d-flex flex-column">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product-head d-flex align-items-center justify-content-between">
+                        <div class="shop-product-fillter">
+                            <div class="total-product">
+                                <p> We found
+                                    <strong class="data-colors fs-5" data-color="#088178">688</strong>
+                                    items for you!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="sort-by-product">
+                            <div class="sort-by-cover d-flex gap-3">
+                                <div class="sort-by-product-wrap position-relative">
+                                    <div class="sort-by">
+                                        <span class="toggleDropdown">
+                                            <i class="ri-apps-line"></i> Show: 50
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="sort-by-product-wrap position-relative">
+                                    <div class="sort-by">
+                                        <span class="toggleDropdown">
+                                            <i class="ri-apps-line"></i> Sort by: Featured
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row product-wrap"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <div class="newsletter mt-5 p-4 d-flex align-items-center
+     justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 mb-md-3 mb-lg-0">
+                        <div class="row align-items-center flex-column flex-md-row">
+                            <div class="col d-flex align-items-center gap-2">
+                                <img src="image/icon-email.svg" class="img-fluid email-icon" alt="">
+                                <h4 class=" mb-0">Sign up to Newsletter</h4>
+                            </div>
+                            <div class="col my-4 my-md-0">
+                                <h5 class="mb-0 fs-6">...and receive $25 coupon for first
+                                    shopping.</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <form class="form-subcriber d-flex">
+                            <input type="email" class="form-control bg-white p-2" placeholder="Enter your email">
+                            <button class="btn bg-dark text-white " type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 pb-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 footer-col">
+                    <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
+                    <h5 class="mt-3 text-secondary">Contact</h5>
+                    <p class="text-secondary mb-1"><span class="text-dark">Address: </span>562 Wellington Road, Street
+                        32, San Francisco</p>
+                    <p class="text-secondary mb-1"><span class="text-dark">Phone: </span>+01 2222 365 /(+91) 01 2345
+                        6789</p>
+                    <p class="text-secondary"><span class="text-dark">Hours: </span>10:00 - 18:00, Mon - Sat</p>
+                    <h5 class="mt-3 text-secondary">Follow Us</h5>
+                    <div class="footer-social-icon mb-sm-5 mb-md-0 mt-2 d-flex align-items-center gap-2">
+                        <img src="image/icon-facebook.svg" class="img-fluid" alt="">
+                        <img src="image/icon-twitter.svg" class="img-fluid" alt="">
+                        <img src="image/icon-instagram.svg" class="img-fluid" alt="">
+                        <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
+                        <img src="image/icon-youtube.svg" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 footer-col">
+                    <h3 class="fs-3 mb-4">About</h3>
+                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
+                        <li class="mb-2"><a href="#" class="text-dark">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Delivery Information</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Terms & Conditions</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Support Center</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h3 class="fs-3 mb-4">My Account</h3>
+                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
+                        <li class="mb-2"><a href="#" class="text-dark">Sign In</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">View Cart</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">My Wishlist</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Track My Order</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Help</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Order</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="fs-3 mb-4">Install App</h3>
+                    <p class="text-secondary mb-1">From App Store or Google Play</p>
+                    <div class="app-img my-3">
+                        <img src="image/app-store.jpg" class="img-fluid border rounded" alt="">
+                        <img src="image/google-play.jpg" class="img-fluid border rounded" alt="">
+                    </div>
+                    <p class="text-secondary mb-2 mt-5">Secured Payment Gateways</p>
+                    <img src="image/payment-method.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5 pt-3 border-top">
+            <div class="row">
+                <div class="footer-bottom d-flex justify-content-between align-items-center flex-column flex-md-row">
+                    <p>© copyright 2025. All Rights Reserved By <a href="#">K2infocom</a></p>
+                    <div class="footer-bottom-links d-flex gap-3">
+                        <a href="#" class="text-dark">Terms of Use</a>
+                        <a href="#" class="text-dark">privacy policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <!-- Swiper Slider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+        let items = document.querySelectorAll(".data-colors");
+
+        items.forEach((bar) => {
+            let bgcolor = bar.getAttribute("data-bg-color");
+            let color = bar.getAttribute("data-color");
+            let border = bar.getAttribute("data-border-color");
+
+            if (bgcolor) {
+                bar.style.backgroundColor = bgcolor;
+            }
+            if (color) {
+                bar.style.color = color;
+            }
+            if (border) {
+                bar.style.border = "1px solid" + border;
+            }
+        });
+
+        // Product Load
+        const productWrap = document.querySelector('.row .product-wrap');
+
+        productsData.forEach(product => {
+            const col = document.createElement('div');
+            col.className = 'col-12 col-sm-6 col-md-4 col-lg-3 mt-3';
+
+            const productItem = document.createElement('div');
+            productItem.className = 'product-item p-3 data-colors rounded-4 border';
+
+            const productImage = document.createElement('div');
+            productImage.className = 'product-image rounded-4 overflow-hidden mb-2 section-image position-relative';
+
+            const imgDefault = document.createElement('img');
+            imgDefault.src = product.image;
+            imgDefault.alt = product.name;
+            imgDefault.className = 'img-fluid obj-cover';
+
+            const imgHover = document.createElement('img');
+            imgHover.src = product.imageHover;
+            imgHover.alt = product.name;
+            imgHover.className = 'img-fluid obj-cover defalut-img';
+
+            const badge = document.createElement('span');
+            badge.className = 'badge data-colors title fw-normal bg-secondary';
+            badge.dataset.color = "#fff";
+            badge.dataset.bgColor = "#ff75a0";
+            badge.textContent = product.off;
+
+            productImage.appendChild(imgDefault);
+            productImage.appendChild(imgHover);
+            productImage.appendChild(badge);
+
+            const productContent = document.createElement('div');
+            productContent.className = 'product-content cursor-pointer position-relative';
+
+            const productCategory = document.createElement('div');
+            productCategory.className = 'product-category';
+            const categoryLink = document.createElement('a');
+            categoryLink.href = "#";
+            categoryLink.textContent = product.title;
+            productCategory.appendChild(categoryLink);
+
+            const productName = document.createElement('h2');
+            productName.className = '';
+            productName.textContent = product.name;
+            productName.setAttribute('data-product-id', product.ProductId);
+
+            productName.addEventListener('click', function () {
+                window.location.href = `product.html?id=${product.ProductId}`;
+            });
+
+            const priceDiv = document.createElement('div');
+            priceDiv.className = 'product-price mt-2';
+            const spanNewPrice = document.createElement('span');
+            spanNewPrice.className = 'data-colors new-price';
+            spanNewPrice.dataset.color = "#088178";
+            spanNewPrice.textContent = `${product.price}`;
+            const spanOldPrice = document.createElement('span');
+            spanOldPrice.className = 'old-price data-colors';
+            spanOldPrice.dataset.color = "#90908e";
+            spanOldPrice.textContent = product.lessprice ? `$${product.lessprice}` : "";
+            priceDiv.appendChild(spanNewPrice);
+            priceDiv.appendChild(spanOldPrice);
+
+            const socialIcons = document.createElement('div');
+            socialIcons.className = 'product-social-icons';
+
+            const btnWishlist = document.createElement('button');
+            btnWishlist.type = "button";
+            btnWishlist.className = 'product-social-icon data-colors add-to-wishlist-btn';
+            btnWishlist.dataset.bgColor = "#e8f6ea";
+            btnWishlist.dataset.id = product.ProductId;
+            btnWishlist.setAttribute("data-bs-toggle", "tooltip");
+            btnWishlist.setAttribute("data-bs-placement", "top");
+            btnWishlist.dataset.bsCustomClass = "custom-tooltip";
+            btnWishlist.dataset.bsTitle = "Add To Wishlist";
+
+
+            const iconWishlist = document.createElement('i');
+            iconWishlist.className = 'ri-heart-line data-colors';
+            iconWishlist.dataset.color = "#088178";
+            btnWishlist.appendChild(iconWishlist);
+
+            socialIcons.appendChild(btnWishlist);
+            productImage.appendChild(socialIcons);
+
+            productImage.appendChild(imgDefault);
+            productImage.appendChild(imgHover);
+            productImage.appendChild(badge);
+            productImage.appendChild(socialIcons);
+
+            // Create "Add to Cart" button
+            const btnAddToCart = document.createElement('button');
+            btnAddToCart.type = "button";
+            btnAddToCart.className = "product-icon data-colors add-to-cart-btn";
+            btnAddToCart.dataset.bgColor = "#e8f6ea";
+            btnAddToCart.setAttribute("data-bs-toggle", "tooltip");
+            btnAddToCart.setAttribute("data-bs-placement", "top");
+            btnAddToCart.dataset.bsCustomClass = "custom-tooltip";
+            btnAddToCart.dataset.bsTitle = "Add to Cart";
+
+            const cartIcon = document.createElement('i');
+            cartIcon.className = "ri-shopping-bag-line data-colors";
+            cartIcon.dataset.color = "#088178";
+            btnAddToCart.appendChild(cartIcon);
+
+            productContent.appendChild(productCategory);
+            productContent.appendChild(productName);
+            productContent.appendChild(priceDiv);
+            productContent.appendChild(btnAddToCart);
+
+            productItem.appendChild(productImage);
+            productItem.appendChild(productContent);
+
+            col.appendChild(productItem);
+
+            productWrap.appendChild(col);
+        });
+
+        // Add to Wishlist
+        document.addEventListener("click", function (event) {
+            if (event.target.closest(".add-to-wishlist-btn")) {
+                let btn = event.target.closest(".add-to-wishlist-btn");
+                let productId = btn.dataset.id;
+                let productItem = btn.closest(".product-item");
+
+                let product = {
+                    ProductId: productId,
+                    name: productItem.querySelector("h2").textContent,
+                    image: productItem.querySelector(".product-image img").src,
+                    price: parseFloat(productItem.querySelector(".new-price").textContent.replace("$", ""))
+                };
+
+                let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+                if (!wishlist.some(item => item.ProductId === productId)) {
+                    wishlist.push(product);
+                    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                    alert(`"${product.name}" added to wishlist!`);
+                } else {
+                    alert(`"${product.name}" is already in your wishlist!`);
+                }
+                window.location.href = "wishlist.html";
+            }
+        });
+
+        // Add to Cart
+
+
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            let cartIcon = document.querySelector(".cart-added-icon");
+            if (cartIcon) {
+                cartIcon.textContent = totalItems;
+                cartIcon.style.display = totalItems > 0 ? "inline-block" : "none";
+            }
+        }
+
+        document.addEventListener("click", function (event) {
+            if (event.target.closest(".add-to-cart-btn")) {
+                let productItem = event.target.closest(".product-item");
+
+                let product = {
+                    ProductId: productItem.dataset.productId || crypto.randomUUID(),
+                    name: productItem.querySelector("h2").textContent,
+                    image: productItem.querySelector(".product-image img")?.src || "",
+                    price: parseFloat(productItem.querySelector(".new-price").textContent.replace("$", "")) || 0,
+                    lessprice: productItem.querySelector(".old-price")?.textContent.replace("$", "") || "",
+                    quantity: 1
+                };
+
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                let existingItem = cart.find(item => item.ProductId === product.ProductId);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                alert(`"${product.name}" added to cart!`);
+                window.location.href = "carts.html";
+                updateCartCount();
+            }
+        });
+
+
+        document.addEventListener("DOMContentLoaded", updateCartCount);
+
+    </script>
+
+</body>
+
+</html>

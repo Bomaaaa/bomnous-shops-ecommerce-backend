@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bootstrap E-commrece</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <!-- bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!-- Remix Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <!-- Swiper Slider CSS  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css">
+    </head>
+</head>
+
+<body>
+     <!-- Navbar -->
+     <div class="nav-container">
+        <!-- Top Bar -->
+        <div class="p-1 d-none d-lg-block border">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-4 text-start ps-4 top-bar-text text-dark">
+                        <i class="bi bi-phone text-dark"></i> (+01) - 2345 - 6789 &nbsp;| &nbsp; <i
+                            class="bi bi-geo-alt"></i>
+                        Our
+                        location
+                    </div>
+                    <div class="col-md-4 text-center text-secondary">
+                        Get great devices up to 50% off
+                    </div>
+                    <div class="col-md-4 text-end pe-4 top-bar-text ">
+                        <span class="me-3 top-bar-text"><i class="bi bi-globe-americas"></i> English</span>
+                        <a href="myaccount.html" class="top-bar-text text-dark text-decoration-none"><i
+                                class="bi bi-person"></i>
+                            Login</a> / <a href="myaccount.html"
+                            class="top-bar-text text-dark text-decoration-none">Signin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search & Categories -->
+        <div class="container my-3 gap-5 middle-navbar d-flex justify-content-between align-items-center">
+            <a class="navbar-brand logo" href="index.html">Tren<span>diFy</span></a>
+            <div class="input-group search-box d-none d-lg-flex">
+                <input type="text" class="form-control" placeholder="Search Products...">
+                <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
+            </div>
+            <div class="d-flex align-items-center  d-none d-lg-flex gap-2">
+                <a href="wishlist.html" class="me-3 text-dark middle-navbar-a text-decoration-none position-relative"><i
+                        class="bi bi-heart fs-3"></i> <span
+                        class="position-absolute text-white d-flex align-items-center justify-content-center wishlist-span qount-span">0</span></a>
+                <a href="carts.html" class="text-dark middle-navbar-a text-decoration-none position-relative"><i
+                        class="bi bi-bag fs-3"></i><span
+                        class="position-absolute text-white d-flex align-items-center justify-content-center cart-span qount-span">0</span></a>
+            </div>
+
+            <!-- Sidebar Toggle Button -->
+
+            <button class="btn btn-primary sidebar-menu-toggler d-block d-lg-none" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#Sidebar">
+                <i class="bi bi-list"></i> Menu
+            </button>
+        </div>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-white py-3 d-none d-lg-block">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav nav-menu">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="text-primary text-decoration-none text-dark"> <i class="bi bi-headset"></i> Hotline
+                    <span>1900 -
+                        888</span></a>
+            </div>
+        </nav>
+
+        <!-- Sidebar (Offcanvas) -->
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="Sidebar">
+            <div class="offcanvas-header">
+                <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column">
+                <div class="container my-5 gap-4 d-flex justify-content-between align-items-center">
+                    <div class="input-group search-box">
+                        <input type="text" class="form-control" placeholder="Search Products...">
+                        <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+                <!-- Sidebar Menu -->
+                <ul class="navbar-nav nav-menu">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                </ul>
+                <!-- Social Icons -->
+                <div class="mt-auto d-flex justify-content-around">
+                    <i class="bi bi-facebook fs-3"></i>
+                    <i class="bi bi-twitter fs-3"></i>
+                    <i class="bi bi-linkedin fs-3"></i>
+                    <i class="bi bi-instagram fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page Section -->
+    <div class="page-section pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="d-flex align-items-center gap-3">
+                    <p class="m-0">
+                        <a href="index.html" class="text-dark">Home &nbsp; ></a>
+                    <p class="text-secondary m-0">Contact Us</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+    </div>
+    <!-- Contact -->
+    <section class="contact-page">
+        <div class="container">
+            <div class="contact-content text-center">
+                <h4 class="text-brand mb-4 data-colors" data-color="#088178">Get in Touch</h4>
+                <h1 class="contact-title">
+                    Let's Talk About
+                    <br>
+                    Your
+                    <span class="contact-title-style position-relative z-2">Idea</span>
+                </h1>
+                <p class="my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quam eius placeat, a
+                    quidem mollitia
+                    at accusantium reprehenderit pariatur provident nam ratione incidunt magnam sequi.
+                </p>
+                <div class="contact-banner-btn w-100 d-flex justify-content-center align-items-center gap-3">
+                    <a href="#" class="btn btn-default">About Us</a>
+                    <a href="#" class="btn btn-default d-none d-sm-block pt-2">Support Center</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-container d-flex flex-column">
+        <div class="container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118106.58339086166!2d73.09051330580505!3d22.322240549120757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8ab91a3ddab%3A0xac39d3bfe1473fb8!2sVadodara%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1740744720401!5m2!1sen!2sin"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4 mb-md-0 fs-6 data-colors" data-color="#4f5d77">
+                    <h4 class="data-colors" data-color="#088178">Office</h4>
+                    205 North Michigan Avenue, Suite 810
+                    <br>
+                    Chicago, 60601, USA
+                    <br>
+                    <abbr title="Phone:">Phone:</abbr>
+                    (123) 456-7890
+                    <br>
+                    <abbr title="Phone:">Email:</abbr>
+                    contact@trendify.com
+                    <br>
+                    <a href="#" class="btn contact-btn">
+                        <i class="ri-map-pin-line"></i>
+                        View map
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0 fs-6 data-colors" data-color="#4f5d77">
+                    <h4 class="data-colors" data-color="#088178">Studio</h4>
+                    205 North Michigan Avenue, Suite 810
+                    <br>
+                    Chicago, 60601, USA
+                    <br>
+                    <abbr title="Phone:">Phone:</abbr>
+                    (123) 456-7890
+                    <br>
+                    <abbr title="Phone:">Email:</abbr>
+                    contact@trendify.com
+                    <br>
+                    <a href="#" class="btn contact-btn">
+                        <i class="ri-map-pin-line"></i>
+                        View map
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0 fs-6 data-colors" data-color="#4f5d77">
+                    <h4 class="data-colors" data-color="#088178">Shop</h4>
+                    205 North Michigan Avenue, Suite 810
+                    <br>
+                    Chicago, 60601, USA
+                    <br>
+                    <abbr title="Phone:">Phone:</abbr>
+                    (123) 456-7890
+                    <br>
+                    <abbr title="Phone:">Email:</abbr>
+                    contact@trendify.com
+                    <br>
+                    <a href="#" class="btn contact-btn">
+                        <i class="ri-map-pin-line"></i>
+                        View map
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-4">
+                    <h3>Drop Us a Line</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                </div>
+            </div>
+            <form class="contact-form-style text-center d-flex align-items-center justify-content-center">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="Input_Box w-100 mb-4">
+                            <input type="text" placeholder="First Name" class="w-100 ps-2">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="Input_Box w-100 mb-4">
+                            <input type="text" placeholder="Your Email" class="w-100 ps-2">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="Input_Box w-100 mb-4">
+                            <input type="text" placeholder="Your Phone" class="w-100 ps-2">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="Input_Box w-100 mb-4">
+                            <input type="text" placeholder="Subject" class="w-100 ps-2">
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="Input_Box w-100 mb-4">
+                            <textarea rows="10" class="w-100 p-3" placeholder="Messgae"></textarea>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-default">Send Messgae</a>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <div class="newsletter mt-5 p-4 d-flex align-items-center
+     justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 mb-md-3 mb-lg-0">
+                        <div class="row align-items-center flex-column flex-md-row">
+                            <div class="col d-flex align-items-center gap-2">
+                                <img src="image/icon-email.svg" class="img-fluid email-icon" alt="">
+                                <h4 class=" mb-0">Sign up to Newsletter</h4>
+                            </div>
+                            <div class="col my-4 my-md-0">
+                                <h5 class="mb-0 fs-6">...and receive $25 coupon for first
+                                    shopping.</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <form class="form-subcriber d-flex">
+                            <input type="email" class="form-control bg-white p-2" placeholder="Enter your email">
+                            <button class="btn bg-dark text-white " type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 pb-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 footer-col">
+                    <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
+                    <h5 class="mt-3 text-secondary">Contact</h5>
+                    <p class="text-secondary mb-1"><span class="text-dark">Address: </span>562 Wellington Road, Street
+                        32, San Francisco</p>
+                    <p class="text-secondary mb-1"><span class="text-dark">Phone: </span>+01 2222 365 /(+91) 01 2345
+                        6789</p>
+                    <p class="text-secondary"><span class="text-dark">Hours: </span>10:00 - 18:00, Mon - Sat</p>
+                    <h5 class="mt-3 text-secondary">Follow Us</h5>
+                    <div class="footer-social-icon mb-sm-5 mb-md-0 mt-2 d-flex align-items-center gap-2">
+                        <img src="image/icon-facebook.svg" class="img-fluid" alt="">
+                        <img src="image/icon-twitter.svg" class="img-fluid" alt="">
+                        <img src="image/icon-instagram.svg" class="img-fluid" alt="">
+                        <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
+                        <img src="image/icon-youtube.svg" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 footer-col">
+                    <h3 class="fs-3 mb-4">About</h3>
+                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
+                        <li class="mb-2"><a href="#" class="text-dark">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Delivery Information</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Terms & Conditions</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Contact Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Support Center</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <h3 class="fs-3 mb-4">My Account</h3>
+                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
+                        <li class="mb-2"><a href="#" class="text-dark">Sign In</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">View Cart</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">My Wishlist</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Track My Order</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Help</a></li>
+                        <li class="mb-2"><a href="#" class="text-dark">Order</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="fs-3 mb-4">Install App</h3>
+                    <p class="text-secondary mb-1">From App Store or Google Play</p>
+                    <div class="app-img my-3">
+                        <img src="image/app-store.jpg" class="img-fluid border rounded" alt="">
+                        <img src="image/google-play.jpg" class="img-fluid border rounded" alt="">
+                    </div>
+                    <p class="text-secondary mb-2 mt-5">Secured Payment Gateways</p>
+                    <img src="image/payment-method.png" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5 pt-3 border-top">
+            <div class="row">
+                <div class="footer-bottom d-flex justify-content-between align-items-center flex-column flex-md-row">
+                    <p>© copyright 2025. All Rights Reserved By <a href="#">K2infocom</a></p>
+                    <div class="footer-bottom-links d-flex gap-3">
+                        <a href="#" class="text-dark">Terms of Use</a>
+                        <a href="#" class="text-dark">privacy policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <!-- Swiper Slider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+
+
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+        let items = document.querySelectorAll(".data-colors");
+
+        items.forEach((bar) => {
+            let bgcolor = bar.getAttribute("data-bg-color");
+            let color = bar.getAttribute("data-color");
+            let border = bar.getAttribute("data-border-color");
+
+            if (bgcolor) {
+                bar.style.backgroundColor = bgcolor;
+            }
+            if (color) {
+                bar.style.color = color;
+            }
+            if (border) {
+                bar.style.border = "1px solid " + border;
+            }
+        });
+    </script>
+</body>
+
+</html>
