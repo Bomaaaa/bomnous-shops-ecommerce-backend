@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bomnous Shops</title>
-    <link rel="stylesheet" href="styles.css">
+    
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <!-- bootstrap Icons -->
@@ -16,53 +16,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <!-- Swiper Slider CSS  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css">
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+             
+        <!-- BOMNOUS SMART NAVBAR -->
+    <nav class="navbar navbar-expand-lg bomnous-navbar">
+        <div class="container-fluid px-5 d-flex align-items-center justify-content-between">
 
-    <!-- Navbar -->
-    <div class="nav-container">
-        <!-- Top Bar -->
-        <div class="p-1 d-none d-lg-block border">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-4 text-start ps-4 top-bar-text text-dark">
-                        <i class="bi bi-phone text-dark"></i> (+01) - 2345 - 6789 &nbsp;| &nbsp; <i
-                            class="bi bi-geo-alt"></i>
-                        Our
-                        location
-                    </div>
-                    <div class="col-md-4 text-center text-secondary">
-                        Get great devices up to 50% off
-                    </div>
-                    <div class="col-md-4 text-end pe-4 top-bar-text ">
-                        <span class="me-3 top-bar-text"><i class="bi bi-globe-americas"></i> English</span>
-                        <a href="myaccount.html" class="top-bar-text text-dark text-decoration-none"><i
-                                class="bi bi-person"></i>
-                            Login</a> / <a href="myaccount.html"
-                            class="top-bar-text text-dark text-decoration-none">Signin</a>
-                    </div>
-                </div>
+        <!-- LEFT NAV -->
+            <div class="d-none d-lg-flex align-items-center gap-2 nav-left">
+                <a href="index.html" class="nav-link-custom">Home</a>
+                <a href="discover.html" class="nav-link-custom">Discover</a>
+                <a href="trending.html" class="nav-link-custom">Trending</a>
+                <a href="#" class="nav-link-custom">Categories</a>
+                <a href="ai.html" class="nav-link-custom ai-link">AI Stylist</a>
+                <a href="about.html" class="nav-link-custom">About</a>
             </div>
+
+        <!-- CENTER LOGO -->
+            <a class="navbar-brand bomnous-logo text-center" href="index.html">
+            BOMNOUS
+            </a>
+
+        <!-- RIGHT ICONS -->
+            <div class="d-none d-lg-flex align-items-center gap-2 nav-icons">
+                <a href="#" class="icon-link"><i class="bi bi-search"></i></a>
+                <a href="wishlist.html" class="icon-link position-relative">
+                <i class="bi bi-heart"></i>
+                <span class="icon-count">0</span>
+            </a>
+                <a href="cart.html" class="icon-link position-relative">
+                    <i class="bi bi-bag"></i>
+                    <span class="icon-count">0</span>
+                </a>
+                <a href="profile.html" class="icon-link"><i class="bi bi-person"></i></a>
+                <a href="#" class="icon-link"><i class="bi bi-globe"></i></a>
+            </div>
+
+            <!-- MOBILE MENU BUTTON -->
+            <button class="navbar-toggler border-0 d-lg-none" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+            <i class="bi bi-list"></i>
+            </button>
+
         </div>
+    </nav>
 
-        <!-- Search & Categories -->
-        <div class="container my-3 gap-5 middle-navbar d-flex justify-content-between align-items-center">
-            <a class="navbar-brand logo" href="index.html">Bom<span>Nous</span> Shops</a>
-            <div class="input-group search-box d-none d-lg-flex">
-                <input type="text" class="form-control" placeholder="Search Products...">
-                <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
-            </div>
-            <div class="d-flex align-items-center  d-none d-lg-flex gap-2">
-                <a href="wishlist.html" class="me-3 text-dark middle-navbar-a text-decoration-none position-relative"><i
-                        class="bi bi-heart fs-3"></i> <span
-                        class="position-absolute text-white d-flex align-items-center justify-content-center wishlist-span qount-span">0</span></a>
-                <a href="carts.html" class="text-dark middle-navbar-a text-decoration-none position-relative"><i
-                        class="bi bi-bag fs-3"></i><span
-                        class="position-absolute text-white d-flex align-items-center justify-content-center cart-span qount-span">0</span></a>
-            </div>
-
-            <!-- Sidebar Toggle Button -->
+             <!-- Sidebar Toggle Button -->
 
             <button class="btn btn-primary sidebar-menu-toggler d-block d-lg-none" type="button"
                 data-bs-toggle="offcanvas" data-bs-target="#Sidebar">
@@ -70,23 +73,6 @@
             </button>
         </div>
 
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-white py-3 d-none d-lg-block">
-            <div class="container">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav nav-menu">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <a href="#" class="text-primary text-decoration-none text-dark"> <i class="bi bi-headset"></i> Hotline
-                    <span>1900 -
-                        888</span></a>
-            </div>
-        </nav>
 
         <!-- Sidebar (Offcanvas) -->
 
@@ -121,160 +107,169 @@
         </div>
     </div>
 
-    <!-- Hero Header -->
-    <header class="mt-5 pt-5">
-        <div class="hero-swiper">
-            <div class="swiper heroSwiper">
-                <div class="swiper-wrapper">
-                    <!-- slide 1 -->
-                    <div class="swiper-slide">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="hero-content">
-                                        <h3 class="fs-3 mb-3">Upcoming Offer</h3>
-                                        <h2>Big Deals From</h2>
-                                        <h1>Manufacturer</h1>
-                                        <p class="lead fs-5">Clothing, Shoes, Bags, Wallets...</p>
-                                        <button class="btn">Shop Now</button>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="hero-img">
-                                        <img src="image/hero-1.png" class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- slide 2 -->
-                    <div class="swiper-slide">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="hero-content hero-content2">
-                                        <h3 class="fs-3 mb-3">Hot promotions</h3>
-                                        <h2> Fashion Trending</h2>
-                                        <h1>Great Collection</h1>
-                                        <p class="lead fs-5">Save more with coupons & up to 20% off</p>
-                                        <button class="btn">Shop Now</button>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="hero-img">
-                                        <img src="image/hero-2.png  " class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- slide 3 -->
-                    <div class="swiper-slide">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <div class="hero-content hero-content3">
-                                        <h3 class="fs-3 mb-3">Trade-in offer</h3>
-                                        <h2> Supper value deals</h2>
-                                        <h1>On all products</h1>
-                                        <p class="lead fs-5">Save more with coupons & up to 70% off</p>
-                                        <button class="btn">Shop Now</button>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="hero-img">
-                                        <img src="image/hero-3.png  " class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="swiper-button-prev btn btn-primary rounded-circle shadow d-none d-md-block">
-                <i class="bi bi-chevron-left"></i>
-            </button>
-            <button class="swiper-button-next btn btn-primary rounded-circle shadow d-none d-md-block">
-                <i class="bi bi-chevron-right"></i>
-            </button>
-        </div>
-    </header>
+<!-- Hero Section -->
+<header class="hero-section">
+    <div class="swiper heroSwiper">
+        <div class="swiper-wrapper">
 
-    <!-- featured -->
-    <div class="container mt-3">
-        <div class="row">
-            <!-- col 1 -->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-md-3 mb-lg-0">
-                <div class="feature-box border d-flex flex-column gap-3 rounded">
-                    <img src="image/feature-1.png" class="img-fluid" alt="">
-                    <h4 class="fs-6 text-center p-2 rounded bg-1">Free Shipping</h4>
+            <!-- Slide 1 -->
+            <div class="swiper-slide hero-slide">
+                <div class="hero-bg hero-bg-1" ></div>
+
+                <div class="hero-overlay-content">
+                    <h3 class="hero-label">Discover</h3>
+                    <h1 class="hero-title">
+                        Global Fashion.<br>
+                        Curated Intelligently.
+                    </h1>
+                    <p class="hero-subtitle">
+                        Explore standout brands from Europe, Africa, and North Cyprus — all intelligently curated in one marketplace.
+                    </p>
+                    <a href="#" class="hero-btn">Explore Brands</a>
                 </div>
             </div>
-            <!-- col 2 -->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-md-3 mb-lg-0">
-                <div class="feature-box border d-flex flex-column gap-3 rounded">
-                    <img src="image/feature-2.png" class="img-fluid" alt="">
-                    <h4 class="fs-6 text-center p-2 rounded bg-2">Online Order</h4>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide hero-slide">
+                <div class="hero-bg hero-bg-2"></div>
+
+                <div class="hero-overlay-content">
+                    <h3 class="hero-label">Smart Shopping</h3>
+                    <h1 class="hero-title">
+                        Powered by AI.<br>
+                        Styled for You.
+                    </h1>
+                    <p class="hero-subtitle">
+                        Our AI stylist matches you with pieces that fit your taste, culture, and lifestyle.
+                    </p>
+                    <a href="#" class="hero-btn">Try AI Stylist</a>
                 </div>
             </div>
-            <!-- col 3 -->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-md-3 mb-lg-0">
-                <div class="feature-box border d-flex flex-column gap-3 rounded">
-                    <img src="image/feature-3.png" class="img-fluid" alt="">
-                    <h4 class="fs-6 text-center p-2 rounded bg-3">Save Money</h4>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide hero-slide">
+                <div class="hero-bg hero-bg-3"></div>
+
+                <div class="hero-overlay-content">
+                    <h3 class="hero-label">For Brands & Makers</h3>
+                    <h1 class="hero-title">
+                        Smart Selling.<br>
+                        Global Reach.
+                    </h1>
+                    <p class="hero-subtitle">
+                        A trusted space where independent brands and manufacturers connect with the right audience.
+                    </p>
+                    <a href="#" class="hero-btn">Start Selling</a>
                 </div>
             </div>
-            <!-- col 4 -->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-md-3 mb-lg-0">
-                <div class="feature-box border d-flex flex-column gap-3 rounded">
-                    <img src="image/feature-4.png" class="img-fluid" alt="">
-                    <h4 class="fs-6 text-center p-2 rounded bg-4">Promotions</h4>
-                </div>
-            </div>
-            <!-- col 5 -->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-md-3 mb-lg-0">
-                <div class="feature-box border d-flex flex-column gap-3 rounded">
-                    <img src="image/feature-5.png" class="img-fluid" alt="">
-                    <h4 class="fs-6 text-center p-2 rounded bg-5">Happy Sell</h4>
-                </div>
-            </div>
-            <!-- col 6 -->
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-md-3 mb-lg-0">
-                <div class="feature-box border d-flex flex-column gap-3 rounded">
-                    <img src="image/feature-6.png" class="img-fluid" alt="">
-                    <h4 class="fs-6 text-center p-2 rounded bg-6">24/7 Support</h4>
-                </div>
-            </div>
+
         </div>
     </div>
+    <div class="hero-nav-zone hero-prev"></div>
+    <div class="hero-nav-zone hero-next"></div>
 
-    <!-- Product SECTION -->
-    <section class="Featured flex-column">
-        <div class="container">
-            <div class="tab-header mb-5 d-flex justify-content-between align-items-center">
-                <ul class="nav border-0 gap-3 nav-tabs">
-                    <li class="nav-item">
-                        <button class="btn fs-6 btn-main active" type="button">
-                            Featured
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn fs-6 btn-main" type="button">
-                            Popular
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn fs-6 btn-main" type="button">
-                            New Added
-                        </button>
-                    </li>
-                </ul>
-                <a href="#" class="fs-5 view-more d-md-block">View More</a>
+</header>
+
+
+    <!-- Features Section -->
+<section class="features-section py-5">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- 1 -->
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-globe2"></i>
+                    </div>
+                    <h4>Global Brands</h4>
+                </div>
             </div>
-            <div class="row product-wrap">
+
+            <!-- 2 -->
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-stars"></i>
+                    </div>
+                    <h4>AI Styling</h4>
+                </div>
             </div>
+
+            <!-- 3 -->
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-arrow-left-right"></i>
+                    </div>
+                    <h4>Borderless Shopping</h4>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-patch-check"></i>
+                    </div>
+                    <h4>Verified Sellers</h4>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                    <h4>Secure Checkout</h4>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="col-lg-2 col-md-4 col-6">
+                <div class="feature-card text-center">
+                    <div class="feature-icon">
+                        <i class="bi bi-headset"></i>
+                    </div>
+                    <h4>Dedicated Support</h4>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
+
+<!-- Our Products Section -->
+<section class="product-section py-5">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+      <h2 class="section-title mb-3 mb-md-0">Our Products</h2>
+
+      <!-- Filter Buttons -->
+      <div class="product-filters">
+        <button class="btn btn-main active" data-filter="trending">
+          Trending
+        </button>
+        <button class="btn btn-main" data-filter="just-dropped">
+          Just Dropped
+        </button>
+        <button class="btn btn-main" data-filter="editors">
+          Editor’s Picks
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="row product-wrap">
+      <!-- JS will inject products here -->
+    </div>
+
+  </div>
+</section>
 
     <!-- Banner Section -->
     <section class="banner pt-0">
@@ -1450,12 +1445,50 @@
         crossorigin="anonymous"></script>
     <!-- Swiper Slider JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+   <script>
+        var swiper = new Swiper(".heroSwiper", {
+            effect: "fade",
+            fadeEffect: { crossFade: true },
+            loop: true,
+            speed: 1200,
+
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+
+            allowTouchMove: false   // 👈 disables drag
+        });
+</script>
+
+
+
     <script src="js/products.js"></script>
     <script src="js/script.js"></script>
     <script>
+        document.querySelector(".hero-prev").addEventListener("click", function() {
+            swiper.slidePrev();
+        });
 
+        document.querySelector(".hero-next").addEventListener("click", function() {
+            swiper.slideNext();
+        });
+            
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+      
+        window.addEventListener("scroll", function () {
+            const navbar = document.querySelector(".bomnous-navbar");
+            if (window.scrollY > 20) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+
+
 
         let items = document.querySelectorAll(".data-colors");
 

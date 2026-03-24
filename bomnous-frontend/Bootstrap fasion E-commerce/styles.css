@@ -10,7 +10,7 @@
     scroll-behavior: smooth;
 }
 
-:root {
+/* :root {
     --text-color: #222222;
     --text-light: #465b52;
     --text-color: #D77F7A;
@@ -24,9 +24,56 @@
     --League-font: "League Spartan", serif;
     --transition-regular: .3s;
     --transition-slow: .6s;
+} */
+
+:root {
+
+    /* ===== BRAND COLORS ===== */
+    --brand-accent: #7E5A9B;          /* Deep Lilac (Primary Accent) */
+    --brand-accent-light: #B288C0;    /* Soft Accent */
+    --brand-accent-hover: #6A4A85;    /* Darker hover state */
+
+    /* ===== CORE UI COLORS ===== */
+    --primary-dark: #111111;          /* Main text */
+    --text-muted: #6B6B6B;            /* Subtext */
+    --border-soft: #ECECEC;
+    --soft-bg: #F7F7F9;
+    --white-color: #FFFFFF;
+
+    /* ===== OPTIONAL SHOP HIGHLIGHT ===== */
+    --shop-highlight: #FF7A3D;        /* Vibrant Orange for "New Arrivals" or "Limited Edition" */
+    
+    /* ===== FONTS ===== */
+    --Playwrite-font: "Playwrite IT Moderna", serif;
+    --League-font: "League Spartan", sans-serif;
+
+    /* ===== TRANSITIONS ===== */
+    --transition-regular: .3s ;
+    --transition-slow: .6s ;
+
+
+     /* === Brand Backgrounds === */
+  --color-bg-charcoal: #1F1B24;
+  --color-bg-plum: #2E2238;
+
+  /* === Hero Text Colors === */
+  --color-hero-title: #F4F1F8;
+  --color-hero-subtitle: #CFC6D9;
+  --color-hero-label: #B79EDB;
+
+  /* === Optional Soft Text Variant === */
+  --color-text-muted-lilac: #CFC6D9;
+  --color-text-soft-white: #F4F1F8;
 }
 
-/* custome css */
+
+
+
+/* custom css */
+
+body {
+    padding-top: 80px;
+}
 
 section {
     padding: 3% 0;
@@ -138,7 +185,6 @@ section {
 }
 
 /* Navbar */
-
 .top-bar-text {
     font-size: 0.9rem;
 }
@@ -200,6 +246,107 @@ section {
     border-color: var(--prim-dark) !important;
 }
 
+/* ============================= */
+/* BOMNOUS GLASS NAVBAR */
+/* ============================= */
+
+.bomnous-navbar {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    height: 85px;
+    /* padding: 0 40px; */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid var(--border-soft);
+    transition: var(--transition-regular);
+    z-index: 1050;
+}
+
+/* Shadow when scrolled */
+.bomnous-navbar.scrolled {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* Logo */
+.bomnous-logo {
+    font-family: var(--League-font);
+    font-size: 1.4rem;
+    letter-spacing: 6px;
+    font-weight: 500;
+    color: var(--primary-dark) !important;
+}
+
+/* Navigation Links */
+.nav-link-custom {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--primary-dark) !important;
+    position: relative;
+    margin: 0 14px;
+    transition: var(--transition-regular);
+}
+
+/* Hover */
+.nav-link-custom:hover {
+    color: var(--brand-accent) !important;
+}
+
+/* Underline animation */
+.nav-link-custom::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background-color: var(--brand-accent);
+    transition: var(--transition-regular);
+}
+
+.nav-link-custom:hover::after {
+    width: 100%;
+}
+
+/* AI Link (Slightly Stronger Presence) */
+.ai-link {
+    font-weight: 500;
+    color: var(--brand-accent) !important;
+}
+
+/* Right Side Icons */
+.icon-link {
+    font-size: 1.2rem;
+    color: var(--primary-dark) !important;
+    position: relative;
+    margin-left: 18px;
+    transition: var(--transition-regular);
+}
+
+.icon-link:hover {
+    color: var(--brand-accent) !important;
+}
+
+/* Icon Counter Bubble */
+.icon-count {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background: var(--brand-accent);
+    color: var(--white-color);
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* Navbar MQ Section */
 
@@ -211,90 +358,130 @@ section {
     }
 }
 
-/* Hero Header Section  */
-
-.hero-content h3 {
-    opacity: 0;
-    animation: Anim-top var(--transition-slow) 0.3s forwards linear;
+/* HERO SECTION */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: 50px;
 }
 
-.hero-content h2 {
-    font-size: 3.5rem;
-    line-height: 3.5rem;
-    font-weight: 600;
-    opacity: 0;
-    animation: Anim-top var(--transition-slow) 0.6s forwards linear;
+.hero-slide {
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
 
-.hero-content h1 {
-    font-size: 4rem;
-    line-height: 4.5rem;
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(46, 34, 56, 0.95) 0%,
+        rgba(46, 34, 56, 0.75) 40%,
+        rgba(46, 34, 56, 0.3) 70%,
+        rgba(46, 34, 56, 0) 100%
+    );
+}
+
+
+/* Text Content */
+.hero-overlay-content {
+    position: absolute;
+    left: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 650px;
+    z-index: 2;
+}
+
+.hero-label {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--border-soft);
+    color: var(--color-hero-label);
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    font-size: clamp(3.2rem, 6vw, 5.8rem);
     font-weight: 700;
-    color: #63A2C1;
-    opacity: 0;
-    animation: Anim-top var(--transition-slow) 0.9s forwards linear;
+    line-height: 1.05;
+    margin-bottom: 20px;
+     color: var(--color-hero-title);
 }
 
-.hero-content p {
-    opacity: 0;
-    animation: Anim-top var(--transition-slow) 1.1s forwards linear;
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    color: var(--color-hero-subtitle);
+    margin-bottom: 30px;
+    max-width: 500px;
 }
 
-.hero-content button {
-    background-image: url(image/btn-brush-bg-1.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    padding: 14px 80px 14px 65px;
-    font-size: 1.2rem;
-    color: var(--prim-dark);
-    font-weight: 600;
-    opacity: 0;
-    animation: Anim-top var(--transition-slow) 1.4s forwards linear;
+/* Button */
+.hero-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 40px;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
 }
 
-.hero-content2 h1 {
-    color: #D77F7A;
+.hero-btn:hover {
+    background: #7E5A9B;
+    transform: translateY(-2px);
 }
 
-.hero-content2 button {
-    background-image: url(image/btn-brush-bg-2.png);
+.hero-nav-zone {
+    position: absolute;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    z-index: 5;
 }
 
-.hero-content3 h1 {
-    color: var(--prim-dark);
+.hero-prev {
+    left: 0;
+    cursor: w-resize; /* left arrow cursor */
 }
 
-.hero-content3 button {
-    background-image: url(image/btn-brush-bg-3.png);
+.hero-next {
+    right: 0;
+    cursor: e-resize; /* right arrow cursor */
 }
 
-.hero-img {
-    opacity: 0;
-    animation: Anim-zoom var(--transition-slow) 1.7s forwards linear;
+.hero-bg-1 {
+    background-image: url('image/herooo-image-1.png');
+    background-size: cover;
+    background-position: 80% 20%;
+    
+    
 }
 
-.swiper-button-prev:after,
-.swiper-button-next:after {
-    display: none;
+.hero-bg-2 {
+    background-image: url('image/herooo-image-2\ updated\ 1\ \(1\).png');
+    background-size: cover;
+    background-position: 80% 20%;
 }
 
-.hero-swiper .swiper-button-prev,
-.swiper-button-next {
-    width: 50px !important;
-    height: 50px !important;
-    font-size: 24px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--prim-light) !important;
-    color: var(--prim-dark) !important;
-    border: none !important;
-}
-
-.hero-swiper .swiper-button-prev:hover,
-.swiper-button-next:hover {
-    background-color: var(--prim-dark) !important;
-    color: var(--white-color) !important;
+.hero-bg-3 {
+    background-image: url('image/herooo-image-3\ \(2\).png');
+    background-size: cover;
+    background-position: 80% 20%;
 }
 
 /* Animations */
@@ -337,49 +524,43 @@ section {
 }
 
 
-/* feature Section  */
+/* =============================
+   Features Section - Bomnous
+============================= */
 
-.feature-box {
-    padding: 10px;
+.features-section {
+    background-color:  var(--soft-bg);
 }
 
-.feature-box h4 {
-    color: var(--prim-dark) !important;
-    font-weight: 600;
+.feature-card {
+    padding: 30px 15px;
+    background:  #2A2433;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+    height: 100%;
+    cursor: pointer; 
 }
 
-.feature-box .bg-1 {
-    background-color: #fddde4 !important;
-}
-
-.feature-box .bg-2 {
-    background-color: #d1e8f2 !important;
-}
-
-.feature-box .bg-3 {
-    background-color: #cdebbc !important;
-}
-
-.feature-box .bg-4 {
-    background-color: #cdd4f8 !important;
-}
-
-.feature-box .bg-5 {
-    background-color: #f6dbf6 !important;
-}
-
-.feature-box .bg-6 {
-    background-color: #fff2e5 !important;
-}
-
-.feature-box {
-    transition: var(--transition-regular);
-}
-
-.feature-box:hover {
+.feature-card:hover {
     transform: translateY(-10px);
-    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
+
+.feature-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: var(--color-hero-label); 
+}
+
+.feature-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #F4F1F8; /* Soft white for better contrast */
+    margin: 0;
+}
+
 
 /* feature MQ Section */
 
