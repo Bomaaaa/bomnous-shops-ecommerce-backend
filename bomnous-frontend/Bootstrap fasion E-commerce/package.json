@@ -1,0 +1,13 @@
+{
+  "name": "bomnous-shops-frontend",
+  "private": true,
+  "description": "DaisyUI is loaded from CDN in HTML. npm run build:css only works when the shell cwd is a normal path (e.g. cd in WSL), not a Windows UNC path.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/bomnous-tailwind.css -o ./css/bomnous-daisy.css --minify",
+    "watch:css": "tailwindcss -i ./src/bomnous-tailwind.css -o ./css/bomnous-daisy.css --watch"
+  },
+  "devDependencies": {
+    "daisyui": "^4.12.14",
+    "tailwindcss": "^3.4.17"
+  }
+}

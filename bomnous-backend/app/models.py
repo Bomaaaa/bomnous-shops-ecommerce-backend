@@ -23,6 +23,12 @@ class Product(Base):
     name = Column(String, nullable=False, index=True)
     price = Column(Float, nullable=False)
     stock = Column(Integer, default=0)
+    category = Column(String, nullable=False, default="women", index=True)
+    tag = Column(String, nullable=False, default="trending", index=True)
+    image_url = Column(String, nullable=False, default="image/product-1-1.jpg")
+    image_hover_url = Column(String, nullable=True)
+    compare_at_price = Column(Float, nullable=True)
+    aesthetic_tag = Column(String, nullable=False, default="soft-luxury", index=True)
 
     shop_id = Column(Integer, ForeignKey("shops.id"), nullable=False)
     seller_id = Column(Integer, ForeignKey("users.id")) 

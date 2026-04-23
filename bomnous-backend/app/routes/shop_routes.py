@@ -22,7 +22,7 @@ def create_shop(shop: ShopCreate, db: Session = Depends(get_db), current_user: U
             detail="Only sellers can create shops"
         )
     
-    new_shop = Shop(**shop.model_dump())
+    new_shop = Shop(**shop.model_dump(), owner_id=current_user.id)
     db.add(new_shop)
     db.commit()
     db.refresh(new_shop)

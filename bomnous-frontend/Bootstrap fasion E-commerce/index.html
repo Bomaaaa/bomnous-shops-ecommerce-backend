@@ -17,69 +17,59 @@
     <!-- Swiper Slider CSS  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css">
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- DaisyUI + Tailwind first; project CSS last so it wins over generated utilities -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="styles.css?v=20260422-spotlight">
 </head>
 
 <body>
              
         <!-- BOMNOUS SMART NAVBAR -->
     <nav class="navbar navbar-expand-lg bomnous-navbar">
-        <div class="container-fluid px-5 d-flex align-items-center justify-content-between">
+        <div class="container-fluid px-4 px-lg-5 bomnous-nav-row">
 
-        <!-- LEFT NAV -->
+            <!-- LEFT NAV (desktop) -->
             <div class="d-none d-lg-flex align-items-center gap-2 nav-left">
                 <a href="index.html" class="nav-link-custom">Home</a>
-                <a href="discover.html" class="nav-link-custom">Discover</a>
-                <a href="trending.html" class="nav-link-custom">Trending</a>
-                <a href="#" class="nav-link-custom">Categories</a>
-                <a href="ai.html" class="nav-link-custom ai-link">AI Stylist</a>
+                <a href="#discover-preview" class="nav-link-custom">Discover</a>
+                <a href="#featured-products" class="nav-link-custom">Trending</a>
+                <a href="#discover-preview" class="nav-link-custom">Categories</a>
+                <a href="#ai-stylist" class="nav-link-custom ai-link">AI Stylist</a>
                 <a href="about.html" class="nav-link-custom">About</a>
             </div>
 
-        <!-- CENTER LOGO -->
-            <a class="navbar-brand bomnous-logo text-center" href="index.html">
-            BOMNOUS
-            </a>
+            <a class="navbar-brand bomnous-logo text-center" href="index.html">BOMNOUS</a>
 
-        <!-- RIGHT ICONS -->
-            <div class="d-none d-lg-flex align-items-center gap-2 nav-icons">
-                <a href="#" class="icon-link"><i class="bi bi-search"></i></a>
-                <a href="wishlist.html" class="icon-link position-relative">
-                <i class="bi bi-heart"></i>
-                <span class="icon-count">0</span>
-            </a>
-                <a href="cart.html" class="icon-link position-relative">
-                    <i class="bi bi-bag"></i>
-                    <span class="icon-count">0</span>
-                </a>
-                <a href="profile.html" class="icon-link"><i class="bi bi-person"></i></a>
-                <a href="#" class="icon-link"><i class="bi bi-globe"></i></a>
+            <div class="bomnous-nav-end d-flex align-items-center justify-content-end gap-2">
+                <div class="d-none d-lg-flex align-items-center gap-2 nav-icons">
+                    <a href="#" class="icon-link"><i class="bi bi-search"></i></a>
+                    <a href="wishlist.html" class="icon-link position-relative">
+                        <i class="bi bi-heart"></i>
+                        <span class="icon-count wishlist-span">0</span>
+                    </a>
+                    <a href="carts.html" class="icon-link position-relative">
+                        <i class="bi bi-bag"></i>
+                        <span class="icon-count cart-span">0</span>
+                    </a>
+                    <a href="myaccount.html" class="icon-link"><i class="bi bi-person"></i></a>
+                    <a href="#" class="icon-link"><i class="bi bi-globe"></i></a>
+                </div>
+                <button class="bomnous-menu-toggle d-lg-none" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#Sidebar" aria-label="Open menu">
+                    <i class="bi bi-list"></i>
+                </button>
             </div>
-
-            <!-- MOBILE MENU BUTTON -->
-            <button class="navbar-toggler border-0 d-lg-none" type="button"
-            data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
-            <i class="bi bi-list"></i>
-            </button>
 
         </div>
     </nav>
-
-             <!-- Sidebar Toggle Button -->
-
-            <button class="btn btn-primary sidebar-menu-toggler d-block d-lg-none" type="button"
-                data-bs-toggle="offcanvas" data-bs-target="#Sidebar">
-                <i class="bi bi-list"></i> Menu
-            </button>
-        </div>
-
 
         <!-- Sidebar (Offcanvas) -->
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="Sidebar">
             <div class="offcanvas-header">
-                <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                <a class="navbar-brand bomnous-logo bomnous-offcanvas-brand" href="index.html">BOMNOUS</a>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body d-flex flex-column">
                 <div class="container my-5 gap-4 d-flex justify-content-between align-items-center">
@@ -105,7 +95,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 <!-- Hero Section -->
 <header class="hero-section">
@@ -165,8 +154,12 @@
 
         </div>
     </div>
-    <div class="hero-nav-zone hero-prev"></div>
-    <div class="hero-nav-zone hero-next"></div>
+    <button type="button" class="hero-nav-zone hero-prev" aria-label="Previous slide">
+        <span class="hero-nav-icon"><i class="bi bi-arrow-left"></i></span>
+    </button>
+    <button type="button" class="hero-nav-zone hero-next" aria-label="Next slide">
+        <span class="hero-nav-icon"><i class="bi bi-arrow-right"></i></span>
+    </button>
 
 </header>
 
@@ -242,1194 +235,257 @@
 
 
 <!-- Our Products Section -->
-<section class="product-section py-5">
+<section class="product-section py-5" id="featured-products" data-product-section data-count-target="#homepage-product-count" data-summary-target="#homepage-product-summary">
   <div class="container">
-    
-    <!-- Section Header -->
-    <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
-      <h2 class="section-title mb-3 mb-md-0">Our Products</h2>
-
-      <!-- Filter Buttons -->
-      <div class="product-filters">
-        <button class="btn btn-main active" data-filter="trending">
-          Trending
-        </button>
-        <button class="btn btn-main" data-filter="just-dropped">
-          Just Dropped
-        </button>
-        <button class="btn btn-main" data-filter="editors">
-          Editor’s Picks
-        </button>
+    <div class="product-section-shell">
+      <div class="product-section-header">
+        <div>
+          <span class="section-eyebrow">Curated shopping</span>
+          <h2 class="section-title mb-2">Discover Pieces Worth Saving</h2>
+          <p class="product-section-copy mb-0" id="homepage-product-summary">Showing all curated pieces.</p>
+        </div>
+        <div class="product-section-stat">
+          <strong id="homepage-product-count">0</strong>
+          <span>products</span>
+        </div>
       </div>
-    </div>
 
-    <!-- Product Grid -->
-    <div class="row product-wrap">
-      <!-- JS will inject products here -->
-    </div>
+      <div class="filter-toolbar">
+        <div class="filter-group">
+          <span class="filter-group-label">Category</span>
+          <div class="product-filters">
+            <button class="filter-chip active" data-filter-type="category" data-filter-value="all">All</button>
+            <button class="filter-chip" data-filter-type="category" data-filter-value="women">Women</button>
+            <button class="filter-chip" data-filter-type="category" data-filter-value="men">Men</button>
+            <button class="filter-chip" data-filter-type="category" data-filter-value="children">Children</button>
+            <button class="filter-chip" data-filter-type="category" data-filter-value="accessories">Accessories</button>
+          </div>
+        </div>
 
+        <div class="filter-group">
+          <span class="filter-group-label">Edit</span>
+          <div class="product-filters">
+            <button class="filter-chip active" data-filter-type="tag" data-filter-value="all">All edits</button>
+            <button class="filter-chip" data-filter-type="tag" data-filter-value="trending">Trending</button>
+            <button class="filter-chip" data-filter-type="tag" data-filter-value="just-dropped">Just Dropped</button>
+            <button class="filter-chip" data-filter-type="tag" data-filter-value="editors">Editor's Picks</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row product-wrap g-4"></div>
+    </div>
   </div>
 </section>
 
-    <!-- Banner Section -->
-    <section class="banner pt-0">
-        <div class="container h-100">
-            <div class="banner-image h-100 position-relative">
-                <img src="image/banner-4.png" alt="service-banner-image" class="img-fluid obj-cover">
-                <div class="banner-content d-none d-md-block">
-                    <h4 class="mb-2 data-colors">Repair Services</h4>
-                    <h1 class="mb-3 fs-1 banner-text">We're an Apple <br>Authorised Service Provider</h1>
-                    <a href="#" class="btn btn-default">
-                        Learn More
-                        <i class="fa-solid fa-arrow-right"></i>
+    <section class="ai-stylist-section pt-0" id="ai-stylist">
+        <div class="container">
+            <div class="ai-stylist-panel">
+                <div class="row ai-stylist-layout g-4">
+                    <div class="col-lg-7">
+                        <span class="section-eyebrow">Personal AI stylist</span>
+                        <h2 class="ai-stylist-title">Describe the moment. Let AI build the look.</h2>
+                        <p class="ai-stylist-copy">Tell Bomnous where you're going, how you want to feel, and what you love wearing, and your AI stylist will guide you to looks that fit your taste, budget, and occasion.</p>
+                        <div class="ai-prompt-showcase">
+                            <div class="ai-prompt-card active">
+                                <span class="ai-prompt-label">Prompt example</span>
+                                <p>"It's my graduation in a few weeks. I want a classy look that works with my gown and still feels soft, elegant, and picture-ready."</p>
+                            </div>
+                            <div class="ai-followup-grid">
+                                <div class="ai-followup-chip">Preferred colors?</div>
+                                <div class="ai-followup-chip">Budget range?</div>
+                                <div class="ai-followup-chip">Modest or bold?</div>
+                                <div class="ai-followup-chip">Heels, flats, or both?</div>
+                            </div>
+                        </div>
+                        <div class="ai-stylist-actions">
+                            <a href="shop.html" class="btn btn-default" style="white-space: nowrap !important; width: fit-content !important; min-width: 18rem !important; max-width: none !important;"><span class="bomnous-cta-label">Try the AI concept</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                            <a href="shop.html" class="ai-text-link">See styled product edits</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="ai-stylist-demo-card">
+                            <div class="ai-demo-header">
+                                <span class="ai-demo-dot"></span>
+                                <strong>Bomnous AI Stylist</strong>
+                                <small>Live styling concept</small>
+                            </div>
+                            <div class="ai-demo-chat">
+                                <div class="ai-message user-message">
+                                    <span class="ai-message-role">You</span>
+                                    <p id="ai-demo-prompt"></p>
+                                </div>
+                                <div class="ai-message ai-message-bubble ai-step ai-step-1">
+                                    <span class="ai-message-role">Bomnous AI</span>
+                                    <p id="ai-demo-followup-text"></p>
+                                </div>
+                                <div class="ai-message ai-message-bubble ai-step ai-step-2">
+                                    <span class="ai-message-role">Bomnous AI</span>
+                                    <div class="ai-followup-grid compact" id="ai-demo-preferences">
+                                    </div>
+                                </div>
+                                <div class="ai-message ai-message-bubble ai-step ai-step-3">
+                                    <span class="ai-message-role">Bomnous AI</span>
+                                    <p id="ai-demo-response-text"></p>
+                                </div>
+                                <div class="ai-style-results-grid ai-step ai-step-4">
+                                    <div class="ai-mini-card ai-style-preview-card">
+                                        <img src="image/product-1-1.jpg" alt="AI look suggestion" class="ai-style-image" id="ai-look-image-1">
+                                        <span id="ai-look-label-1">Look 01</span>
+                                        <strong id="ai-look-title-1">Graduation Soft Luxe</strong>
+                                        <small id="ai-look-copy-1">Structured dress, elegant heels, subtle jewelry, and a polished layering option.</small>
+                                    </div>
+                                    <div class="ai-mini-card ai-style-preview-card">
+                                        <img src="image/product-2-1.jpg" alt="AI look suggestion" class="ai-style-image" id="ai-look-image-2">
+                                        <span id="ai-look-label-2">Look 02</span>
+                                        <strong id="ai-look-title-2">Brunch in Abuja</strong>
+                                        <small id="ai-look-copy-2">Chic, breathable styling with a feminine silhouette and easy luxury finish.</small>
+                                    </div>
+                                    <div class="ai-mini-card ai-style-preview-card">
+                                        <img src="image/product-5-1.jpg" alt="AI look suggestion" class="ai-style-image" id="ai-look-image-3">
+                                        <span id="ai-look-label-3">Look 03</span>
+                                        <strong id="ai-look-title-3">Dinner guest look</strong>
+                                        <small id="ai-look-copy-3">Modest, elegant, and rich-looking pieces for a formal evening setting.</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="discover-preview-section pt-0" id="discover-preview">
+        <div class="container">
+            <div class="section-heading-row">
+                <div>
+                    <span class="section-eyebrow">Shop by aesthetic</span>
+                    <h3 class="section-title mb-2">Explore Looks By Mood, Moment, and Energy</h3>
+                </div>
+                <a href="shop.html" class="ai-text-link">See full shop</a>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 d-flex">
+                    <a href="search.html?aesthetic=soft-luxury" class="discover-card discover-card-large w-100">
+                        <img class="discover-card__img" src="https://images.pexels.com/photos/6995902/pexels-photo-6995902.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Soft luxury: elegant neutral outfit, refined styling" width="600" height="800" loading="lazy" decoding="async">
+                        <span class="discover-card__overlay" aria-hidden="true"></span>
+                        <div class="discover-card__text">
+                            <span class="discover-card-label">Soft luxury</span>
+                            <h4>Elegant pieces for polished everyday confidence</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex">
+                    <a href="search.html?aesthetic=event-ready" class="discover-card w-100">
+                        <img class="discover-card__img" src="https://images.pexels.com/photos/36195499/pexels-photo-36195499.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Event ready: full-length evening gown for dinner or formal events" width="600" height="800" loading="lazy" decoding="async">
+                        <span class="discover-card__overlay" aria-hidden="true"></span>
+                        <div class="discover-card__text">
+                            <span class="discover-card-label">Event ready</span>
+                            <h4>Wedding, graduation, and dinner looks that feel intentional</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex">
+                    <a href="search.html?aesthetic=smart-casual" class="discover-card w-100">
+                        <img class="discover-card__img" src="https://images.pexels.com/photos/6311637/pexels-photo-6311637.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Smart casual: neat sweater and jeans, polished but relaxed" width="600" height="800" loading="lazy" decoding="async">
+                        <span class="discover-card__overlay" aria-hidden="true"></span>
+                        <div class="discover-card__text">
+                            <span class="discover-card-label">Smart casual</span>
+                            <h4>Relaxed outfits that still look elevated and curated</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex">
+                    <a href="search.html?aesthetic=cultural-blend" class="discover-card w-100">
+                        <img class="discover-card__img" src="https://images.pexels.com/photos/29168547/pexels-photo-29168547.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Cultural blend: African fashion in vibrant Nigerian colours" width="600" height="800" loading="lazy" decoding="async">
+                        <span class="discover-card__overlay" aria-hidden="true"></span>
+                        <div class="discover-card__text">
+                            <span class="discover-card-label">Cultural blend</span>
+                            <h4>Looks that balance global fashion with identity and texture</h4>
+                        </div>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- popular-categories -->
-    <section class="popular-categories pt-0">
+    <section class="brand-story-banner pt-0">
         <div class="container">
-            <div class="popular-categories-heading">
-                <h3 class="section-title">
-                    <span>Popular</span>
-                    Categories
-                </h3>
-            </div>
-
-            <div class="swiper popular-categories-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="popular-categories-item p-3 w-100 rounded-4 data-colors section-item"
-                            data-border-color="#cce7d0">
-                            <div
-                                class="popular-categories-image img-scale w-100 rounded-4 overflow-hidden mb-3 overflow-hidden">
-                                <img src="image/category-1.jpg" alt="category-image" class="img-fluid obj-cover">
-                            </div>
-                            <h5 class="fs-6 text-center data-colors" data-color="#4f5d77">T-Shirt</h5>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="popular-categories-item p-3 w-100 rounded-4 data-colors section-item"
-                            data-border-color="#cce7d0">
-                            <div
-                                class="popular-categories-image img-scale w-100 rounded-4 overflow-hidden mb-3 overflow-hidden">
-                                <img src="image/category-2.jpg" alt="category-image" class="img-fluid obj-cover">
-                            </div>
-                            <h5 class="fs-6 text-center data-colors" data-color="#4f5d77">Bags</h5>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="popular-categories-item p-3 w-100 rounded-4 data-colors section-item"
-                            data-border-color="#cce7d0">
-                            <div
-                                class="popular-categories-image img-scale w-100 rounded-4 overflow-hidden mb-3 overflow-hidden">
-                                <img src="image/category-3.jpg" alt="category-image" class="img-fluid obj-cover">
-                            </div>
-                            <h5 class="fs-6 text-center data-colors" data-color="#4f5d77">Sandan</h5>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="popular-categories-item p-3 w-100 rounded-4 data-colors section-item"
-                            data-border-color="#cce7d0">
-                            <div
-                                class="popular-categories-image img-scale w-100 rounded-4 overflow-hidden mb-3 overflow-hidden">
-                                <img src="image/category-4.jpg" alt="category-image" class="img-fluid obj-cover">
-                            </div>
-                            <h5 class="fs-6 text-center data-colors" data-color="#4f5d77">Scarf Cap</h5>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="popular-categories-item p-3 w-100 rounded-4 data-colors section-item"
-                            data-border-color="#cce7d0">
-                            <div
-                                class="popular-categories-image img-scale w-100 rounded-4 overflow-hidden mb-3 overflow-hidden">
-                                <img src="image/category-5.jpg" alt="category-image" class="img-fluid obj-cover">
-                            </div>
-                            <h5 class="fs-6 text-center data-colors" data-color="#4f5d77">Shoes</h5>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="popular-categories-item p-3 w-100 rounded-4 data-colors section-item"
-                            data-border-color="#cce7d0">
-                            <div
-                                class="popular-categories-image img-scale w-100 rounded-4 overflow-hidden mb-3 overflow-hidden">
-                                <img src="image/category-6.jpg" alt="category-image" class="img-fluid obj-cover">
-                            </div>
-                            <h5 class="fs-6 text-center data-colors" data-color="#4f5d77">Pillowcase</h5>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="popular-categories-item p-3 w-100 rounded-4 data-colors section-item"
-                            data-border-color="#cce7d0">
-                            <div
-                                class="popular-categories-image img-scale w-100 rounded-4 overflow-hidden mb-3 overflow-hidden">
-                                <img src="image/category-7.jpg" alt="category-image" class="img-fluid obj-cover">
-                            </div>
-                            <h5 class="fs-6 text-center data-colors" data-color="#4f5d77">Jumpsuits</h5>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="popular-categories-item p-3 w-100 rounded-4 data-colors section-item"
-                            data-border-color="#cce7d0">
-                            <div
-                                class="popular-categories-image img-scale w-100 rounded-4 overflow-hidden mb-3 overflow-hidden">
-                                <img src="image/category-8.jpg" alt="category-image" class="img-fluid obj-cover">
-                            </div>
-                            <h5 class="fs-6 text-center data-colors" data-color="#4f5d77">Hats</h5>
-                        </div>
-                    </div>
+            <div class="seasonal-banner bomnous-main-banner">
+                <div class="seasonal-banner-copy">
+                    <span class="section-eyebrow">Bomnous edit</span>
+                    <h2>Fashion discovery, seller visibility, and softer luxury in one experience.</h2>
+                    <p>Bomnous is building a calmer way to shop online, where curated pieces and standout sellers feel premium from first click to checkout.</p>
+                    <a href="shop.html" class="seasonal-banner-link">Browse the collection <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- offers section -->
-    <section class="offers pt-0">
+    <section class="brand-story-banner pt-0">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 my-3 col-lg-4">
-                    <div class="offers-banner position-relative">
-                        <img src="image/banner-1.png" alt="offers-image" class="img-fluid obj-cover h-100 w-100">
-                        <div class="offers-banner-info">
-                            <span class="data-colors" data-color="#90908e">Smart Offer</span>
-                            <h4 class="fs-3 mt-2">Save 20% on <br> Woman Bag</h4>
-                            <a href="#" class="btn offer-btn">
-                                Shop Now
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 my-3 col-lg-4">
-                    <div class="offers-banner position-relative">
-                        <img src="image/banner-2.png" alt="offers-image" class="img-fluid obj-cover h-100">
-                        <div class="offers-banner-info">
-                            <span class="data-colors" data-color="#90908e">Sale off</span>
-                            <h4 class="fs-3 mt-2">Great Summer <br> Collection</h4>
-                            <a href="#" class="btn offer-btn">
-                                Shop Now
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 my-3 col-lg-4">
-                    <div class="offers-banner position-relative">
-                        <img src="image/banner-3.png" alt="offers-image" class="img-fluid obj-cover h-100">
-                        <div class="offers-banner-info">
-                            <span class="data-colors" data-color="#90908e">New Arrivals</span>
-                            <h4 class="fs-3 mt-2">Shop Today’s <br> Deals & Offers</h4>
-                            <a href="#" class="btn offer-btn">
-                                Shop Now
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
+            <div class="seasonal-banner seller-spotlight-banner">
+                <div class="seasonal-banner-copy">
+                    <span class="section-eyebrow">Seller spotlight</span>
+                    <h2>Meet the independent brands shaping fashion in North Cyprus.</h2>
+                    <p>Every week we feature a standout seller from our community.</p>
+                    <a href="shop.html?id=1" class="seasonal-banner-link">Meet this week's seller <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- new arrivals -->
-    <section class="section new-arrivals pt-0">
+    <footer class="bomnous-footer">
         <div class="container">
-            <div class="swiper new-arrivals-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="new-arrivals-item product-item p-3 data-colors rounded-4">
-                            <div class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                <img src="image/product-1-1.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover">
-                                <img src="image/product-1-2.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover defalut-img">
-                                <div class="product-social-icons">
-                                    <button type="button" class="product-social-icon arrival-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                        <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                        <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                        <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="product-content position-relative text-center">
-                                <h2>Colorful Pattern Shirts</h2>
-                                <div class="rating-result">
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                </div>
-                                <div class="product-price mt-2">
-                                    <span class="data-colors new-price" data-color="#088178">$238.85</span>
-                                    <span class="old-price data-colors" data-color="#90908e">$245.8</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="new-arrivals-item product-item p-3 data-colors rounded-4">
-                            <div class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                <img src="image/product-2-1.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover">
-                                <img src="image/product-2-2.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover defalut-img">
-                                <span class="badge data-colors title fw-normal" data-color="#fff"
-                                    data-bg-color="#ff75a0">Hot</span>
-                                <div class="product-social-icons">
-                                    <button type="button" class="product-social-icon arrival-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                        <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                        <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                        <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="product-content position-relative text-center">
-                                <h2>Lorem ipsum dolor</h2>
-                                <div class="rating-result">
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                </div>
-                                <div class="product-price mt-2">
-                                    <span class="data-colors new-price" data-color="#088178">$238.85</span>
-                                    <span class="old-price data-colors" data-color="#90908e">$245.8</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="new-arrivals-item product-item p-3 data-colors rounded-4">
-                            <div class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                <img src="image/product-4-1.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover">
-                                <img src="image/product-4-2.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover defalut-img">
-                                <span class="badge data-colors title fw-normal" data-color="#fff"
-                                    data-bg-color="#99bbad">New</span>
-                                <div class="product-social-icons">
-                                    <button type="button" class="product-social-icon arrival-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                        <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                        <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                        <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="product-content position-relative text-center">
-                                <h2>Aliquam posuere</h2>
-                                <div class="rating-result">
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                </div>
-                                <div class="product-price mt-2">
-                                    <span class="data-colors new-price" data-color="#088178">$173.85</span>
-                                    <span class="old-price data-colors" data-color="#90908e">$185.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="new-arrivals-item product-item p-3 data-colors rounded-4">
-                            <div class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                <img src="image/category-4.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover">
-                                <img src="image/category-8.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover defalut-img">
-                                <span class="badge data-colors title fw-normal" data-color="#fff"
-                                    data-bg-color="#a1cae2">sale</span>
-                                <div class="product-social-icons">
-                                    <button type="button" class="product-social-icon arrival-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                        <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                        <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                        <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="product-content position-relative text-center">
-                                <h2>Sed dapibus orci</h2>
-                                <div class="rating-result">
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                </div>
-                                <div class="product-price mt-2">
-                                    <span class="data-colors new-price" data-color="#088178">$215.85</span>
-                                    <span class="old-price data-colors" data-color="#90908e">$235.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="new-arrivals-item product-item p-3 data-colors rounded-4 ">
-                            <div class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                <img src="image/product-3-1.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover">
-                                <img src="image/product-3-2.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover defalut-img">
-                                <span class="badge data-colors title fw-normal" data-color="#fff"
-                                    data-bg-color="#ff75a0">-33%</span>
-                                <div class="product-social-icons">
-                                    <button type="button" class="product-social-icon arrival-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                        <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                        <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                        <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="product-content position-relative text-center">
-                                <h2>Donec congue</h2>
-                                <div class="rating-result">
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                </div>
-                                <div class="product-price mt-2">
-                                    <span class="data-colors new-price" data-color="#088178">$83.8</span>
-                                    <span class="old-price data-colors" data-color="#90908e">$125.2</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="new-arrivals-item product-item p-3 data-colors rounded-4 ">
-                            <div class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                <img src="image/product-9-1.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover">
-                                <img src="image/product-9-2.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover defalut-img">
-                                <span class="badge data-colors title fw-normal" data-color="#fff"
-                                    data-bg-color="#ff75a0">-25%</span>
-                                <div class="product-social-icons">
-                                    <button type="button" class="product-social-icon arrival-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                        <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                        <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                        <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="product-content position-relative text-center">
-                                <h2>Curabitur porta</h2>
-                                <div class="rating-result">
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                </div>
-                                <div class="product-price mt-2">
-                                    <span class="data-colors new-price" data-color="#088178">$1238.85</span>
-                                    <span class="old-price data-colors" data-color="#90908e">$1245.8</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="new-arrivals-item product-item p-3 data-colors rounded-4 ">
-                            <div class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                <img src="image/product-7-1.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover">
-                                <img src="image/product-7-2.jpg" alt="Colorful Pattern Shirts"
-                                    class="img-fluid obj-cover defalut-img">
-                                <span class="badge data-colors title fw-normal" data-color="#fff"
-                                    data-bg-color="#99bbad">New</span>
-                                <div class="product-social-icons">
-                                    <button type="button" class="product-social-icon arrival-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                        <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                        <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                    </button>
-                                    <button type="button" class="arrival-icon product-social-icon data-colors"
-                                        data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                        <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="product-content position-relative text-center">
-                                <h2>Praesent maximus</h2>
-                                <div class="rating-result">
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                    <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                </div>
-                                <div class="product-price mt-2">
-                                    <span class="data-colors new-price" data-color="#088178">$123</span>
-                                    <span class="old-price data-colors" data-color="#90908e">$156</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <a class="navbar-brand bomnous-logo bomnous-footer-logo" href="index.html">BOMNOUS</a>
+                    <p class="bomnous-footer-copy">A modern fashion discovery platform for curated global style, thoughtful shopping, and seller visibility.</p>
+                    <div class="bomnous-footer-meta">
+                        <span>Based in a global-first fashion mindset</span>
+                        <span>Built for shoppers, stylists, and future sellers</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- brands -->
-    <section class="brands pt-0">
-        <div class="container">
-            <div class="brands-heading">
-                <h3 class="section-title">
-                    <span>Featured</span>
-                    Brands
-                </h3>
-            </div>
-
-            <div class="swiper brand-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="image/brand-1.png" alt="brand-image" class="img-fluid obj-contain">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="image/brand-2.png" alt="brand-image" class="img-fluid obj-contain">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="image/brand-3.png" alt="brand-image" class="img-fluid obj-contain">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="image/brand-4.png" alt="brand-image" class="img-fluid obj-contain">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="image/brand-5.png" alt="brand-image" class="img-fluid obj-contain">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="brand-image">
-                            <img src="image/brand-6.png" alt="brand-image" class="img-fluid obj-contain">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- best sell -->
-    <section class="best-sell">
-        <div class="container">
-            <div class="best-sell-heading w-100 d-flex align-items-center justify-content-between mb-3">
-                <h3 class="section-title float-start mb-0">
-                    <span>Monthly</span>
-                    Best Sell
-                </h3>
-
-                <ul class="nav border-0 gap-3 nav-tabs">
-                    <li class="nav-item">
-                        <button class="btn fs-6 btn-main active" type="button">
-                            Featured
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn fs-6 btn-main" type="button">
-                            Popular
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn fs-6 btn-main" type="button">
-                            New Added
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="row best-sell-wrap">
-                <div class="col-lg-3 d-none d-lg-flex">
-                    <div class="best-sell-banner position-relative rounded-4 overflow-hidden">
-                        <img src="image/banner-6.jpg" alt="best-sell-banner" class="img-fluid obj-cover rounded-4">
-                        <div class="best-sell-info">
-                            <span class="data-colors" data-color="#90908e">Smart Offer</span>
-                            <h4 class="fs-4 mt-2 text-white">Save 20% on <br> Woman Bag</h4>
-                            <a href="#" class="btn offer-btn">
-                                Shop Now
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-12">
-                    <div class="swiper best-sell-swiper">
-                        <div class="swiper-wrapper best-sell-wrapper">
-                            <div class="swiper-slide">
-                                <div class="best-sell-item product-item p-3 data-colors rounded-4"
-                                    data-border-color="#cce7d0">
-                                    <div
-                                        class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                        <img src="image/product-1-1.jpg" alt="Colorful Pattern Shirts"
-                                            class="img-fluid obj-cover">
-                                        <img src="image/product-1-2.jpg" alt="Colorful Pattern Shirts"
-                                            class="img-fluid obj-cover defalut-img">
-                                        <span class="badge data-colors title fw-normal" data-color="#fff"
-                                            data-bg-color="#ff75a0">Hot</span>
-                                        <div class="product-social-icons">
-                                            <button type="button" class="product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                                <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                                <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                                <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product-content position-relative">
-                                        <div class="product-category">
-                                            <a href="#">Clothing</a>
-                                        </div>
-                                        <h2>Colorful Pattern Shirts</h2>
-                                        <div class="rating-result">
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <span class="fs-6 ps-1 data-colors" data-color="#4f5d77">90%</span>
-                                        </div>
-                                        <div class="product-price mt-2">
-                                            <span class="data-colors new-price" data-color="#088178">$238.85</span>
-                                            <span class="old-price data-colors" data-color="#90908e">$245.8</span>
-                                        </div>
-                                        <button type="button" class="best-sell-icon data-colors" data-bg-color="#e8f6ea"
-                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                            data-bs-custom-class="custom-tooltip" data-bs-title="Add to Cart">
-                                            <i class="ri-shopping-bag-line data-colors" data-color="#088178"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="best-sell-item new-arrivals-item product-item p-3 data-colors rounded-4"
-                                    data-border-color="#cce7d0">
-                                    <div
-                                        class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                        <img src="image/product-2-1.jpg" alt="Colorful Pattern Shirts"
-                                            class="img-fluid obj-cover">
-                                        <img src="image/product-2-2.jpg" alt="Colorful Pattern Shirts"
-                                            class="img-fluid obj-cover defalut-img">
-                                        <span class="badge data-colors title fw-normal" data-color="#fff"
-                                            data-bg-color="#99bbad">New</span>
-                                        <div class="product-social-icons">
-                                            <button type="button" class="product-social-icon arrival-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                                <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="arrival-icon product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                                <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="arrival-icon product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                                <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product-content position-relative">
-                                        <div class="product-category">
-                                            <a href="#">Duis</a>
-                                        </div>
-                                        <h2>Lorem ipsum dolor</h2>
-                                        <div class="rating-result">
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <span class="fs-6 ps-1 data-colors" data-color="#4f5d77">70%</span>
-                                        </div>
-                                        <div class="product-price mt-2">
-                                            <span class="data-colors new-price" data-color="#088178">$238.85</span>
-                                            <span class="old-price data-colors" data-color="#90908e">$245.8</span>
-                                        </div>
-                                        <button type="button" class="best-sell-icon data-colors" data-bg-color="#e8f6ea"
-                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                            data-bs-custom-class="custom-tooltip" data-bs-title="Add to Cart">
-                                            <i class="ri-shopping-bag-line data-colors" data-color="#088178"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="best-sell-item new-arrivals-item product-item p-3 data-colors rounded-4"
-                                    data-border-color="#cce7d0">
-                                    <div
-                                        class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                        <img src="image/product-3-1.jpg" alt="Colorful Pattern Shirts"
-                                            class="img-fluid obj-cover">
-                                        <img src="image/product-3-2.jpg" alt="Colorful Pattern Shirts"
-                                            class="img-fluid obj-cover defalut-img">
-                                        <span class="badge data-colors title fw-normal" data-color="#fff"
-                                            data-bg-color="#ffab73">Best Sell</span>
-                                        <div class="product-social-icons">
-                                            <button type="button" class="product-social-icon arrival-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                                <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="arrival-icon product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                                <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="arrival-icon product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                                <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product-content position-relative">
-                                        <div class="product-category">
-                                            <a href="#">Fusce </a>
-                                        </div>
-                                        <h2>Aliquam ac</h2>
-                                        <div class="rating-result">
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <span class="fs-6 ps-1 data-colors" data-color="#4f5d77">70%</span>
-                                        </div>
-                                        <div class="product-price mt-2">
-                                            <span class="data-colors new-price" data-color="#088178">$83.8</span>
-                                            <span class="old-price data-colors" data-color="#90908e">$125.2</span>
-                                        </div>
-                                        <button type="button" class="best-sell-icon data-colors" data-bg-color="#e8f6ea"
-                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                            data-bs-custom-class="custom-tooltip" data-bs-title="Add to Cart">
-                                            <i class="ri-shopping-bag-line data-colors" data-color="#088178"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="best-sell-item new-arrivals-item product-item p-3 data-colors rounded-4"
-                                    data-border-color="#cce7d0">
-                                    <div
-                                        class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                        <img src="image/product-4-1.jpg" alt="Colorful Pattern Shirts"
-                                            class="img-fluid obj-cover">
-                                        <img src="image/product-4-2.jpg" alt="Colorful Pattern Shirts"
-                                            class="img-fluid obj-cover defalut-img">
-                                        <span class="badge data-colors title fw-normal" data-color="#fff"
-                                            data-bg-color="#ff75a0">-12%</span>
-                                        <div class="product-social-icons">
-                                            <button type="button" class="product-social-icon arrival-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                                <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="arrival-icon product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                                <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="arrival-icon product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                                <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product-content position-relative">
-                                        <div class="product-category">
-                                            <a href="#">Nunc</a>
-                                        </div>
-                                        <h2>Fusce et ligula</h2>
-                                        <div class="rating-result">
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <span class="fs-6 ps-1 data-colors" data-color="#4f5d77">80%</span>
-                                        </div>
-                                        <div class="product-price mt-2">
-                                            <span class="data-colors new-price" data-color="#088178">$173.85</span>
-                                            <span class="old-price data-colors" data-color="#90908e">$185.8</span>
-                                        </div>
-                                        <button type="button" class="best-sell-icon data-colors" data-bg-color="#e8f6ea"
-                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                            data-bs-custom-class="custom-tooltip" data-bs-title="Add to Cart">
-                                            <i class="ri-shopping-bag-line data-colors" data-color="#088178"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="best-sell-item new-arrivals-item product-item p-3 data-colors rounded-4"
-                                    data-border-color="#cce7d0">
-                                    <div
-                                        class="product-image rounded-4 overflow-hidden mb-2 section-image position-relative">
-                                        <img src="image/product-11-1.jpg" alt="best-sell-image"
-                                            class="img-fluid obj-cover">
-                                        <img src="image/product-11-2.jpg" alt="best-sell-image"
-                                            class="img-fluid obj-cover defalut-img">
-                                        <span class="badge data-colors title fw-normal" data-color="#fff"
-                                            data-bg-color="#99bbad">Sale</span>
-                                        <div class="product-social-icons">
-                                            <button type="button" class="product-social-icon arrival-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="quick view">
-                                                <i class="ri-eye-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="arrival-icon product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Add To Wishlist">
-                                                <i class="ri-heart-line data-colors" data-color="#088178"></i>
-                                            </button>
-                                            <button type="button" class="arrival-icon product-social-icon data-colors"
-                                                data-bg-color="#e8f6ea" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-custom-class="custom-tooltip" data-bs-title="Compare">
-                                                <i class="fa-solid fa-shuffle data-colors" data-color="#088178"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product-content position-relative">
-                                        <div class="product-category">
-                                            <a href="#">Aliquam</a>
-                                        </div>
-                                        <h2>Morbi lacinia</h2>
-                                        <div class="rating-result">
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <i class="fa-regular fa-star data-colors" data-color="#ffb300"></i>
-                                            <span class="fs-6 ps-1 data-colors" data-color="#4f5d77">80%</span>
-                                        </div>
-                                        <div class="product-price mt-2">
-                                            <span class="data-colors new-price" data-color="#088178">$238.85</span>
-                                            <span class="old-price data-colors" data-color="#90908e">$245.8</span>
-                                        </div>
-                                        <button type="button" class="best-sell-icon data-colors" data-bg-color="#e8f6ea"
-                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                            data-bs-custom-class="custom-tooltip" data-bs-title="Add to Cart">
-                                            <i class="ri-shopping-bag-line data-colors" data-color="#088178"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog -->
-    <section class="blogs">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="blog-content-wrapper d-flex flex-column gap-3">
-                        <!-- col 1 -->
-                        <h2>Our <span>blogs</span></h2>
-                        <div class="blog-content-col d-flex flex-column flex-md-row align-items-center gap-3">
-                            <img src="image/blog-1.jpg" class="img-fluid col-lg-5 col-md-5 rounded" alt="">
-                            <div class="blog-content d-flex flex-column gap-3">
-                                <span>Healthy</span>
-                                <h5>Not even the coronavirus can derail 5G's global momentum</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p>14 April 2022 &nbsp; <span>12M Views</span></p>
-                                    <a href="#" class="text-decoration-none text-success">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- col 2 -->
-                        <div class="blog-content-col d-flex flex-column flex-md-row align-items-center gap-3">
-                            <img src="image/blog-2.jpg" class="img-fluid col-lg-5 col-md-5 rounded" alt="">
-                            <div class="blog-content d-flex flex-column gap-3">
-                                <span>Fashion</span>
-                                <h5>Qualcomm is developing a Nintendo Switch-like console, report says</h5>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p>14 April 2022 &nbsp; <span>12M Views</span></p>
-                                    <a href="#" class="text-decoration-none text-success">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-3 mt-lg-0">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="blog-banner-col w-100 position-relative">
-                                <div class="blog-banner-content position-absolute">
-                                    <span class="text-secondary">Accessories</span>
-                                    <h5>Save 17% on Autumn Hat</h5>
-                                    <a href="#" class="text-decoration-none text-dark">Shop Now <i
-                                            class="bi bi-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 mt-2 mt-md-0">
-                            <div class="blog-banner-wrapper d-flex flex-column gap-2">
-                                <!-- col 1 -->
-                                <div class="blog-banner-col blog-banner-col2 w-100 position-relative">
-                                    <div class="blog-banner-content position-absolute ">
-                                        <span class="text-secondary">Big Offer</span>
-                                        <h5>Save 20% on Women's socks</h5>
-                                        <a href="#" class="text-decoration-none text-dark">Shop Now <i
-                                                class="bi bi-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                                <!-- col 2 -->
-                                <div class="blog-banner-col blog-banner-col3 w-100 position-relative">
-                                    <div class="blog-banner-content position-absolute ">
-                                        <span class="text-secondary">Smart Offer</span>
-                                        <h5>Save 20% on Eardrop</h5>
-                                        <a href="#" class="text-decoration-none text-dark">Shop Now <i
-                                                class="bi bi-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sale Banner -->
-    <section class="sale-banner">
-        <div class="container">
-            <div class="sale-banner-content d-flex flex-column align-items-start justify-content-center p-5 rounded">
-                <h5 class="text-secondary">Shop Today’s Deals</h5>
-                <h1>Happy <span> Women's Day.</span> Big Sale Up to 40%</h1>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Selling & Top Products -->
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-sm-5 mb-md-0">
-                <div class="blog-banner-col banner-col w-100 position-relative">
-                    <div class="blog-banner-content position-absolute">
-                        <span class="text-secondary">Accessories</span>
-                        <h5>Save 17% on All Items</h5>
-                        <a href="#" class="text-decoration-none text-dark">Shop Now <i
-                                class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- col 1 -->
-            <div class="col-lg-3 cate-product-wrapper col-md-6 mb-sm-5 mb-lg-0">
-                <h5 class="pb-2 border-bottom">Deals & Outlet</h5>
-                <div class="cate-product-wrap mt-4">
-                    <!-- row 1 -->
-                    <div class="row  align-items-end">
-                        <div class="col-md-4 mb-0">
-                            <img src="image/deals-1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8 mb-0">
-                            <h6>Fish Print Patched T-shirt</h6>
-                            <div class="cate-product-price">
-                                <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- row 2 -->
-                    <div class="row  align-items-end mt-4">
-                        <div class="col-md-4 mb-0">
-                            <img src="image/deals-2.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8 mb-0">
-                            <h6>Vintage Floral Print Dress</h6>
-                            <div class="cate-product-price">
-                                <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- row 3 -->
-                    <div class="row  align-items-end mt-4">
-                        <div class="col-md-4 mb-0">
-                            <img src="image/deals-3.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8 mb-0">
-                            <h6>Multi-color Stripe Circle Print T-Shirt</h6>
-                            <div class="cate-product-price">
-                                <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- col 2 -->
-            <div class="col-lg-3 cate-product-wrapper col-md-6 mb-sm-5 mb-md-0">
-                <h5 class="pb-2 border-bottom">Top Selling</h5>
-                <div class="cate-product-wrap mt-4">
-                    <!-- row 1 -->
-                    <div class="row  align-items-end">
-                        <div class="col-md-4 mb-0">
-                            <img src="image/top-selling-1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8 mb-0">
-                            <h6>Geometric Printed Long Sleeve Blosue</h6>
-                            <div class="cate-product-price">
-                                <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- row 2 -->
-                    <div class="row  align-items-end mt-4">
-                        <div class="col-md-4 mb-0">
-                            <img src="image/top-selling-2.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8 mb-0">
-                            <h6>Print Patchwork Maxi Dress</h6>
-                            <div class="cate-product-price">
-                                <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- row 3 -->
-                    <div class="row  align-items-end mt-4">
-                        <div class="col-md-4 mb-0">
-                            <img src="image/top-selling-3.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8 mb-0">
-                            <h6>Daisy Floral Print Straps Jumpsuit</h6>
-                            <div class="cate-product-price">
-                                <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- col 3 -->
-            <div class="col-lg-3 cate-product-wrapper col-md-6 mb-sm-5 mb-md-0">
-                <h5 class="pb-2 border-bottom">Top Selling</h5>
-                <div class="cate-product-wrap mt-4">
-                    <!-- row 1 -->
-                    <div class="row  align-items-end">
-                        <div class="col-md-4 mb-0">
-                            <img src="image/hot-releas-1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8 mb-0">
-                            <h6>Floral Print Casual Cotton Dress</h6>
-                            <div class="cate-product-price">
-                                <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- row 2 -->
-                    <div class="row  align-items-end mt-4">
-                        <div class="col-md-4 mb-0">
-                            <img src="image/hot-releas-2.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8 mb-0">
-                            <h6>Ruffled Solid Long Sleeve Blouse</h6>
-                            <div class="cate-product-price">
-                                <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- row 3 -->
-                    <div class="row  align-items-end mt-4">
-                        <div class="col-md-4 mb-0">
-                            <img src="image/hot-releas-3.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-md-8 mb-0">
-                            <h6>Multi-color Print V-neck T-Shirt</h6>
-                            <div class="cate-product-price">
-                                <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Newsletter -->
-    <div class="newsletter mt-5 p-4 d-flex align-items-center
-    justify-content-center">
-        <div class="container">
-            <div class="row">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 mb-md-3 mb-lg-0">
-                        <div class="row align-items-center flex-column flex-md-row">
-                            <div class="col d-flex align-items-center gap-2">
-                                <img src="image/icon-email.svg" class="img-fluid email-icon" alt="">
-                                <h4 class=" mb-0">Sign up to Newsletter</h4>
-                            </div>
-                            <div class="col my-4 my-md-0">
-                                <h5 class="mb-0 fs-6">...and receive $25 coupon for first
-                                    shopping.</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <form class="form-subcriber d-flex">
-                            <input type="email" class="form-control bg-white p-2" placeholder="Enter your email">
-                            <button class="btn bg-dark text-white " type="submit">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="mt-5 pb-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 footer-col">
-                    <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
-                    <h5 class="mt-3 text-secondary">Contact</h5>
-                    <p class="text-secondary mb-1"><span class="text-dark">Address: </span>562 Wellington Road, Street
-                        32, San Francisco</p>
-                    <p class="text-secondary mb-1"><span class="text-dark">Phone: </span>+01 2222 365 /(+91) 01 2345
-                        6789</p>
-                    <p class="text-secondary"><span class="text-dark">Hours: </span>10:00 - 18:00, Mon - Sat</p>
-                    <h5 class="mt-3 text-secondary">Follow Us</h5>
-                    <div class="footer-social-icon mb-sm-5 mb-md-0 mt-2 d-flex align-items-center gap-2">
-                        <img src="image/icon-facebook.svg" class="img-fluid" alt="">
-                        <img src="image/icon-twitter.svg" class="img-fluid" alt="">
-                        <img src="image/icon-instagram.svg" class="img-fluid" alt="">
-                        <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
-                        <img src="image/icon-youtube.svg" class="img-fluid" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 footer-col">
-                    <h3 class="fs-3 mb-4">About</h3>
-                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
-                        <li class="mb-2"><a href="#" class="text-dark">About Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Delivery Information</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Privacy Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Terms & Conditions</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Contact Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Support Center</a></li>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="bomnous-footer-title">Explore</h4>
+                    <ul class="bomnous-footer-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#discover-preview">Discover</a></li>
+                        <li><a href="#ai-stylist">AI Stylist</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-3">
-                    <h3 class="fs-3 mb-4">My Account</h3>
-                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
-                        <li class="mb-2"><a href="#" class="text-dark">Sign In</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">View Cart</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">My Wishlist</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Track My Order</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Help</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Order</a></li>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="bomnous-footer-title">Customer</h4>
+                    <ul class="bomnous-footer-list">
+                        <li><a href="wishlist.html">Wishlist</a></li>
+                        <li><a href="carts.html">Cart</a></li>
+                        <li><a href="myaccount.html">Account</a></li>
+                        <li><a href="Contact.html">Support</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4">
-                    <h3 class="fs-3 mb-4">Install App</h3>
-                    <p class="text-secondary mb-1">From App Store or Google Play</p>
-                    <div class="app-img my-3">
-                        <img src="image/app-store.jpg" class="img-fluid border rounded" alt="">
-                        <img src="image/google-play.jpg" class="img-fluid border rounded" alt="">
+                <div class="col-lg-3 col-md-4">
+                    <h4 class="bomnous-footer-title">Contact</h4>
+                    <ul class="bomnous-footer-list">
+                        <li><a href="mailto:hello@bomnous.com">hello@bomnous.com</a></li>
+                        <li><a href="tel:+234000000000">+234 000 000 000</a></li>
+                        <li><span>Lagos, North Cyprus, Europe-facing</span></li>
+                    </ul>
+                    <div class="bomnous-footer-socials">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
                     </div>
-                    <p class="text-secondary mb-2 mt-5">Secured Payment Gateways</p>
-                    <img src="image/payment-method.png" class="img-fluid" alt="">
                 </div>
             </div>
-        </div>
-        <div class="container mt-5 pt-3 border-top">
-            <div class="row">
-                <div class="footer-bottom d-flex justify-content-between align-items-center flex-column flex-md-row">
-                    <p>© copyright 2025. All Rights Reserved By <a href="#">K2infocom</a></p>
-                    <div class="footer-bottom-links d-flex gap-3">
-                        <a href="#" class="text-dark">Terms of Use</a>
-                        <a href="#" class="text-dark">privacy policy</a>
-                    </div>
+            <div class="bomnous-footer-bottom">
+                <p>© 2026 Bomnous Shops. Designed for curated fashion discovery.</p>
+                <div class="bomnous-footer-bottom-links">
+                    <a href="about.html">About</a>
+                    <a href="Contact.html">Contact</a>
+                    <a href="myaccount.html">Sign in</a>
                 </div>
             </div>
         </div>
@@ -1445,265 +501,8 @@
         crossorigin="anonymous"></script>
     <!-- Swiper Slider JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-   <script>
-        var swiper = new Swiper(".heroSwiper", {
-            effect: "fade",
-            fadeEffect: { crossFade: true },
-            loop: true,
-            speed: 1200,
-
-            autoplay: {
-                delay: 6000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true
-            },
-
-            allowTouchMove: false   // 👈 disables drag
-        });
-</script>
-
-
-
     <script src="js/products.js"></script>
     <script src="js/script.js"></script>
-    <script>
-        document.querySelector(".hero-prev").addEventListener("click", function() {
-            swiper.slidePrev();
-        });
-
-        document.querySelector(".hero-next").addEventListener("click", function() {
-            swiper.slideNext();
-        });
-            
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-
-      
-        window.addEventListener("scroll", function () {
-            const navbar = document.querySelector(".bomnous-navbar");
-            if (window.scrollY > 20) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
-        });
-
-
-
-        let items = document.querySelectorAll(".data-colors");
-
-        items.forEach((bar) => {
-            let bgcolor = bar.getAttribute("data-bg-color");
-            let color = bar.getAttribute("data-color");
-            let border = bar.getAttribute("data-border-color");
-
-            if (bgcolor) {
-                bar.style.backgroundColor = bgcolor;
-            }
-            if (color) {
-                bar.style.color = color;
-            }
-            if (border) {
-                bar.style.border = "1px solid " + border;
-            }
-        });
-
-        // Load Product 
-        const productWrap = document.querySelector('.row.product-wrap');
-
-        productsData.forEach((product, index) => {
-            if (index < 4) {
-                const col = document.createElement('div');
-                col.className = 'col-12 col-sm-6 col-md-4 col-lg-3 mt-3';
-
-                const productItem = document.createElement('div');
-                productItem.className = 'product-item p-3 data-colors rounded-4 border';
-
-                const productImage = document.createElement('div');
-                productImage.className = 'product-image rounded-4 overflow-hidden mb-2 section-image position-relative';
-
-                const imgDefault = document.createElement('img');
-                imgDefault.src = product.image;
-                imgDefault.alt = product.name;
-                imgDefault.className = 'img-fluid obj-cover';
-
-                const imgHover = document.createElement('img');
-                imgHover.src = product.imageHover;
-                imgHover.alt = product.name;
-                imgHover.className = 'img-fluid obj-cover defalut-img';
-
-                const badge = document.createElement('span');
-                badge.className = 'badge data-colors title fw-normal bg-secondary';
-                badge.dataset.color = "#fff";
-                badge.dataset.bgColor = "#ff75a0";
-                badge.textContent = product.off;
-
-                productImage.appendChild(imgDefault);
-                productImage.appendChild(imgHover);
-                productImage.appendChild(badge);
-
-                const productContent = document.createElement('div');
-                productContent.className = 'product-content position-relative';
-
-                const productCategory = document.createElement('div');
-                productCategory.className = 'product-category';
-                const categoryLink = document.createElement('a');
-                categoryLink.href = "#";
-                categoryLink.textContent = product.title;
-                productCategory.appendChild(categoryLink);
-
-                const productName = document.createElement('h2');
-                productName.textContent = product.name;
-
-                productName.setAttribute('data-product-id', product.ProductId);
-
-                productName.addEventListener('click', function () {
-                    window.location.href = `product.html?id=${product.ProductId}`;
-                });
-
-                const priceDiv = document.createElement('div');
-                priceDiv.className = 'product-price mt-2';
-                const spanNewPrice = document.createElement('span');
-                spanNewPrice.className = 'data-colors new-price';
-                spanNewPrice.dataset.color = "#088178";
-                spanNewPrice.textContent = `${product.price}`;
-                const spanOldPrice = document.createElement('span');
-                spanOldPrice.className = 'old-price data-colors';
-                spanOldPrice.dataset.color = "#90908e";
-                spanOldPrice.textContent = product.lessprice ? `$${product.lessprice}` : "";
-                priceDiv.appendChild(spanNewPrice);
-                priceDiv.appendChild(spanOldPrice);
-
-                const socialIcons = document.createElement('div');
-                socialIcons.className = 'product-social-icons';
-
-                const btnWishlist = document.createElement('button');
-                btnWishlist.type = "button";
-                btnWishlist.className = 'product-social-icon data-colors add-to-wishlist-btn';
-                btnWishlist.dataset.bgColor = "#e8f6ea";
-                btnWishlist.dataset.id = product.ProductId;
-                btnWishlist.setAttribute("data-bs-toggle", "tooltip");
-                btnWishlist.setAttribute("data-bs-placement", "top");
-                btnWishlist.dataset.bsCustomClass = "custom-tooltip";
-                btnWishlist.dataset.bsTitle = "Add To Wishlist";
-
-
-                const iconWishlist = document.createElement('i');
-                iconWishlist.className = 'ri-heart-line data-colors';
-                iconWishlist.dataset.color = "#088178";
-                btnWishlist.appendChild(iconWishlist);
-
-                socialIcons.appendChild(btnWishlist);
-                productImage.appendChild(socialIcons);
-
-                productImage.appendChild(imgDefault);
-                productImage.appendChild(imgHover);
-                productImage.appendChild(badge);
-                productImage.appendChild(socialIcons);
-
-                // Create "Add to Cart" button
-                const btnAddToCart = document.createElement('button');
-                btnAddToCart.type = "button";
-                btnAddToCart.className = "product-icon data-colors add-to-cart-btn";
-                btnAddToCart.dataset.bgColor = "#e8f6ea";
-                btnAddToCart.setAttribute("data-bs-toggle", "tooltip");
-                btnAddToCart.setAttribute("data-bs-placement", "top");
-                btnAddToCart.dataset.bsCustomClass = "custom-tooltip";
-                btnAddToCart.dataset.bsTitle = "Add to Cart";
-
-                const cartIcon = document.createElement('i');
-                cartIcon.className = "ri-shopping-bag-line data-colors";
-                cartIcon.dataset.color = "#088178";
-                btnAddToCart.appendChild(cartIcon);
-
-                productContent.appendChild(productCategory);
-                productContent.appendChild(productName);
-                productContent.appendChild(priceDiv);
-                productContent.appendChild(btnAddToCart);
-
-                productItem.appendChild(productImage);
-                productItem.appendChild(productContent);
-
-                col.appendChild(productItem);
-
-                productWrap.appendChild(col);
-            } else {
-                //  No Product.
-            }
-        });
-
-        // Add to Wishlist
-        document.addEventListener("click", function (event) {
-            if (event.target.closest(".add-to-wishlist-btn")) {
-                let btn = event.target.closest(".add-to-wishlist-btn");
-                let productId = btn.dataset.id;
-                let productItem = btn.closest(".product-item");
-
-                let product = {
-                    ProductId: productId,
-                    name: productItem.querySelector("h2").textContent,
-                    image: productItem.querySelector(".product-image img").src,
-                    price: parseFloat(productItem.querySelector(".new-price").textContent.replace("$", ""))
-                };
-
-                let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-                if (!wishlist.some(item => item.ProductId === productId)) {
-                    wishlist.push(product);
-                    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-                    alert(`"${product.name}" added to wishlist!`);
-                } else {
-                    alert(`"${product.name}" is already in your wishlist!`);
-                }
-                window.location.href = "wishlist.html";
-            }
-        });
-
-        // Add to Cart
-
-        function updateCartCount() {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            let totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            let cartIcon = document.querySelector(".cart-added-icon");
-            if (cartIcon) {
-                cartIcon.textContent = totalItems;
-                cartIcon.style.display = totalItems > 0 ? "inline-block" : "none";
-            }
-        }
-
-        document.addEventListener("click", function (event) {
-            if (event.target.closest(".add-to-cart-btn")) {
-                let productItem = event.target.closest(".product-item");
-
-                let product = {
-                    ProductId: productItem.dataset.productId,
-                    name: productItem.querySelector("h2").textContent,
-                    image: productItem.querySelector(".product-image img").src,
-                    price: parseFloat(productItem.querySelector(".new-price").textContent.replace("$", "")) || 0,
-                    lessprice: productItem.querySelector(".old-price")?.textContent.replace("$", "") || "",
-                    quantity: 1
-                };
-
-                let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-                let existingItem = cart.find(item => item.ProductId === product.ProductId);
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push(product);
-                }
-
-                localStorage.setItem("cart", JSON.stringify(cart));
-                updateCartCount();
-
-                alert(`"${product.name}" added to cart!`);
-                window.location.href = "carts.html";
-            }
-        });
-
-
-
-    </script>
 </body>
 
 </html>

@@ -7,7 +7,7 @@ from app.utils.security import get_current_user
 
 
 
-router = APIRouter(prefix="/products", tags=["Products"])
+router = APIRouter(prefix="/api/products", tags=["Products"])
 
 
 
