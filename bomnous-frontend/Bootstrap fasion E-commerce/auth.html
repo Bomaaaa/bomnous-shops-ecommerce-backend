@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomnous Shops | Sign in</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-standalone-page d-flex flex-column min-vh-100">
+    <main class="flex-grow-1 d-flex w-100 justify-content-center">
+    <div class="container py-5 px-3 px-sm-4" style="max-width: 520px;">
+        <a class="bomnous-logo d-inline-block mb-4" href="index.html" style="font-family: var(--League-font, sans-serif); letter-spacing: 0.2em; color: var(--primary-dark) !important;">BOMNOUS</a>
+        <h1 class="h3 mb-2">Welcome back</h1>
+        <p class="text-muted small mb-4">Sign in to save edits, manage a seller shop, and pick up where you left off.</p>
+
+        <div class="d-flex gap-2 mb-3" role="tablist" aria-label="Auth mode">
+            <button class="btn btn-outline-dark flex-fill" type="button" id="auth-tab-login">Sign in</button>
+            <button class="btn btn-outline-dark flex-fill" type="button" id="auth-tab-signup">Create account</button>
+        </div>
+
+        <div class="card border-0 shadow-sm" style="background: var(--white-color); border: 1px solid var(--border-soft);" data-aos="fade-up">
+            <div class="card-body p-4">
+                <form id="auth-login-form" class="d-grid gap-3" autocomplete="on">
+                    <div>
+                        <label class="form-label" for="login-email">Email</label>
+                        <input class="form-control" id="login-email" name="email" type="email" autocomplete="username" required placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label class="form-label" for="login-password">Password</label>
+                        <input class="form-control" id="login-password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-default w-100">Sign in</button>
+                </form>
+
+                <form id="auth-signup-form" class="d-grid gap-3 d-none" autocomplete="on">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="signup-username">Username</label>
+                            <input class="form-control" id="signup-username" name="username" type="text" autocomplete="nickname" required placeholder="bomnouslover">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="signup-role">Account type</label>
+                            <select class="form-select" id="signup-role" name="role" required>
+                                <option value="buyer" selected>Buyer</option>
+                                <option value="seller">Seller</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="form-label" for="signup-email">Email</label>
+                        <input class="form-control" id="signup-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label class="form-label" for="signup-password">Password</label>
+                        <input class="form-control" id="signup-password" name="password" type="password" autocomplete="new-password" required placeholder="At least 8 characters">
+                    </div>
+                    <button type="submit" class="btn btn-default w-100">Create account</button>
+                </form>
+
+                <div class="alert alert-danger d-none mt-3 mb-0" id="auth-error" role="alert"></div>
+                <div class="alert alert-success d-none mt-3 mb-0" id="auth-success" role="status"></div>
+            </div>
+        </div>
+
+        <p class="text-muted small mt-3 mb-0"><a href="index.html">Back to home</a></p>
+    </div>
+    </main>
+
+    <footer class="bomnous-footer bomnous-footer--global" id="bomnous-site-footer" role="contentinfo">
+        <div class="container">
+            <div class="row g-4 g-lg-5 align-items-start">
+                <div class="col-12 col-lg-4">
+                    <a class="navbar-brand bomnous-logo bomnous-footer-logo" href="index.html">BOMNOUS</a>
+                    <p class="bomnous-footer-tagline mb-0">Curated Fashion. Intelligent Discovery.</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="bomnous-footer-nav" aria-label="Site">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="search.html">Discover</a></li>
+                        <li><a href="stylist.html">AI Stylist</a></li>
+                        <li><a href="auth.html?next=onboarding.html">Sell on Bomnous</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 text-md-end">
+                    <p class="bomnous-footer-made mb-3 mb-md-2">Made with love in North Cyprus 🇨🇾</p>
+                    <div class="bomnous-footer-socials justify-content-md-end">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="bomnous-footer-bottom bomnous-footer-bottom--single mt-4 pt-4">
+                <p class="text-center w-100 mb-0">© 2026 Bomnous. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            function getApiBase() {
+                if (typeof window !== "undefined" && window.BOMNOUS_API_BASE !== undefined && window.BOMNOUS_API_BASE !== "") {
+                    return String(window.BOMNOUS_API_BASE).replace(/\/$/, "");
+                }
+                var host = (typeof window !== "undefined" && window.location && window.location.hostname) ? window.location.hostname : "127.0.0.1";
+                return "http://" + host + ":8000";
+            }
+
+            function setAuth(token, email, username, role) {
+                try {
+                    // Drop prior session avatar/cache so another account never inherits photos.
+                    localStorage.removeItem("bomnous_profile_pic");
+                    localStorage.removeItem("bomnous_profile_pic_owner");
+                    localStorage.removeItem("bomnous_full_name");
+                    localStorage.removeItem("bomnous_user_id");
+                    localStorage.setItem("bomnous_access_token", token);
+                    localStorage.setItem("bomnous_logged_in", "1");
+                    if (role) {
+                        localStorage.setItem("bomnous_role", String(role));
+                    }
+                    if (email) {
+                        localStorage.setItem("bomnous_last_email", email);
+                    }
+                    if (username) {
+                        localStorage.setItem("bomnous_username", username);
+                    } else if (email) {
+                        // fallback: use email prefix as a friendly display name
+                        var base = String(email).split("@")[0] || "";
+                        base = base.trim();
+                        if (base) {
+                            localStorage.setItem("bomnous_username", base.charAt(0).toUpperCase() + base.slice(1));
+                        }
+                    }
+                } catch (err) { /* ignore */ }
+            }
+
+            function setRole(role) {
+                try {
+                    localStorage.setItem("bomnous_role", String(role));
+                } catch (e) { /* ignore */ }
+            }
+
+            function showError(msg) {
+                var el = document.getElementById("auth-error");
+                var ok = document.getElementById("auth-success");
+                ok.classList.add("d-none");
+                el.textContent = msg || "Something went wrong.";
+                el.classList.remove("d-none");
+            }
+
+            function showSuccess(msg) {
+                var el = document.getElementById("auth-success");
+                var err = document.getElementById("auth-error");
+                err.classList.add("d-none");
+                el.textContent = msg || "Done.";
+                el.classList.remove("d-none");
+            }
+
+            async function goNext() {
+                var next = new URLSearchParams(window.location.search).get("next");
+                if (next && next.indexOf("http") !== 0) {
+                    window.location.href = next;
+                    return;
+                }
+                // Seller signs up -> onboarding.html (unless already onboarded)
+                // Seller logs in later -> seller.html
+                // Buyer -> index.html
+                try {
+                    var token = "";
+                    try { token = localStorage.getItem("bomnous_access_token") || ""; } catch (e) {}
+                    var res = await fetch(getApiBase() + "/shops/my", {
+                        method: "GET",
+                        headers: { Authorization: "Bearer " + token }
+                    });
+                    if (res.status === 403) {
+                        // buyer
+                        setRole("buyer");
+                        window.location.href = "index.html";
+                        return;
+                    }
+                    if (res.status === 404) {
+                        // seller (no shop yet)
+                        setRole("seller");
+                        var onboarded = false;
+                        try { onboarded = localStorage.getItem("bomnous_onboarded") === "1"; } catch (e) {}
+                        window.location.href = onboarded ? "seller.html" : "onboarding.html";
+                        return;
+                    }
+                    if (res.ok) {
+                        // seller (has shop)
+                        setRole("seller");
+                        window.location.href = "seller.html";
+                        return;
+                    }
+                } catch (e) {
+                    /* ignore */
+                }
+                window.location.href = "index.html";
+            }
+
+            var tabLogin = document.getElementById("auth-tab-login");
+            var tabSignup = document.getElementById("auth-tab-signup");
+            var formLogin = document.getElementById("auth-login-form");
+            var formSignup = document.getElementById("auth-signup-form");
+
+            function setMode(mode) {
+                var isSignup = mode === "signup";
+                tabLogin.classList.toggle("btn-dark", !isSignup);
+                tabLogin.classList.toggle("btn-outline-dark", isSignup);
+                tabSignup.classList.toggle("btn-dark", isSignup);
+                tabSignup.classList.toggle("btn-outline-dark", !isSignup);
+                formLogin.classList.toggle("d-none", isSignup);
+                formSignup.classList.toggle("d-none", !isSignup);
+                document.getElementById("auth-error").classList.add("d-none");
+                document.getElementById("auth-success").classList.add("d-none");
+            }
+
+            tabLogin.addEventListener("click", function () { setMode("login"); });
+            tabSignup.addEventListener("click", function () { setMode("signup"); });
+            setMode("login");
+
+            formLogin.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                var email = document.getElementById("login-email").value;
+                var password = document.getElementById("login-password").value;
+                try {
+                    var res = await fetch(getApiBase() + "/auth/login", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email: email, password: password })
+                    });
+                    var data = await res.json().catch(function () { return {}; });
+                    if (!res.ok) {
+                        showError(data && data.detail ? data.detail : "Invalid credentials.");
+                        return;
+                    }
+                    // We don't get username back from the API on login; store a friendly fallback from email.
+                    setAuth(data.access_token, email, "", "");
+                    showSuccess("Signed in successfully.");
+                    setTimeout(goNext, 450);
+                } catch (err) {
+                    showError("Could not reach the API. Is the backend running on port 8000?");
+                }
+            });
+
+            formSignup.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                var username = document.getElementById("signup-username").value;
+                var role = document.getElementById("signup-role").value;
+                var email = document.getElementById("signup-email").value;
+                var password = document.getElementById("signup-password").value;
+                try {
+                    var res = await fetch(getApiBase() + "/auth/register", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ username: username, email: email, password: password, role: role })
+                    });
+                    var data = await res.json().catch(function () { return {}; });
+                    if (!res.ok) {
+                        showError(data && data.detail ? data.detail : "Could not create account.");
+                        return;
+                    }
+                    setAuth(data.access_token, email, username, role);
+                    showSuccess("Account created. Welcome to Bomnous.");
+                    setTimeout(goNext, 650);
+                } catch (err) {
+                    showError("Could not reach the API. Is the backend running on port 8000?");
+                }
+            });
+        })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/bomnous-aos-boot.js"></script>
+</body>
+</html>

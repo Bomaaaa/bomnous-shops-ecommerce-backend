@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bomnous Shops | Checkout</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260429-motion">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- bootstrap CSS -->
@@ -20,96 +22,94 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css">
 </head>
 
-<body>
+<body class="checkout-page">
 
-    <!-- Navbar -->
-    <div class="nav-container">
-        <!-- Top Bar -->
-        <div class="p-1 d-none d-lg-block border">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-4 text-start ps-4 top-bar-text text-dark">
-                        <i class="bi bi-phone text-dark"></i> (+01) - 2345 - 6789 &nbsp;| &nbsp; <i
-                            class="bi bi-geo-alt"></i>
-                        Our
-                        location
-                    </div>
-                    <div class="col-md-4 text-center text-secondary">
-                        Get great devices up to 50% off
-                    </div>
-                    <div class="col-md-4 text-end pe-4 top-bar-text ">
-                        <span class="me-3 top-bar-text"><i class="bi bi-globe-americas"></i> English</span>
-                        <a href="myaccount.html" class="top-bar-text text-dark text-decoration-none"><i
-                                class="bi bi-person"></i>
-                            Login</a> / <a href="myaccount.html"
-                            class="top-bar-text text-dark text-decoration-none">Signin</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+        <!-- BOMNOUS SMART NAVBAR (shared; keep in sync with index.html) -->
+    <nav class="navbar navbar-expand-lg bomnous-navbar">
+        <div class="container-fluid px-4 px-lg-5 bomnous-nav-row">
 
-        <!-- Search & Categories -->
-        <div class="container my-3 gap-5 middle-navbar d-flex justify-content-between align-items-center">
-            <a class="navbar-brand logo" href="index.html">Tren<span>diFy</span></a>
-            <div class="input-group search-box d-none d-lg-flex">
-                <input type="text" class="form-control" placeholder="Search Products...">
-                <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
-            </div>
-            <div class="d-flex align-items-center  d-none d-lg-flex gap-2">
-                <a href="wishlist.html" class="me-3 text-dark middle-navbar-a text-decoration-none position-relative"><i
-                        class="bi bi-heart fs-3"></i> <span
-                        class="position-absolute text-white d-flex align-items-center justify-content-center wishlist-span qount-span">0</span></a>
-                <a href="carts.html" class="text-dark middle-navbar-a text-decoration-none position-relative"><i
-                        class="bi bi-bag fs-3"></i><span
-                        class="position-absolute text-white d-flex align-items-center justify-content-center cart-span qount-span">0</span></a>
-            </div>
-
-            <!-- Sidebar Toggle Button -->
-
-            <button class="btn btn-primary sidebar-menu-toggler d-block d-lg-none" type="button"
-                data-bs-toggle="offcanvas" data-bs-target="#Sidebar">
-                <i class="bi bi-list"></i> Menu
-            </button>
-        </div>
-
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-white py-3 d-none d-lg-block">
-            <div class="container">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav nav-menu">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+            <!-- LEFT NAV (desktop) -->
+            <div class="d-none d-lg-flex align-items-center flex-wrap nav-left">
+                <a href="index.html" class="nav-link-custom">Home</a>
+                <a href="search.html" class="nav-link-custom">Discover</a>
+                <a href="search.html?tag=trending" class="nav-link-custom">Trending</a>
+                <div class="dropdown bomnous-nav-dropdown d-inline-block">
+                    <button type="button" class="nav-dd-toggle dropdown-toggle" id="navCategories" data-bs-toggle="dropdown" aria-expanded="false">Categories</button>
+                    <ul class="dropdown-menu" aria-labelledby="navCategories">
+                        <li><a class="dropdown-item" href="shop.html?category=women">Women</a></li>
+                        <li><a class="dropdown-item" href="shop.html?category=men">Men</a></li>
+                        <li><a class="dropdown-item" href="shop.html?category=children">Children</a></li>
+                        <li><a class="dropdown-item" href="shop.html?category=accessories">Accessories</a></li>
                     </ul>
                 </div>
-                <a href="#" class="text-primary text-decoration-none text-dark"> <i class="bi bi-headset"></i> Hotline
-                    <span>1900 -
-                        888</span></a>
+                <a href="stylist.html" class="nav-link-custom ai-link">AI Stylist</a>
+                <a href="about.html" class="nav-link-custom">About</a>
             </div>
-        </nav>
+
+            <a class="navbar-brand bomnous-logo text-center" href="index.html">BOMNOUS</a>
+
+            <div class="bomnous-nav-end d-flex align-items-center justify-content-end gap-2">
+                <div class="d-none d-lg-flex align-items-center nav-icons">
+                    <button type="button" class="icon-link border-0 bg-transparent p-0 bomnous-open-nav-search" aria-label="Open search">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <a href="wishlist.html" class="icon-link position-relative">
+                        <i class="bi bi-heart"></i>
+                        <span class="icon-count wishlist-span d-none" aria-hidden="true"></span>
+                    </a>
+                    <a href="carts.html" class="icon-link position-relative" title="Cart">
+                        <i class="bi bi-bag"></i>
+                        <span class="icon-count cart-span d-none" aria-hidden="true"></span>
+                    </a>
+                    <a href="auth.html" class="icon-link bomnous-nav-profile-link" id="nav-profile-link" data-href-guest="auth.html" data-href-logged="profile.html" aria-label="Account"><span class="bomnous-nav-avatar bomnous-nav-avatar--guest" id="nav-profile-avatar"><i class="bi bi-person" aria-hidden="true"></i></span></a>
+                    <div class="dropdown bomnous-icon-dropdown d-inline-block">
+                        <button type="button" class="icon-link border-0 bg-transparent p-0 dropdown-toggle bomnous-lang-btn" id="langDropdown" data-bs-toggle="dropdown" data-bs-offset="0,8" aria-expanded="false" aria-label="Language">
+                            <i class="bi bi-globe"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+                            <li><span class="dropdown-item-text text-muted small">Language</span></li>
+                            <li><a class="dropdown-item active" href="#" aria-current="true">English (EN)</a></li>
+                            <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Türkçe (TR) — soon</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="bomnous-menu-toggle d-lg-none" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#Sidebar" aria-label="Open menu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+
+        </div>
+    </nav>
 
         <!-- Sidebar (Offcanvas) -->
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="Sidebar">
             <div class="offcanvas-header">
-                <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                <a class="navbar-brand bomnous-logo bomnous-offcanvas-brand" href="index.html">BOMNOUS</a>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body d-flex flex-column">
-                <div class="container my-5 gap-4 d-flex justify-content-between align-items-center">
-                    <div class="input-group search-box">
-                        <input type="text" class="form-control" placeholder="Search Products...">
-                        <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
-                    </div>
+                <div class="container my-4 gap-2 d-flex flex-column">
+                    <button type="button" class="btn btn-outline-primary w-100 bomnous-open-nav-search">Open search</button>
+                    <form action="search.html" method="get" class="input-group search-box" role="search">
+                        <input class="form-control" type="search" name="q" placeholder="Search products…" aria-label="Search products" />
+                        <button class="btn btn-outline-secondary" type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
+                    </form>
                 </div>
                 <!-- Sidebar Menu -->
                 <ul class="navbar-nav nav-menu">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search.html">Discover</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search.html?tag=trending">Trending</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=women">Women</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=men">Men</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=children">Children</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=accessories">Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stylist.html">AI Stylist</a></li>
                     <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
                 </ul>
                 <!-- Social Icons -->
@@ -121,18 +121,19 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
 
     <!-- page Section -->
     <div class="page-section pt-3">
         <div class="container">
             <div class="row">
-                <div class="d-flex align-items-center gap-3">
-                    <p>
-                        <a href="index.html" class="text-dark">Home &nbsp; ></a>
-                    <p class="text-secondary">Checkout</p>
-                    </p>
+                <div class="col-12">
+                    <nav class="d-flex flex-wrap align-items-center gap-2 small" aria-label="Breadcrumb">
+                        <a href="index.html" class="text-dark text-decoration-none">Home</a>
+                        <span class="text-muted" aria-hidden="true">/</span>
+                        <span class="text-secondary">Checkout</span>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -140,24 +141,24 @@
 
     <!-- Checkout -->
     <div class="container py-5">
-        <div class="row">
+        <div class="row g-4">
             <!-- Billing Details -->
-            <div class="col-md-6">
+            <div class="col-12 col-lg-6">
                 <h2>Billing Details</h2>
-                <form>
+                <form id="checkout-form" autocomplete="on">
                     <div class="row mb-3">
                         <div class="col">
                             <label class="form-label">First Name</label>
-                            <input type="text" class="form-control" placeholder="First Name">
+                            <input type="text" class="form-control" placeholder="First Name" required>
                         </div>
                         <div class="col">
                             <label class="form-label">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last Name">
+                            <input type="text" class="form-control" placeholder="Last Name" required>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" placeholder="Phone Number">
+                        <input type="tel" class="form-control" placeholder="Phone Number" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Country</label>
@@ -181,41 +182,50 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email Address</label>
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" placeholder="Email" required>
                     </div>
                 </form>
             </div>
 
             <!-- Order Summary -->
-            <div class="col-md-6">
+            <div class="col-12 col-lg-6">
                 <h2>Your Order</h2>
                 <div class="border p-3 mb-3">
                     <div class="border p-3 mb-3">
-                        <h4>Subtotal: <span class="cart-subtotal float-end">$0.00</span></h4>
-                        <h4>Total: <span class="cart-total float-end">$0.00</span></h4>
+                        <h4 class="mb-2 d-flex justify-content-between align-items-baseline flex-wrap gap-2">Subtotal: <span class="cart-subtotal">$0.00</span></h4>
+                        <h4 class="mb-0 d-flex justify-content-between align-items-baseline flex-wrap gap-2">Total: <span class="cart-total">$0.00</span></h4>
                     </div>
-
+                    <div id="checkout-items" class="d-grid gap-2"></div>
                 </div>
                 <p>Have a promo code? Click here to enter your code.</p>
 
                 <!-- Payment Section -->
-                <div class="border p-3">
-                    <p>Credit/Debit Card Secure Payment</p>
+                <div class="border p-3 bomnous-payment-card">
+                    <p class="mb-2 fw-semibold">Credit/Debit Card Secure Payment</p>
                     <div class="mb-3">
                         <label class="form-label">Card Number</label>
-                        <input type="text" class="form-control" placeholder="123 456 789">
+                        <div class="position-relative">
+                            <input type="text" class="form-control" id="pay-card-number" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" aria-describedby="demo-card-hint" required>
+                            <span class="bomnous-card-icon" id="pay-card-icon" aria-hidden="true">💳</span>
+                        </div>
+                        <div class="form-text" id="demo-card-hint">Use <strong>4242 4242 4242 4242</strong> for demo</div>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
                             <label class="form-label">MM/YY</label>
-                            <input type="text" class="form-control" placeholder="MM/YY">
+                            <input type="text" class="form-control" id="pay-expiry" inputmode="numeric" autocomplete="cc-exp" placeholder="12/27" required>
                         </div>
                         <div class="col">
                             <label class="form-label">CVC</label>
-                            <input type="text" class="form-control" placeholder="CVC">
+                            <input type="text" class="form-control" id="pay-cvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="3" required>
                         </div>
                     </div>
-                    <button class="btn btn-primary w-100">Pay Now</button>
+                    <div class="mb-3">
+                        <label class="form-label">Name on card</label>
+                        <input type="text" class="form-control" id="pay-name" autocomplete="cc-name" placeholder="Your name" required>
+                    </div>
+                    <div class="alert alert-danger d-none" id="payment-error" role="alert"></div>
+                    <button class="btn btn-default w-100" id="place-order" type="button">Place Order</button>
                 </div>
 
                 <p class="mt-3">
@@ -228,140 +238,351 @@
                     <label class="form-check-label" for="terms">I have read and agree to the website terms and
                         conditions</label>
                 </div>
-                <button class="btn btn-success w-100 mt-3">Place Order</button>
+                <div class="small text-muted mt-3">Demo checkout only — no real money is charged.</div>
             </div>
         </div>
     </div>
 
-    <!-- Newsletter -->
-    <div class="newsletter mt-5 p-4 d-flex align-items-center
-    justify-content-center">
+    <footer class="bomnous-footer bomnous-footer--global" id="bomnous-site-footer" role="contentinfo">
         <div class="container">
-            <div class="row">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 mb-md-3 mb-lg-0">
-                        <div class="row align-items-center flex-column flex-md-row">
-                            <div class="col d-flex align-items-center gap-2">
-                                <img src="image/icon-email.svg" class="img-fluid email-icon" alt="">
-                                <h4 class=" mb-0">Sign up to Newsletter</h4>
-                            </div>
-                            <div class="col my-4 my-md-0">
-                                <h5 class="mb-0 fs-6">...and receive $25 coupon for first
-                                    shopping.</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <form class="form-subcriber d-flex">
-                            <input type="email" class="form-control bg-white p-2" placeholder="Enter your email">
-                            <button class="btn bg-dark text-white " type="submit">Subscribe</button>
-                        </form>
+            <div class="row g-4 g-lg-5 align-items-start">
+                <div class="col-12 col-lg-4">
+                    <a class="navbar-brand bomnous-logo bomnous-footer-logo" href="index.html">BOMNOUS</a>
+                    <p class="bomnous-footer-tagline mb-0">Curated Fashion. Intelligent Discovery.</p>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="bomnous-footer-nav" aria-label="Site">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="search.html">Discover</a></li>
+                        <li><a href="stylist.html">AI Stylist</a></li>
+                        <li><a href="auth.html?next=onboarding.html">Sell on Bomnous</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 text-md-end">
+                    <p class="bomnous-footer-made mb-3 mb-md-2">Made with love in North Cyprus 🇨🇾</p>
+                    <div class="bomnous-footer-socials justify-content-md-end">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="mt-5 pb-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 footer-col">
-                    <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
-                    <h5 class="mt-3 text-secondary">Contact</h5>
-                    <p class="text-secondary mb-1"><span class="text-dark">Address: </span>562 Wellington Road, Street
-                        32, San Francisco</p>
-                    <p class="text-secondary mb-1"><span class="text-dark">Phone: </span>+01 2222 365 /(+91) 01 2345
-                        6789</p>
-                    <p class="text-secondary"><span class="text-dark">Hours: </span>10:00 - 18:00, Mon - Sat</p>
-                    <h5 class="mt-3 text-secondary">Follow Us</h5>
-                    <div class="footer-social-icon mb-sm-5 mb-md-0 mt-2 d-flex align-items-center gap-2">
-                        <img src="image/icon-facebook.svg" class="img-fluid" alt="">
-                        <img src="image/icon-twitter.svg" class="img-fluid" alt="">
-                        <img src="image/icon-instagram.svg" class="img-fluid" alt="">
-                        <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
-                        <img src="image/icon-youtube.svg" class="img-fluid" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 footer-col">
-                    <h3 class="fs-3 mb-4">About</h3>
-                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
-                        <li class="mb-2"><a href="#" class="text-dark">About Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Delivery Information</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Privacy Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Terms & Conditions</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Contact Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Support Center</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-3">
-                    <h3 class="fs-3 mb-4">My Account</h3>
-                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
-                        <li class="mb-2"><a href="#" class="text-dark">Sign In</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">View Cart</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">My Wishlist</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Track My Order</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Help</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Order</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <h3 class="fs-3 mb-4">Install App</h3>
-                    <p class="text-secondary mb-1">From App Store or Google Play</p>
-                    <div class="app-img my-3">
-                        <img src="image/app-store.jpg" class="img-fluid border rounded" alt="">
-                        <img src="image/google-play.jpg" class="img-fluid border rounded" alt="">
-                    </div>
-                    <p class="text-secondary mb-2 mt-5">Secured Payment Gateways</p>
-                    <img src="image/payment-method.png" class="img-fluid" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="container mt-5 pt-3 border-top">
-            <div class="row">
-                <div class="footer-bottom d-flex justify-content-between align-items-center flex-column flex-md-row">
-                    <p>© copyright 2025. All Rights Reserved By <a href="#">K2infocom</a></p>
-                    <div class="footer-bottom-links d-flex gap-3">
-                        <a href="#" class="text-dark">Terms of Use</a>
-                        <a href="#" class="text-dark">privacy policy</a>
-                    </div>
-                </div>
+            <div class="bomnous-footer-bottom bomnous-footer-bottom--single mt-4 pt-4">
+                <p class="text-center w-100 mb-0">© 2026 Bomnous. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <!-- Swiper Slider JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script>
+      (function () {
+        if (typeof window.BOMNOUS_API_BASE === "undefined" || window.BOMNOUS_API_BASE === "") {
+          window.BOMNOUS_API_BASE = "http://" + (window.location && window.location.hostname ? window.location.hostname : "127.0.0.1") + ":8000";
+        }
+      })();
+    </script>
+    <script src="js/products.js"></script>
+    <script src="js/bomnous-nav.js"></script>
     <script src="js/script.js"></script>
     <script>
-        function updateCheckoutTotal() {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            let cartSubtotalElement = document.querySelector(".cart-subtotal");
-            let cartTotalElement = document.querySelector(".cart-total");
-            let totalPrice = 0;
+        (function () {
+            var DEMO_CARD = "4242424242424242";
 
-            cart.forEach(item => {
-                let price = parseFloat(item.price.toString().replace(/[^\d.]/g, "")) || 0;
-                let quantity = parseInt(item.quantity) || 1;
-                totalPrice += price * quantity;
-            });
-
-            if (cartSubtotalElement && cartTotalElement) {
-                cartSubtotalElement.textContent = `$${totalPrice.toFixed(2)}`;
-                cartTotalElement.textContent = `$${totalPrice.toFixed(2)}`;
+            function moneyFromPriceText(p) {
+                var n = Number(String(p || "").replace(/[^\d.]/g, ""));
+                return Number.isFinite(n) ? n : 0;
             }
-        }
 
-        document.addEventListener("DOMContentLoaded", updateCheckoutTotal);
+            function formatMoney(n) {
+                var x = Number(n);
+                if (!Number.isFinite(x)) x = 0;
+                return "$" + x.toFixed(2);
+            }
+
+            function digitsOnly(v) {
+                return String(v || "").replace(/\D/g, "");
+            }
+
+            function formatCardNumber(v) {
+                var d = digitsOnly(v).slice(0, 16);
+                return d.replace(/(\d{4})(?=\d)/g, "$1 ").trim();
+            }
+
+            function formatExpiry(v) {
+                var d = digitsOnly(v).slice(0, 4);
+                if (d.length <= 2) return d;
+                return d.slice(0, 2) + "/" + d.slice(2);
+            }
+
+            function inferCardTypeIcon(digits) {
+                if (!digits) return "💳";
+                if (digits.startsWith("4")) return "VISA";
+                var two = Number(digits.slice(0, 2));
+                if (two >= 51 && two <= 55) return "MC";
+                return "CARD";
+            }
+
+            function isFutureExpiry(mmYY) {
+                var s = String(mmYY || "").trim();
+                var m = s.match(/^(\d{2})\/(\d{2})$/);
+                if (!m) return false;
+                var mm = Number(m[1]);
+                var yy = Number(m[2]);
+                if (mm < 1 || mm > 12) return false;
+                // 20yy
+                var year = 2000 + yy;
+                var now = new Date();
+                var exp = new Date(year, mm, 0, 23, 59, 59); // last day of month
+                return exp.getTime() > now.getTime();
+            }
+
+            function getCartItems() {
+                // Prefer BomnousStore cart; fallback to legacy keys.
+                try {
+                    if (window.BomnousStore && typeof window.BomnousStore.getCart === "function") {
+                        return window.BomnousStore.getCart();
+                    }
+                } catch (e) {}
+                try {
+                    var raw = localStorage.getItem("bomnous_cart") || localStorage.getItem("cart") || "[]";
+                    var arr = JSON.parse(raw);
+                    return Array.isArray(arr) ? arr : [];
+                } catch (e2) {
+                    return [];
+                }
+            }
+
+            function computeOrderSummary(items) {
+                var out = [];
+                var total = 0;
+                items.forEach(function (it) {
+                    var name = it && (it.name || it.title) ? String(it.name || it.title) : "Product";
+                    var qty = Number((it && it.quantity) || 1);
+                    if (!Number.isFinite(qty) || qty < 1) qty = 1;
+                    var priceText = it && it.price ? it.price : "$0.00";
+                    var price = moneyFromPriceText(priceText);
+                    total += price * qty;
+                    out.push({ name: name, qty: qty, unitPriceText: formatMoney(price), lineTotalText: formatMoney(price * qty) });
+                });
+                return { items: out, total: total };
+            }
+
+            function renderCheckoutTotals() {
+                var items = getCartItems();
+                var sum = computeOrderSummary(items);
+                var subtotalEl = document.querySelector(".cart-subtotal");
+                var totalEl = document.querySelector(".cart-total");
+                if (subtotalEl) subtotalEl.textContent = formatMoney(sum.total);
+                if (totalEl) totalEl.textContent = formatMoney(sum.total);
+
+                var wrap = document.getElementById("checkout-items");
+                if (!wrap) return;
+                if (!sum.items.length) {
+                    wrap.innerHTML = '<div class="text-muted small">Your cart is empty. <a class="ai-text-link" href="shop.html">Browse products</a></div>';
+                    return;
+                }
+                wrap.innerHTML = sum.items
+                    .slice(0, 6)
+                    .map(function (row) {
+                        return (
+                            '<div class="d-flex justify-content-between gap-2 small">' +
+                            '<span><strong>' +
+                            row.name +
+                            "</strong>" +
+                            (row.qty > 1 ? ' <span class="text-muted">× ' + row.qty + "</span>" : "") +
+                            "</span>" +
+                            '<span class="text-muted">' +
+                            row.lineTotalText +
+                            "</span>" +
+                            "</div>"
+                        );
+                    })
+                    .join("");
+            }
+
+            function clearCartStorage() {
+                try { localStorage.setItem("bomnous_cart", "[]"); } catch (e) {}
+                try { localStorage.setItem("cart", "[]"); } catch (e2) {}
+                try { localStorage.removeItem("bomnous_cart"); localStorage.setItem("bomnous_cart", "[]"); } catch (e3) {}
+            }
+
+            function showError(msg) {
+                var el = document.getElementById("payment-error");
+                if (!el) return;
+                if (!msg) {
+                    el.classList.add("d-none");
+                    el.textContent = "";
+                    return;
+                }
+                el.textContent = msg;
+                el.classList.remove("d-none");
+            }
+
+            function sleep(ms) {
+                return new Promise(function (r) { setTimeout(r, ms); });
+            }
+
+            function renderSuccessScreen(orderNo, summary) {
+                var container = document.querySelector(".container.py-5");
+                if (!container) return;
+                var itemsHtml = summary.items
+                    .map(function (it) {
+                        return '<div class="d-flex justify-content-between small"><span>' + it.name + (it.qty > 1 ? ' <span class="text-muted">× ' + it.qty + "</span>" : "") + '</span><span class="text-muted">' + it.lineTotalText + "</span></div>";
+                    })
+                    .join("");
+
+                container.innerHTML =
+                    '<div class="row justify-content-center">' +
+                    '  <div class="col-12 col-lg-8">' +
+                    '    <div class="bomnous-pay-success text-center p-4 p-md-5">' +
+                    '      <div class="bomnous-checkmark-wrap mx-auto mb-3" aria-hidden="true">' +
+                    '        <svg class="bomnous-checkmark" viewBox="0 0 52 52" focusable="false">' +
+                    '          <circle class="bomnous-checkmark-circle" cx="26" cy="26" r="25" fill="none" />' +
+                    '          <path class="bomnous-checkmark-check" fill="none" d="M14 27 l7 7 l17 -17" />' +
+                    "        </svg>" +
+                    "      </div>" +
+                    '      <h1 class="h3 mb-2">Order Confirmed! 🎉</h1>' +
+                    '      <p class="text-muted mb-3">Thank you for shopping with Bomnous. Your order is on its way!</p>' +
+                    '      <div class="bomnous-order-pill mb-4">Order number: <strong>' + orderNo + "</strong></div>" +
+                    '      <div class="card border-0 shadow-sm text-start" style="border-radius: 18px;">' +
+                    '        <div class="card-body p-4">' +
+                    '          <h2 class="h6 mb-3">Order summary</h2>' +
+                    itemsHtml +
+                    '          <hr class="my-3"/>' +
+                    '          <div class="d-flex justify-content-between"><strong>Total</strong><strong>' + formatMoney(summary.total) + "</strong></div>" +
+                    "        </div>" +
+                    "      </div>" +
+                    '      <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center mt-4">' +
+                    '        <a class="btn btn-default" href="index.html">Continue Shopping</a>' +
+                    '        <button type="button" class="btn btn-outline-dark" id="track-order">Track My Order</button>' +
+                    "      </div>" +
+                    '      <div class="alert alert-light border mt-3 d-none" id="tracking-note" role="status"></div>' +
+                    "    </div>" +
+                    "  </div>" +
+                    "</div>";
+
+                var track = document.getElementById("track-order");
+                if (track) {
+                    track.addEventListener("click", function () {
+                        var note = document.getElementById("tracking-note");
+                        if (!note) return;
+                        note.textContent = "Your order is being prepared with love ✨";
+                        note.classList.remove("d-none");
+                    });
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                renderCheckoutTotals();
+                try {
+                    window.addEventListener("bomnous-cart-wishlist-changed", function () {
+                        renderCheckoutTotals();
+                    });
+                } catch (e) {}
+
+                var card = document.getElementById("pay-card-number");
+                var exp = document.getElementById("pay-expiry");
+                var cvc = document.getElementById("pay-cvc");
+                var icon = document.getElementById("pay-card-icon");
+                var place = document.getElementById("place-order");
+
+                if (card) {
+                    card.addEventListener("input", function () {
+                        var formatted = formatCardNumber(card.value);
+                        card.value = formatted;
+                        var digits = digitsOnly(formatted);
+                        if (icon) icon.textContent = inferCardTypeIcon(digits);
+                        showError("");
+                    });
+                }
+
+                if (exp) {
+                    exp.addEventListener("input", function () {
+                        exp.value = formatExpiry(exp.value);
+                        showError("");
+                    });
+                }
+
+                if (cvc) {
+                    cvc.addEventListener("input", function () {
+                        cvc.value = digitsOnly(cvc.value).slice(0, 3);
+                        showError("");
+                    });
+                }
+
+                if (place) {
+                    place.addEventListener("click", async function () {
+                        showError("");
+
+                        var form = document.getElementById("checkout-form");
+                        if (form && !form.checkValidity()) {
+                            form.reportValidity();
+                            return;
+                        }
+
+                        var terms = document.getElementById("terms");
+                        if (!terms || !terms.checked) {
+                            showError("Please accept the terms and conditions to continue.");
+                            return;
+                        }
+
+                        var cardDigits = digitsOnly(card ? card.value : "");
+                        var expiry = exp ? exp.value : "";
+                        var cvv = digitsOnly(cvc ? cvc.value : "");
+                        var nm = document.getElementById("pay-name") ? String(document.getElementById("pay-name").value || "").trim() : "";
+
+                        if (cardDigits.length !== 16) {
+                            showError("Please enter a valid card number.");
+                            return;
+                        }
+                        if (!isFutureExpiry(expiry)) {
+                            showError("Please enter a future expiry date (MM/YY).");
+                            return;
+                        }
+                        if (cvv.length !== 3) {
+                            showError("Please enter a 3-digit CVV.");
+                            return;
+                        }
+                        if (!nm) {
+                            showError("Please enter the name on the card.");
+                            return;
+                        }
+
+                        // Processing state (2 seconds)
+                        var btnHtml = place.innerHTML;
+                        place.disabled = true;
+                        place.innerHTML = '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>Processing your payment…';
+                        await sleep(2000);
+
+                        if (cardDigits !== DEMO_CARD) {
+                            place.disabled = false;
+                            place.innerHTML = btnHtml;
+                            showError("Payment declined. Please check your card details and try again.");
+                            return;
+                        }
+
+                        var items = getCartItems();
+                        var sum = computeOrderSummary(items);
+                        var orderNo = "BOM-" + String(Math.floor(100000 + Math.random() * 900000));
+                        clearCartStorage();
+                        if (window.BomnousUI && typeof window.BomnousUI.updateNavCounts === "function") {
+                            window.BomnousUI.updateNavCounts();
+                        }
+                        renderSuccessScreen(orderNo, sum);
+                    });
+                }
+            });
+        })();
     </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/bomnous-aos-boot.js"></script>
 </body>
 
 </html>

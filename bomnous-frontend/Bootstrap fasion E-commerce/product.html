@@ -2,558 +2,356 @@
 <html lang="en">
 
 <head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bomnous Shops | Product</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260429-motion">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <!-- bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Remix Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <!-- Swiper Slider CSS  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css">
 </head>
 
 <body>
-
-    <!-- Navbar -->
-    <div class="nav-container">
-        <!-- Top Bar -->
-        <div class="p-1 d-none d-lg-block border">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-4 text-start ps-4 top-bar-text text-dark">
-                        <i class="bi bi-phone text-dark"></i> (+01) - 2345 - 6789 &nbsp;| &nbsp; <i
-                            class="bi bi-geo-alt"></i>
-                        Our
-                        location
-                    </div>
-                    <div class="col-md-4 text-center text-secondary">
-                        Get great devices up to 50% off
-                    </div>
-                    <div class="col-md-4 text-end pe-4 top-bar-text ">
-                        <span class="me-3 top-bar-text"><i class="bi bi-globe-americas"></i> English</span>
-                        <a href="myaccount.html" class="top-bar-text text-dark text-decoration-none"><i
-                                class="bi bi-person"></i>
-                            Login</a> / <a href="myaccount.html"
-                            class="top-bar-text text-dark text-decoration-none">Signin</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Search & Categories -->
-        <div class="container my-3 gap-5 middle-navbar d-flex justify-content-between align-items-center">
-            <a class="navbar-brand logo" href="index.html">Tren<span>diFy</span></a>
-            <div class="input-group search-box d-none d-lg-flex">
-                <input type="text" class="form-control" placeholder="Search Products...">
-                <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
-            </div>
-            <div class="d-flex align-items-center  d-none d-lg-flex gap-2">
-                <a href="wishlist.html" class="me-3 text-dark middle-navbar-a text-decoration-none position-relative"><i
-                        class="bi bi-heart fs-3"></i> <span
-                        class="position-absolute text-white d-flex align-items-center justify-content-center wishlist-span qount-span">0</span></a>
-                <a href="carts.html" class="text-dark middle-navbar-a text-decoration-none position-relative"><i
-                        class="bi bi-bag fs-3"></i><span
-                        class="position-absolute text-white d-flex align-items-center justify-content-center cart-span qount-span">0</span></a>
-            </div>
-
-            <!-- Sidebar Toggle Button -->
-
-            <button class="btn btn-primary sidebar-menu-toggler d-block d-lg-none" type="button"
-                data-bs-toggle="offcanvas" data-bs-target="#Sidebar">
-                <i class="bi bi-list"></i> Menu
-            </button>
-        </div>
-
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-white py-3 d-none d-lg-block">
-            <div class="container">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav nav-menu">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+    <!-- BOMNOUS SMART NAVBAR (shared; keep in sync with index.html) -->
+    <nav class="navbar navbar-expand-lg bomnous-navbar">
+        <div class="container-fluid px-4 px-lg-5 bomnous-nav-row">
+            <div class="d-none d-lg-flex align-items-center flex-wrap nav-left">
+                <a href="index.html" class="nav-link-custom">Home</a>
+                <a href="search.html" class="nav-link-custom">Discover</a>
+                <a href="search.html?tag=trending" class="nav-link-custom">Trending</a>
+                <div class="dropdown bomnous-nav-dropdown d-inline-block">
+                    <button type="button" class="nav-dd-toggle dropdown-toggle" id="navCategories" data-bs-toggle="dropdown" aria-expanded="false">Categories</button>
+                    <ul class="dropdown-menu" aria-labelledby="navCategories">
+                        <li><a class="dropdown-item" href="shop.html?category=women">Women</a></li>
+                        <li><a class="dropdown-item" href="shop.html?category=men">Men</a></li>
+                        <li><a class="dropdown-item" href="shop.html?category=children">Children</a></li>
+                        <li><a class="dropdown-item" href="shop.html?category=accessories">Accessories</a></li>
                     </ul>
                 </div>
-                <a href="#" class="text-primary text-decoration-none text-dark"> <i class="bi bi-headset"></i> Hotline
-                    <span>1900 -
-                        888</span></a>
+                <a href="stylist.html" class="nav-link-custom ai-link">AI Stylist</a>
+                <a href="about.html" class="nav-link-custom">About</a>
             </div>
-        </nav>
 
-        <!-- Sidebar (Offcanvas) -->
+            <a class="navbar-brand bomnous-logo text-center" href="index.html">BOMNOUS</a>
 
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="Sidebar">
-            <div class="offcanvas-header">
-                <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-            </div>
-            <div class="offcanvas-body d-flex flex-column">
-                <div class="container my-5 gap-4 d-flex justify-content-between align-items-center">
-                    <div class="input-group search-box">
-                        <input type="text" class="form-control" placeholder="Search Products...">
-                        <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
+            <div class="bomnous-nav-end d-flex align-items-center justify-content-end gap-2">
+                <div class="d-none d-lg-flex align-items-center nav-icons">
+                    <button type="button" class="icon-link border-0 bg-transparent p-0 bomnous-open-nav-search" aria-label="Open search">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <a href="wishlist.html" class="icon-link position-relative">
+                        <i class="bi bi-heart"></i>
+                        <span class="icon-count wishlist-span d-none" aria-hidden="true"></span>
+                    </a>
+                    <a href="carts.html" class="icon-link position-relative" title="Cart">
+                        <i class="bi bi-bag"></i>
+                        <span class="icon-count cart-span d-none" aria-hidden="true"></span>
+                    </a>
+                    <a href="auth.html" class="icon-link bomnous-nav-profile-link" id="nav-profile-link" data-href-guest="auth.html" data-href-logged="profile.html" aria-label="Account">
+                        <span class="bomnous-nav-avatar bomnous-nav-avatar--guest" id="nav-profile-avatar"><i class="bi bi-person" aria-hidden="true"></i></span>
+                    </a>
+                    <div class="dropdown bomnous-icon-dropdown d-inline-block">
+                        <button type="button" class="icon-link border-0 bg-transparent p-0 dropdown-toggle bomnous-lang-btn" id="langDropdown" data-bs-toggle="dropdown" data-bs-offset="0,8" aria-expanded="false" aria-label="Language">
+                            <i class="bi bi-globe"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+                            <li><span class="dropdown-item-text text-muted small">Language</span></li>
+                            <li><a class="dropdown-item active" href="#" aria-current="true">English (EN)</a></li>
+                            <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Türkçe (TR) — soon</a></li>
+                        </ul>
                     </div>
                 </div>
-                <!-- Sidebar Menu -->
-                <ul class="navbar-nav nav-menu">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
-                </ul>
-                <!-- Social Icons -->
-                <div class="mt-auto d-flex justify-content-around">
-                    <i class="bi bi-facebook fs-3"></i>
-                    <i class="bi bi-twitter fs-3"></i>
-                    <i class="bi bi-linkedin fs-3"></i>
-                    <i class="bi bi-instagram fs-3"></i>
-                </div>
+                <button class="bomnous-menu-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#Sidebar" aria-label="Open menu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="Sidebar">
+        <div class="offcanvas-header">
+            <a class="navbar-brand bomnous-logo bomnous-offcanvas-brand" href="index.html">BOMNOUS</a>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column">
+            <div class="container my-4 gap-2 d-flex flex-column">
+                <button type="button" class="btn btn-outline-primary w-100 bomnous-open-nav-search">Open search</button>
+                <form action="search.html" method="get" class="input-group search-box" role="search">
+                    <input class="form-control" type="search" name="q" placeholder="Search products…" aria-label="Search products" />
+                    <button class="btn btn-outline-secondary" type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+            <ul class="navbar-nav nav-menu">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="search.html">Discover</a></li>
+                <li class="nav-item"><a class="nav-link" href="search.html?tag=trending">Trending</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html?category=women">Women</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html?category=men">Men</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html?category=children">Children</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html?category=accessories">Accessories</a></li>
+                <li class="nav-item"><a class="nav-link" href="stylist.html">AI Stylist</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+            </ul>
+            <div class="mt-auto d-flex justify-content-around">
+                <i class="bi bi-facebook fs-3"></i>
+                <i class="bi bi-twitter fs-3"></i>
+                <i class="bi bi-linkedin fs-3"></i>
+                <i class="bi bi-instagram fs-3"></i>
             </div>
         </div>
     </div>
-    <!-- page Section -->
+
     <div class="page-section pt-3">
         <div class="container">
-            <div class="row">
-                <div class="d-flex align-items-center gap-3">
-                    <p>
-                        <a href="index.html" class="text-dark">Home &nbsp; ></a>
-                    <p class="text-secondary">Product</p>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Product -->
-    <div class="container mt-5">
-        <div class="row">
-            <!-- Main Content -->
-            <div class="col-lg-8">
-                <div class="row product-page-wrapper">
-                    <!-- Product Image Section -->
-                    <div class="col-md-6">
-                        <img src="image/product-1-1.jpg" id="mainImage" class="img-fluid rounded" alt="Product Image">
-                        <div class="d-flex mt-3 product-filter-img">
-                            <img src="image/product-1-2.jpg" class="border p-1 thumb rounded me-2" width="70" alt="">
-                            <img src="image/product-2-1.jpg" class="border p-1 thumb rounded me-2" width="70" alt="">
-                            <img src="image/product-3-1.jpg" class="border p-1 thumb rounded me-2" width="70" alt="">
-                            <img src="image/product-4-1.jpg" class="border p-1 thumb rounded" width="70" alt="">
-                        </div>
-                    </div>
-
-                    <!-- Product Details Section -->
-                    <div class="col-md-6">
-                        <h2>Colorful Pattern Shirts HD450</h2>
-                        <p class="text-muted">Brands: <a href="#" class="text-success">Bootstrap</a></p>
-                        <div class="d-flex align-items-center border-top border-bottom py-2 pb-0">
-                            <h4 class="text-prim-color me-3">$120.00</h4>
-                            <span class="text-muted text-decoration-line-through">$200.00</span>
-                            <span class="text-danger ms-2">25% Off</span>
-                        </div>
-                        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Voluptatum,
-                            accusantium!</p>
-
-                        <ul class="list-unstyled">
-                            <li><i class="fas fa-check-circle text-prim-color"></i> 1 Year AL Jazeera Brand Warranty
-                            </li>
-                            <li><i class="fas fa-check-circle text-prim-color"></i> 30 Day Return Policy</li>
-                            <li><i class="fas fa-check-circle text-prim-color"></i> Cash on Delivery available</li>
-                        </ul>
-
-                        <h5 class="mt-3">Size:</h5>
-                        <div class="btn-group" role="group">
-                            <button class="btn btn-outline-dark">S</button>
-                            <button class="btn btn-outline-dark">M</button>
-                            <button class="btn btn-outline-dark">L</button>
-                            <button class="btn btn-outline-dark">XL</button>
-                        </div>
-
-                        <div class="mt-4">
-                            <div class="input-group mb-3" style="width: 150px;">
-                                <button class="btn btn-outline-secondary" type="button">-</button>
-                                <input type="text" class="form-control text-center" value="1">
-                                <button class="btn btn-outline-secondary" type="button">+</button>
-                            </div>
-                            <button class="btn btn-success add-to-carts wishlist-btn py-2 btn-sm">
-                                <i class="bi bi-cart "></i> Add to cart
-                            </button>
-                        </div>
-
-                        <p class="mt-3 mb-1 text-secondary">SKU: FWM15VKT</p>
-                        <p class="mb-0 text-secondary">Tags: Cloth, Women, Dress</p>
-                        <p class="text-secondary">Availability: <span class="text-success">8 Items In Stock</span></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="product-detail-wrapper">
-                        <div class="product-tabs">
-                            <button class="btn border dic-btn">Description</button>
-                            <button class="btn border adi-btn">Additional info</button>
-                        </div>
-
-                        <div class="tab-content mt-5">
-                            <div class="" id="description">
-                                <p class="text-secondary">Uninhibited carnally hired played in whimpered dear gorilla
-                                    koala depending and much
-                                    yikes off far quetzal goodness and from for grimaced goodness unaccountably and
-                                    meadowlark near unblushingly crucial scallop tightly neurotic hungrily some and dear
-                                    furiously this apart.</p>
-                                <p class="text-secondary">
-                                    Spluttered narrowly yikes left moth in yikes bowed this that grizzly much hello on
-                                    spoon-fed that alas rethought much decently richly and wow against the frequent
-                                    fluidly at formidable acceptably flapped besides and much circa far over the
-                                    bucolically hey precarious goldfinch mastodon goodness gnashed a jellyfish and one
-                                    however because.</p>
-                                <div class="product-more-wrapper mt-5 d-flex gap-3 border-bottom">
-                                    <ul class="product-more ps-0">
-                                        <li class="text-secondary">Type Of Packing</li>
-                                        <li class="text-secondary">Color</li>
-                                        <li class="text-secondary">Quantity Per Case</li>
-                                        <li class="text-secondary">Ethyl Alcohol</li>
-                                        <li class="text-secondary">Piece In One</li>
-                                    </ul>
-                                    <ul class="product-more ps-0">
-                                        <li class="text-secondary">- &nbsp; Bottle</li>
-                                        <li class="text-secondary">- &nbsp; Green, Pink, Powder Blue, Purple</li>
-                                        <li class="text-secondary">- &nbsp; 100ml</li>
-                                        <li class="text-secondary">- &nbsp; 70%</li>
-                                        <li class="text-secondary">- &nbsp; Carton</li>
-                                    </ul>
-                                </div>
-                                <p class="text-secondary mt-4">Laconic overheard dear woodchuck wow this outrageously
-                                    taut beaver hey hello far
-                                    meadowlark imitatively egregiously hugged that yikes minimally unanimous pouted
-                                    flirtatiously as beaver beheld above forward energetic across this jeepers
-                                    beneficently cockily less a the raucously that magic upheld far so the this where
-                                    crud then below after jeez enchanting drunkenly more much wow callously irrespective
-                                    limpet.</p>
-
-                                <h5 class="mt-3 pb-3 border-bottom">Packaging & Delivery</h5>
-
-                                <p class="text-secondary mt-4">Less lion goodness that euphemistically robin
-                                    expeditiously bluebird smugly scratched
-                                    far while thus cackled sheepishly rigid after due one assenting regarding censorious
-                                    while occasional or this more crane went more as this less much amid overhung
-                                    anathematic because much held one exuberantly sheep goodness so where rat wry well
-                                    concomitantly.</p>
-                                <p class="text-secondary mt-4">Scallop or far crud plain remarkably far by thus far
-                                    iguana lewd precociously and and
-                                    less rattlesnake contrary caustic wow this near alas and next and pled the yikes
-                                    articulate about as less cackled dalmatian in much less well jeering for the thanks
-                                    blindly sentimental whimpered less across objectively fanciful grimaced wildly some
-                                    wow and rose jeepers outgrew lugubrious luridly irrationally attractively dachshund.
-                                </p>
-                            </div>
-                            <div class="w-100" id="additional-info">
-                                <div class="table-responsive product-table">
-                                    <table class="table  align-middle border rounded">
-                                        <tbody>
-                                            <tr>
-                                                <th class="fw-normal">Stand Up</th>
-                                                <td>35"L x 24"W x 37-45"H (front to back wheel)</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Folded (w/ wheels)</th>
-                                                <td>32.5"L x 18.5"W x 20"H</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Folded (w/o wheels)</th>
-                                                <td>32.5"L x 24"W x 18.5"H</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Door Pass Through</th>
-                                                <td>24"</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Frame</th>
-                                                <td>Aluminum</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Weight (no wheels)</th>
-                                                <td>20 LBS</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Weight (Capacity)</th>
-                                                <td>60 LBS</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Width</th>
-                                                <td>24"</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Handle height (ground to handle)</th>
-                                                <td>37-45"</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Wheels</th>
-                                                <td>12" air / wide track slick tread</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Seat back height</th>
-                                                <td>21.5"</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Head room (inside canopy)</th>
-                                                <td>25"</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Color</th>
-                                                <td>Black, Blue, Red, White</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="fw-normal">Size</th>
-                                                <td>M, S</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Sidebar -->
-            <div class="col-md-4 d-none d-lg-flex flex-column sticky-sidebar">
-                <div class="card p-3">
-                    <h5 class="border-bottom pb-2">Category</h5>
-                    <ul class="product-cate ps-0">
-                        <li class="mt-1"><a href="#" class="text-dark text-decoration-none">Shoes & Bags</a></li>
-                        <li class="mt-1"><a href="#" class="text-dark text-decoration-none">Blouses & Shirts</a></li>
-                        <li class="mt-1"><a href="#" class="text-dark text-decoration-none">Dresses</a></li>
-                        <li class="mt-1"><a href="#" class="text-dark text-decoration-none">Swimwear</a></li>
-                        <li class="mt-1"><a href="#" class="text-dark text-decoration-none">Beauty</a></li>
-                        <li class="mt-1"><a href="#" class="text-dark text-decoration-none">Jewelry & Watch</a></li>
-                        <li class="mt-1"><a href="#" class="text-dark text-decoration-none">Accessories</a></li>
-                    </ul>
-                </div>
-                <div class="card p-3 mb-3 mt-3">
-                    <h5 class="border-bottom pb-2">FILL BY PRICE</h5>
-                    <input type="range">
-                    <p class="mt-2 text-secondary">Range: <span class="text-dark">$16 - $300</span></p>
-
-                    <h6 class="mt-3 text-prim-color">Color</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="red">
-                        <label class="form-check-label" for="red">Red (56)</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="green">
-                        <label class="form-check-label" for="green">Green (78)</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="blue">
-                        <label class="form-check-label" for="blue">Blue (54)</label>
-                    </div>
-
-                    <h6 class="mt-3 text-prim-color">Item Condition</h6>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="new">
-                        <label class="form-check-label" for="new">New (1506)</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="refurbished">
-                        <label class="form-check-label" for="refurbished">Refurbished (27)</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="used">
-                        <label class="form-check-label" for="used">Used (45)</label>
-                    </div>
-
-                    <button class="btn bg-prim-color text-white w-100 mt-3"><i class="bi bi-funnel"></i> Filter</button>
-                </div>
-                <div class="card p-3">
-                    <div class="col-lg-8 cate-product-wrapper">
-                        <h5 class="border-bottom pb-2">New products</h5>
-                        <div class="cate-product-wrap mt-4">
-                            <!-- row 1 -->
-                            <div class="row  align-items-end">
-                                <div class="col-md-4 mb-0">
-                                    <img src="image/deals-1.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="col-md-8 mb-0">
-                                    <h6>Fish Print Patched T-shirt</h6>
-                                    <div class="cate-product-price">
-                                        <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- row 2 -->
-                            <div class="row  align-items-end mt-4">
-                                <div class="col-md-4 mb-0">
-                                    <img src="image/deals-2.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="col-md-8 mb-0">
-                                    <h6>Vintage Floral Print Dress</h6>
-                                    <div class="cate-product-price">
-                                        <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- row 3 -->
-                            <div class="row  align-items-end mt-4">
-                                <div class="col-md-4 mb-0">
-                                    <img src="image/deals-3.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="col-md-8 mb-0">
-                                    <h6>Multi-color Stripe Circle Print T-Shirt</h6>
-                                    <div class="cate-product-price">
-                                        <p class="text-secondary"><span>$238.85 </span> <strike> $245.8</strike></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="d-flex flex-wrap align-items-center gap-2 small">
+                <a href="index.html" class="text-decoration-none" style="color: var(--text-muted);">Home</a>
+                <span class="text-muted">/</span>
+                <a href="shop.html" class="text-decoration-none" style="color: var(--text-muted);">Shop</a>
+                <span class="text-muted">/</span>
+                <span class="text-secondary" id="product-breadcrumb">Product</span>
             </div>
         </div>
     </div>
 
-    <!-- Newsletter -->
-    <div class="newsletter mt-5 p-4 d-flex align-items-center
-    justify-content-center">
+    <section class="pt-2 pb-5">
         <div class="container">
-            <div class="row">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 mb-md-3 mb-lg-0">
-                        <div class="row align-items-center flex-column flex-md-row">
-                            <div class="col d-flex align-items-center gap-2">
-                                <img src="image/icon-email.svg" class="img-fluid email-icon" alt="">
-                                <h4 class=" mb-0">Sign up to Newsletter</h4>
+            <div class="row g-4 g-lg-5 align-items-start">
+                <div class="col-12 col-lg-8">
+                    <div class="row g-4">
+                        <div class="col-12 col-md-6">
+                            <div class="card border-0 shadow-sm" style="border-radius: 18px; overflow: hidden;">
+                                <img src="image/product-1-1.jpg" id="mainImage" class="img-fluid" alt="Product Image" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover;">
                             </div>
-                            <div class="col my-4 my-md-0">
-                                <h5 class="mb-0 fs-6">...and receive $25 coupon for first
-                                    shopping.</h5>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <h1 class="h3 mb-2" id="product-name">Loading…</h1>
+                            <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+                                <a href="shop.html" class="text-decoration-none product-sold-by" id="product-shop-link" style="display:none;"></a>
+                                <span class="badge text-bg-light border" id="product-category" style="display:none;"></span>
+                                <span class="badge text-bg-light border" id="product-aesthetic" style="display:none;"></span>
+                            </div>
+
+                            <div class="d-flex align-items-baseline gap-2 border-top border-bottom py-3 mb-3">
+                                <div class="h4 mb-0" style="color: var(--prim-color);" id="product-price">$0.00</div>
+                                <div class="text-muted text-decoration-line-through" id="product-compare" style="display:none;">$0.00</div>
+                                <span class="badge text-bg-danger" id="product-off" style="display:none;">0% off</span>
+                            </div>
+
+                            <p class="text-muted mb-3" id="product-description">Fetching product details…</p>
+
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-default" type="button" id="product-add-cart">
+                                    <i class="bi bi-bag me-2" aria-hidden="true"></i>Add to cart
+                                </button>
+                                <button class="btn btn-outline-dark" type="button" id="product-add-wishlist">
+                                    <i class="bi bi-heart me-2" aria-hidden="true"></i>Wishlist
+                                </button>
+                            </div>
+
+                            <div class="small text-muted mt-3" id="product-meta"></div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm mt-4" style="border-radius: 18px;">
+                        <div class="card-body p-4">
+                            <h2 class="h5 mb-2">Description</h2>
+                            <div class="text-muted" id="product-description-long">Loading…</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <div class="card border-0 shadow-sm" style="border-radius: 18px;">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h2 class="h6 mb-0">New products</h2>
+                                <a class="ai-text-link small" href="shop.html">Browse all</a>
+                            </div>
+                            <div class="d-grid gap-3" id="product-new-products">
+                                <div class="text-muted small">Loading…</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5">
-                        <form class="form-subcriber d-flex">
-                            <input type="email" class="form-control bg-white p-2" placeholder="Enter your email">
-                            <button class="btn bg-dark text-white " type="submit">Subscribe</button>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Footer -->
-    <footer class="mt-5 pb-2">
+    </section>
+
+    <footer class="bomnous-footer bomnous-footer--global" id="bomnous-site-footer" role="contentinfo">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 footer-col">
-                    <a class="navbar-brand logo" href="#">Tren<span>diFy</span></a>
-                    <h5 class="mt-3 text-secondary">Contact</h5>
-                    <p class="text-secondary mb-1"><span class="text-dark">Address: </span>562 Wellington Road, Street
-                        32, San Francisco</p>
-                    <p class="text-secondary mb-1"><span class="text-dark">Phone: </span>+01 2222 365 /(+91) 01 2345
-                        6789</p>
-                    <p class="text-secondary"><span class="text-dark">Hours: </span>10:00 - 18:00, Mon - Sat</p>
-                    <h5 class="mt-3 text-secondary">Follow Us</h5>
-                    <div class="footer-social-icon mb-sm-5 mb-md-0 mt-2 d-flex align-items-center gap-2">
-                        <img src="image/icon-facebook.svg" class="img-fluid" alt="">
-                        <img src="image/icon-twitter.svg" class="img-fluid" alt="">
-                        <img src="image/icon-instagram.svg" class="img-fluid" alt="">
-                        <img src="image/icon-pinterest.svg" class="img-fluid" alt="">
-                        <img src="image/icon-youtube.svg" class="img-fluid" alt="">
-                    </div>
+            <div class="row g-4 g-lg-5 align-items-start">
+                <div class="col-12 col-lg-4">
+                    <a class="navbar-brand bomnous-logo bomnous-footer-logo" href="index.html">BOMNOUS</a>
+                    <p class="bomnous-footer-tagline mb-0">Curated Fashion. Intelligent Discovery.</p>
                 </div>
-                <div class="col-lg-2 col-md-3 footer-col">
-                    <h3 class="fs-3 mb-4">About</h3>
-                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
-                        <li class="mb-2"><a href="#" class="text-dark">About Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Delivery Information</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Privacy Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Terms & Conditions</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Contact Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Support Center</a></li>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="bomnous-footer-nav" aria-label="Site">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="search.html">Discover</a></li>
+                        <li><a href="stylist.html">AI Stylist</a></li>
+                        <li><a href="auth.html?next=onboarding.html">Sell on Bomnous</a></li>
+                        <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-3">
-                    <h3 class="fs-3 mb-4">My Account</h3>
-                    <ul class="footer-list mb-sm-5 mb-md-0 p-0">
-                        <li class="mb-2"><a href="#" class="text-dark">Sign In</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">View Cart</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">My Wishlist</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Track My Order</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Help</a></li>
-                        <li class="mb-2"><a href="#" class="text-dark">Order</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <h3 class="fs-3 mb-4">Install App</h3>
-                    <p class="text-secondary mb-1">From App Store or Google Play</p>
-                    <div class="app-img my-3">
-                        <img src="image/app-store.jpg" class="img-fluid border rounded" alt="">
-                        <img src="image/google-play.jpg" class="img-fluid border rounded" alt="">
+                <div class="col-12 col-md-6 col-lg-4 text-md-end">
+                    <p class="bomnous-footer-made mb-3 mb-md-2">Made with love in North Cyprus 🇨🇾</p>
+                    <div class="bomnous-footer-socials justify-content-md-end">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
                     </div>
-                    <p class="text-secondary mb-2 mt-5">Secured Payment Gateways</p>
-                    <img src="image/payment-method.png" class="img-fluid" alt="">
                 </div>
             </div>
-        </div>
-        <div class="container mt-5 pt-3 border-top">
-            <div class="row">
-                <div class="footer-bottom d-flex justify-content-between align-items-center flex-column flex-md-row">
-                    <p>© copyright 2025. All Rights Reserved By <a href="#">K2infocom</a></p>
-                    <div class="footer-bottom-links d-flex gap-3">
-                        <a href="#" class="text-dark">Terms of Use</a>
-                        <a href="#" class="text-dark">privacy policy</a>
-                    </div>
-                </div>
+            <div class="bomnous-footer-bottom bomnous-footer-bottom--single mt-4 pt-4">
+                <p class="text-center w-100 mb-0">© 2026 Bomnous. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-    <!-- Swiper Slider JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/products.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
-
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const productId = new URLSearchParams(window.location.search).get("id");
-            if (!productId) return;
-
-            const product = productsData.find(p => p.ProductId == productId);
-            if (!product) return;
-
-
-            document.querySelector('h2').textContent = product.name;
-            document.querySelector('.text-prim-color.me-3').textContent = `${product.price}`;
-            document.getElementById('mainImage').src = product.image;
-
-
-            document.querySelector('.add-to-carts').addEventListener('click', function () {
-                if (window.BomnousStore) {
-                    window.BomnousStore.addToCart(product.ProductId);
-                }
-
-                if (window.BomnousUI) {
-                    window.BomnousUI.updateNavCounts();
-                    window.BomnousUI.showCommerceToast(`"${product.name}" added to cart.`, "View cart", "carts.html");
-                }
-            });
-
-        });
-
+      (function () {
+        if (typeof window.BOMNOUS_API_BASE === "undefined" || window.BOMNOUS_API_BASE === "") {
+          window.BOMNOUS_API_BASE = "http://" + (window.location && window.location.hostname ? window.location.hostname : "127.0.0.1") + ":8000";
+        }
+      })();
     </script>
+    <script src="js/products.js"></script>
+    <script src="js/bomnous-nav.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const idParam = new URLSearchParams(window.location.search).get("id");
+            if (!idParam || !window.BomnousStore) {
+                return;
+            }
+
+            const store = window.BomnousStore;
+            if (typeof store.loadProductsFromApi === "function") {
+                await store.loadProductsFromApi();
+            }
+
+            const product = store.getProductById(idParam);
+            const nameEl = document.getElementById("product-name");
+            const bcEl = document.getElementById("product-breadcrumb");
+            if (!product) {
+                if (nameEl) nameEl.textContent = "Product not found";
+                if (bcEl) bcEl.textContent = "Not found";
+                const newWrap = document.getElementById("product-new-products");
+                if (newWrap) newWrap.innerHTML = '<div class="text-muted small">Browse the shop to find something else.</div>';
+                return;
+            }
+
+            document.title = `Bomnous | ${product.name}`;
+            if (nameEl) nameEl.textContent = product.name;
+            if (bcEl) bcEl.textContent = product.name;
+
+            const priceEl = document.getElementById("product-price");
+            if (priceEl) priceEl.textContent = product.price || "$0.00";
+
+            const compareEl = document.getElementById("product-compare");
+            if (compareEl && product.lessprice && product.lessprice !== product.price) {
+                compareEl.textContent = product.lessprice;
+                compareEl.style.display = "inline-block";
+            }
+
+            const offEl = document.getElementById("product-off");
+            if (offEl && product.off && product.off !== "0%") {
+                offEl.textContent = `${product.off} off`;
+                offEl.style.display = "inline-block";
+            }
+
+            const img = document.getElementById("mainImage");
+            if (img) {
+                img.src = product.image || "image/product-1-1.jpg";
+                img.alt = product.name;
+            }
+
+            const rawDesc = product.description || product.desc || "";
+            const desc = document.getElementById("product-description");
+            const descLong = document.getElementById("product-description-long");
+            const fallbackDesc = "A curated Bomnous piece — add it to your edit.";
+            if (desc) desc.textContent = rawDesc ? rawDesc : fallbackDesc;
+            if (descLong) descLong.textContent = rawDesc ? rawDesc : fallbackDesc;
+
+            const shopLink = document.getElementById("product-shop-link");
+            if (shopLink && product.shopId) {
+                shopLink.href = `shop.html?id=${encodeURIComponent(product.shopId)}`;
+                shopLink.textContent = product.shopName ? `Sold by ${product.shopName}` : "Sold by shop";
+                shopLink.style.display = "inline-block";
+            }
+
+            const cat = document.getElementById("product-category");
+            if (cat && product.category) {
+                cat.textContent = String(product.category).charAt(0).toUpperCase() + String(product.category).slice(1);
+                cat.style.display = "inline-block";
+            }
+
+            const aest = document.getElementById("product-aesthetic");
+            if (aest && (product.aestheticTag || product.aesthetic_tag)) {
+                const a = String(product.aestheticTag || product.aesthetic_tag);
+                aest.textContent = a.replace(/-/g, " ");
+                aest.style.display = "inline-block";
+            }
+
+            const meta = document.getElementById("product-meta");
+            if (meta) {
+                const bits = [];
+                if (product.tag) bits.push(`Edit: ${String(product.tag).replace(/-/g, " ")}`);
+                if (typeof product.stock === "number") bits.push(`Stock: ${product.stock}`);
+                meta.textContent = bits.join(" · ");
+            }
+
+            const addCart = document.getElementById("product-add-cart");
+            if (addCart) {
+                addCart.addEventListener("click", function () {
+                    store.addToCart(product.ProductId);
+                    if (window.BomnousUI) {
+                        window.BomnousUI.updateNavCounts();
+                        window.BomnousUI.showCommerceToast(`“${product.name}” added to cart.`, "View cart", "carts.html");
+                    }
+                });
+            }
+
+            const addWish = document.getElementById("product-add-wishlist");
+            if (addWish) {
+                addWish.addEventListener("click", function () {
+                    store.addToWishlist(product.ProductId);
+                    if (window.BomnousUI) {
+                        window.BomnousUI.updateNavCounts();
+                        window.BomnousUI.showCommerceToast(`“${product.name}” saved to wishlist.`, "View wishlist", "wishlist.html");
+                    }
+                });
+            }
+
+            const newWrap = document.getElementById("product-new-products");
+            if (newWrap) {
+                const all = (typeof store.getAllProducts === "function") ? store.getAllProducts() : [];
+                const currentKey = store.normalizeProductIdKey ? store.normalizeProductIdKey(idParam) : String(idParam);
+                const list = (Array.isArray(all) ? all : []).filter((p) => p && p.ProductId && p.ProductId !== currentKey);
+                const picks = list.slice(0, 4);
+                if (!picks.length) {
+                    newWrap.innerHTML = '<div class="text-muted small">No new products yet.</div>';
+                } else {
+                    newWrap.innerHTML = picks.map((p) => {
+                        const href = `product.html?id=${encodeURIComponent(p.apiNumericId != null ? p.apiNumericId : p.ProductId)}`;
+                        const title = p.name || "Product";
+                        const price = p.price || "$0.00";
+                        return `\n            <a class=\"shop-mini-card\" href=\"${href}\">\n              <div class=\"shop-mini-card-inner\">\n                <strong>${title}</strong>\n                <span class=\"text-muted small\">${price}</span>\n              </div>\n              <i class=\"fa-solid fa-arrow-right\" aria-hidden=\"true\"></i>\n            </a>\n          `;
+                    }).join("");
+                }
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/bomnous-aos-boot.js"></script>
 </body>
 
 </html>

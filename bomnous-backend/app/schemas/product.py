@@ -2,9 +2,10 @@ from pydantic import BaseModel
 from typing import Optional
 
 
-# Base schema (shared fields)
+# Base schema (fields that exist on the Product model)
 class ProductBase(BaseModel):
     name: str
+    description: str | None = None
     price: float
     stock: int = 0
     shop_id: int
@@ -24,6 +25,7 @@ class ProductCreate(ProductBase):
 # For updating a product
 class ProductUpdate(BaseModel):
     name: Optional[str] = None
+    description: Optional[str] = None
     price: Optional[float] = None
     stock: Optional[int] = None
     category: Optional[str] = None
@@ -37,6 +39,8 @@ class ProductUpdate(BaseModel):
 # For returning product data
 class ProductResponse(ProductBase):
     id: int
+    # Derived field (joined from Shop) for read responses only.
+    shop_name: str | None = None
 
     class Config:
         from_attributes = True

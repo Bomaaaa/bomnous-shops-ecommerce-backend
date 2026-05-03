@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, Text, DateTime
+from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 from app.db import Base
 
@@ -9,6 +10,11 @@ class Shop(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False, index=True)
     location = Column(String, nullable=False)
+    description = Column(Text, nullable=True)
+    whatsapp = Column(String, nullable=True)
+    phone = Column(String, nullable=True)
+    categories = Column(Text, nullable=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False) 
     owner = relationship("User") 
@@ -21,6 +27,7 @@ class Product(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False, index=True)
+    description = Column(Text, nullable=True)
     price = Column(Float, nullable=False)
     stock = Column(Integer, default=0)
     category = Column(String, nullable=False, default="women", index=True)
@@ -29,6 +36,8 @@ class Product(Base):
     image_hover_url = Column(String, nullable=True)
     compare_at_price = Column(Float, nullable=True)
     aesthetic_tag = Column(String, nullable=False, default="soft-luxury", index=True)
+    views_count = Column(Integer, nullable=False, server_default="0")
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     shop_id = Column(Integer, ForeignKey("shops.id"), nullable=False)
     seller_id = Column(Integer, ForeignKey("users.id")) 
@@ -45,6 +54,11 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
     role = Column(String, nullable=False, server_default="buyer")
+    full_name = Column(String, nullable=True)
+    phone = Column(String, nullable=True)
+    city = Column(String, nullable=True)
+    bio = Column(Text, nullable=True)
+    profile_picture = Column(Text, nullable=True)
 
     orders = relationship("Order", back_populates="user")
 

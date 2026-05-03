@@ -25,7 +25,7 @@
       title: "Women",
       name: "Floral Summer Dress",
       category: "women",
-      tag: "editors",
+      tag: "editors-picks",
       image: "image/product-2-1.jpg",
       imageHover: "image/product-2-2.jpg",
       price: "$199.99",
@@ -61,7 +61,7 @@
       title: "Accessories",
       name: "Leather Handbag",
       category: "accessories",
-      tag: "editors",
+      tag: "editors-picks",
       image: "image/product-5-1.jpg",
       imageHover: "image/product-5-2.jpg",
       price: "$179.99",
@@ -172,6 +172,7 @@
 
     return {
       ProductId: `P${id}`,
+      apiNumericId: id,
       title: titleFromCategory(category),
       name: String(raw.name || "Product"),
       category,
@@ -182,6 +183,8 @@
       price,
       lessprice,
       off,
+      shopId: raw.shop_id != null ? Number(raw.shop_id) : undefined,
+      shopName: raw.shop_name != null ? String(raw.shop_name) : undefined,
       quantity: raw.quantity
     };
   }
@@ -204,7 +207,7 @@
       const base = getApiBase();
 
       try {
-        const url = `${base}/api/products`;
+        const url = `${base}/api/products/`;
         const res = await fetch(url, {
           method: "GET",
           headers: { Accept: "application/json" },
@@ -218,9 +221,17 @@
           throw new Error("empty_or_invalid");
         }
         productsData = data.map(normalizeApiProduct);
+        if (typeof window !== "undefined") {
+          window.__BOMNOUS_CATALOG_SOURCE__ = "api";
+          window.__BOMNOUS_CATALOG_COUNT__ = productsData.length;
+        }
         return { ok: true, source: "api", count: productsData.length };
       } catch (e) {
         applyStaticFallback();
+        if (typeof window !== "undefined") {
+          window.__BOMNOUS_CATALOG_SOURCE__ = "static";
+          window.__BOMNOUS_CATALOG_COUNT__ = productsData.length;
+        }
         return { ok: false, source: "static", reason: String(e && e.message ? e.message : e) };
       }
     })();
@@ -229,15 +240,36 @@
   }
 
   const STORAGE_KEYS = {
-    wishlist: "wishlist",
-    cart: "cart"
+    wishlist: "bomnous_wishlist",
+    cart: "bomnous_cart"
   };
+
+  const LEGACY_KEYS = { wishlist: "wishlist", cart: "cart" };
+  let legacyStorageMigrated = false;
+
+  function migrateLegacyCommerceKeysOnce() {
+    if (legacyStorageMigrated) {
+      return;
+    }
+    legacyStorageMigrated = true;
+    try {
+      if (localStorage.getItem(STORAGE_KEYS.wishlist) == null && localStorage.getItem(LEGACY_KEYS.wishlist)) {
+        localStorage.setItem(STORAGE_KEYS.wishlist, localStorage.getItem(LEGACY_KEYS.wishlist));
+      }
+      if (localStorage.getItem(STORAGE_KEYS.cart) == null && localStorage.getItem(LEGACY_KEYS.cart)) {
+        localStorage.setItem(STORAGE_KEYS.cart, localStorage.getItem(LEGACY_KEYS.cart));
+      }
+    } catch (err) {
+      /* ignore */
+    }
+  }
 
   function parsePrice(value) {
     return Number.parseFloat(String(value).replace(/[^\d.]/g, "")) || 0;
   }
 
   function getStoredItems(key) {
+    migrateLegacyCommerceKeysOnce();
     try {
       const value = JSON.parse(localStorage.getItem(key));
       return Array.isArray(value) ? value : [];
@@ -247,12 +279,19 @@
   }
 
   function setStoredItems(key, items) {
+    migrateLegacyCommerceKeysOnce();
     localStorage.setItem(key, JSON.stringify(items));
+    try {
+      window.dispatchEvent(new CustomEvent("bomnous-cart-wishlist-changed"));
+    } catch (err) {
+      /* ignore */
+    }
   }
 
   function cloneProduct(product) {
     return {
       ProductId: product.ProductId,
+      apiNumericId: product.apiNumericId,
       title: product.title,
       name: product.name,
       category: product.category,
@@ -267,9 +306,24 @@
     };
   }
 
+  function normalizeProductIdKey(productId) {
+    if (productId == null || productId === "") {
+      return null;
+    }
+    const s = String(productId).trim();
+    const m = s.match(/^P?(\d+)$/i);
+    if (m) {
+      return `P${m[1]}`;
+    }
+    return s;
+  }
+
   function getProductById(productId) {
+    const key = normalizeProductIdKey(productId) || String(productId);
     return (
+      productsData.find((product) => product.ProductId === key) ||
       productsData.find((product) => product.ProductId === productId) ||
+      extraById.get(key) ||
       extraById.get(productId) ||
       null
     );
@@ -282,6 +336,10 @@
         extraById.set(p.ProductId, p);
       }
     });
+  }
+
+  function getAllProducts() {
+    return productsData.slice();
   }
 
   function renderProductGrid(container, normalizedProducts) {
@@ -301,7 +359,10 @@
       `;
       return;
     }
-    el.innerHTML = list.map(createProductCardMarkup).join("");
+    el.innerHTML = list.map((p, i) => createProductCardMarkup(p, { aosIndex: i })).join("");
+    if (typeof window.bomnousAOSRefresh === "function") {
+      window.bomnousAOSRefresh();
+    }
   }
 
   function getWishlist() {
@@ -325,7 +386,7 @@
         all: "All edits",
         trending: "Trending",
         "just-dropped": "Just dropped",
-        editors: "Editor's picks"
+        "editors-picks": "Editor's picks"
       }
     };
 
@@ -345,9 +406,21 @@
     });
   }
 
-  function createProductCardMarkup(product) {
+  function createProductCardMarkup(product, options) {
+    const opts = options || {};
+    const soldBy = (product && product.shopName ? String(product.shopName) : "") || (opts.soldBy ? String(opts.soldBy) : "");
+    const soldByHref =
+      product && product.shopId != null && !Number.isNaN(Number(product.shopId)) ? `shop.html?id=${Number(product.shopId)}` : "shop.html";
+    const soldByMarkup = soldBy
+      ? `<div class="product-sold-by-row"><a class="product-sold-by" href="${soldByHref}">Sold by ${soldBy}</a></div>`
+      : "";
+    const staggerIdx = opts.aosIndex != null ? Number(opts.aosIndex) : null;
+    const aosAttrs =
+      staggerIdx != null && !Number.isNaN(staggerIdx)
+        ? ` data-aos="fade-up" data-aos-delay="${Math.min(staggerIdx, 24) * 50}"`
+        : "";
     return `
-      <div class="col-12 col-sm-6 col-lg-3 product-grid-item">
+      <div class="col-12 col-sm-6 col-lg-3 product-grid-item"${aosAttrs}>
         <article class="product-item bomnous-product-card h-100" data-product-id="${product.ProductId}">
           <div class="product-image bomnous-product-image section-image position-relative overflow-hidden rounded-4">
             <img src="${product.image}" alt="${product.name}" class="img-fluid obj-cover bomnous-main-img">
@@ -357,18 +430,19 @@
               <button type="button" class="product-social-icon add-to-wishlist-btn" data-product-id="${product.ProductId}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Save to wishlist">
                 <i class="ri-heart-3-line"></i>
               </button>
-              <button type="button" class="product-social-icon" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Quick view">
+              <a href="product.html?id=${product.apiNumericId != null ? product.apiNumericId : String(product.ProductId).replace(/^P/i, "")}" class="product-social-icon text-decoration-none" role="button" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip" data-bs-title="Quick view">
                 <i class="ri-eye-line"></i>
-              </button>
+              </a>
             </div>
           </div>
           <div class="product-content bomnous-product-content">
+            ${soldByMarkup}
             <div class="product-meta-row">
               <span class="product-category-label">${product.title}</span>
               <span class="product-tag-label">${getFilterLabel("tag", product.tag)}</span>
             </div>
             <h3 class="bomnous-product-name">
-              <a href="product.html?id=${product.ProductId}" class="product-link">${product.name}</a>
+              <a href="product.html?id=${product.apiNumericId != null ? product.apiNumericId : String(product.ProductId).replace(/^P/i, "")}" class="product-link">${product.name}</a>
             </h3>
             <div class="product-price-row">
               <span class="new-price">${product.price}</span>
@@ -397,8 +471,9 @@
     const limitedProducts =
       typeof settings.limit === "number" ? filteredProducts.slice(0, settings.limit) : filteredProducts;
 
+    const soldBy = settings.soldBy != null ? String(settings.soldBy) : "";
     container.innerHTML = limitedProducts.length
-      ? limitedProducts.map(createProductCardMarkup).join("")
+      ? limitedProducts.map((p, i) => createProductCardMarkup(p, { soldBy, aosIndex: i })).join("")
       : `
         <div class="col-12">
           <div class="product-empty-state">
@@ -407,6 +482,10 @@
           </div>
         </div>
       `;
+
+    if (typeof window.bomnousAOSRefresh === "function") {
+      window.bomnousAOSRefresh();
+    }
 
     if (settings.countSelector) {
       const countNode = document.querySelector(settings.countSelector);
@@ -626,6 +705,8 @@
     renderProductGrid,
     createProductCardMarkup,
     getProductById,
+    getAllProducts,
+    normalizeProductIdKey,
     filterProducts,
     renderProducts,
     addToWishlist,

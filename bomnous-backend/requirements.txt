@@ -7,4 +7,5 @@ python-dotenv
 passlib[bcrypt]
 python-jose
 email-validator
+google-genai
 

@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bomnous Shops</title>
@@ -20,7 +22,7 @@
     <!-- DaisyUI + Tailwind first; project CSS last so it wins over generated utilities -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="styles.css?v=20260422-spotlight">
+    <link rel="stylesheet" href="styles.css?v=20260429-motion">
 </head>
 
 <body>
@@ -30,30 +32,49 @@
         <div class="container-fluid px-4 px-lg-5 bomnous-nav-row">
 
             <!-- LEFT NAV (desktop) -->
-            <div class="d-none d-lg-flex align-items-center gap-2 nav-left">
+            <div class="d-none d-lg-flex align-items-center flex-wrap nav-left">
                 <a href="index.html" class="nav-link-custom">Home</a>
-                <a href="#discover-preview" class="nav-link-custom">Discover</a>
-                <a href="#featured-products" class="nav-link-custom">Trending</a>
-                <a href="#discover-preview" class="nav-link-custom">Categories</a>
-                <a href="#ai-stylist" class="nav-link-custom ai-link">AI Stylist</a>
+                <a href="search.html" class="nav-link-custom">Discover</a>
+                <a href="search.html?tag=trending" class="nav-link-custom">Trending</a>
+                <div class="dropdown bomnous-nav-dropdown d-inline-block">
+                    <button type="button" class="nav-dd-toggle dropdown-toggle" id="navCategories" data-bs-toggle="dropdown" aria-expanded="false">Categories</button>
+                    <ul class="dropdown-menu" aria-labelledby="navCategories">
+                        <li><a class="dropdown-item" href="shop.html?category=women">Women</a></li>
+                        <li><a class="dropdown-item" href="shop.html?category=men">Men</a></li>
+                        <li><a class="dropdown-item" href="shop.html?category=children">Children</a></li>
+                        <li><a class="dropdown-item" href="shop.html?category=accessories">Accessories</a></li>
+                    </ul>
+                </div>
+                <a href="stylist.html" class="nav-link-custom ai-link">AI Stylist</a>
                 <a href="about.html" class="nav-link-custom">About</a>
             </div>
 
             <a class="navbar-brand bomnous-logo text-center" href="index.html">BOMNOUS</a>
 
             <div class="bomnous-nav-end d-flex align-items-center justify-content-end gap-2">
-                <div class="d-none d-lg-flex align-items-center gap-2 nav-icons">
-                    <a href="#" class="icon-link"><i class="bi bi-search"></i></a>
+                <div class="d-none d-lg-flex align-items-center nav-icons">
+                    <button type="button" class="icon-link border-0 bg-transparent p-0 bomnous-open-nav-search" aria-label="Open search">
+                        <i class="bi bi-search"></i>
+                    </button>
                     <a href="wishlist.html" class="icon-link position-relative">
                         <i class="bi bi-heart"></i>
-                        <span class="icon-count wishlist-span">0</span>
+                        <span class="icon-count wishlist-span d-none" aria-hidden="true"></span>
                     </a>
-                    <a href="carts.html" class="icon-link position-relative">
+                    <a href="carts.html" class="icon-link position-relative" title="Cart">
                         <i class="bi bi-bag"></i>
-                        <span class="icon-count cart-span">0</span>
+                        <span class="icon-count cart-span d-none" aria-hidden="true"></span>
                     </a>
-                    <a href="myaccount.html" class="icon-link"><i class="bi bi-person"></i></a>
-                    <a href="#" class="icon-link"><i class="bi bi-globe"></i></a>
+                    <a href="auth.html" class="icon-link bomnous-nav-profile-link" id="nav-profile-link" data-href-guest="auth.html" data-href-logged="profile.html" aria-label="Account"><span class="bomnous-nav-avatar bomnous-nav-avatar--guest" id="nav-profile-avatar"><i class="bi bi-person" aria-hidden="true"></i></span></a>
+                    <div class="dropdown bomnous-icon-dropdown d-inline-block">
+                        <button type="button" class="icon-link border-0 bg-transparent p-0 dropdown-toggle bomnous-lang-btn" id="langDropdown" data-bs-toggle="dropdown" data-bs-offset="0,8" aria-expanded="false" aria-label="Language">
+                            <i class="bi bi-globe"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+                            <li><span class="dropdown-item-text text-muted small">Language</span></li>
+                            <li><a class="dropdown-item active" href="#" aria-current="true">English (EN)</a></li>
+                            <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Türkçe (TR) — soon</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <button class="bomnous-menu-toggle d-lg-none" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#Sidebar" aria-label="Open menu">
@@ -72,18 +93,25 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body d-flex flex-column">
-                <div class="container my-5 gap-4 d-flex justify-content-between align-items-center">
-                    <div class="input-group search-box">
-                        <input type="text" class="form-control" placeholder="Search Products...">
-                        <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
-                    </div>
+                <div class="container my-4 gap-2 d-flex flex-column">
+                    <button type="button" class="btn btn-outline-primary w-100 bomnous-open-nav-search">Open search</button>
+                    <form action="search.html" method="get" class="input-group search-box" role="search">
+                        <input class="form-control" type="search" name="q" placeholder="Search products…" aria-label="Search products" />
+                        <button class="btn btn-outline-secondary" type="submit" aria-label="Submit search"><i class="bi bi-search"></i></button>
+                    </form>
                 </div>
                 <!-- Sidebar Menu -->
                 <ul class="navbar-nav nav-menu">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search.html">Discover</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search.html?tag=trending">Trending</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=women">Women</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=men">Men</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=children">Children</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=accessories">Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stylist.html">AI Stylist</a></li>
                     <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
                 </ul>
                 <!-- Social Icons -->
@@ -103,7 +131,7 @@
 
             <!-- Slide 1 -->
             <div class="swiper-slide hero-slide">
-                <div class="hero-bg hero-bg-1" ></div>
+                <div class="hero-bg hero-bg-1"></div>
 
                 <div class="hero-overlay-content">
                     <h3 class="hero-label">Discover</h3>
@@ -114,7 +142,7 @@
                     <p class="hero-subtitle">
                         Explore standout brands from Europe, Africa, and North Cyprus — all intelligently curated in one marketplace.
                     </p>
-                    <a href="#" class="hero-btn">Explore Brands</a>
+                    <a href="shop.html" class="hero-btn">Explore Brands</a>
                 </div>
             </div>
 
@@ -131,7 +159,7 @@
                     <p class="hero-subtitle">
                         Our AI stylist matches you with pieces that fit your taste, culture, and lifestyle.
                     </p>
-                    <a href="#" class="hero-btn">Try AI Stylist</a>
+                    <a href="stylist.html" class="hero-btn">Try AI Stylist</a>
                 </div>
             </div>
 
@@ -148,7 +176,7 @@
                     <p class="hero-subtitle">
                         A trusted space where independent brands and manufacturers connect with the right audience.
                     </p>
-                    <a href="#" class="hero-btn">Start Selling</a>
+                    <a href="auth.html" class="hero-btn">Start Selling</a>
                 </div>
             </div>
 
@@ -170,7 +198,7 @@
         <div class="row g-4">
 
             <!-- 1 -->
-            <div class="col-lg-2 col-md-4 col-6">
+            <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="0">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
                         <i class="bi bi-globe2"></i>
@@ -180,7 +208,7 @@
             </div>
 
             <!-- 2 -->
-            <div class="col-lg-2 col-md-4 col-6">
+            <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
                         <i class="bi bi-stars"></i>
@@ -190,7 +218,7 @@
             </div>
 
             <!-- 3 -->
-            <div class="col-lg-2 col-md-4 col-6">
+            <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
                         <i class="bi bi-arrow-left-right"></i>
@@ -200,7 +228,7 @@
             </div>
 
             <!-- 4 -->
-            <div class="col-lg-2 col-md-4 col-6">
+            <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
                         <i class="bi bi-patch-check"></i>
@@ -210,7 +238,7 @@
             </div>
 
             <!-- 5 -->
-            <div class="col-lg-2 col-md-4 col-6">
+            <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
                         <i class="bi bi-shield-lock"></i>
@@ -220,7 +248,7 @@
             </div>
 
             <!-- 6 -->
-            <div class="col-lg-2 col-md-4 col-6">
+            <div class="col-lg-2 col-md-4 col-6" data-aos="fade-up" data-aos-delay="500">
                 <div class="feature-card text-center">
                     <div class="feature-icon">
                         <i class="bi bi-headset"></i>
@@ -235,14 +263,17 @@
 
 
 <!-- Our Products Section -->
-<section class="product-section py-5" id="featured-products" data-product-section data-count-target="#homepage-product-count" data-summary-target="#homepage-product-summary">
+<section class="product-section py-5" id="featured-products" data-product-section data-count-target="#homepage-product-count" data-summary-target="#homepage-product-summary" data-limit="10">
   <div class="container">
     <div class="product-section-shell">
-      <div class="product-section-header">
+      <div class="product-section-header" data-aos="fade-up">
         <div>
           <span class="section-eyebrow">Curated shopping</span>
           <h2 class="section-title mb-2">Discover Pieces Worth Saving</h2>
-          <p class="product-section-copy mb-0" id="homepage-product-summary">Showing all curated pieces.</p>
+          <p class="product-section-copy mb-0" id="homepage-product-summary">Loading catalog…</p>
+          <p class="product-section-copy mb-0 small mt-1" id="homepage-catalog-badge" aria-live="polite">
+            <span class="catalog-badge-inner text-muted">Connecting to Bomnous API…</span>
+          </p>
         </div>
         <div class="product-section-stat">
           <strong id="homepage-product-count">0</strong>
@@ -250,30 +281,92 @@
         </div>
       </div>
 
-      <div class="filter-toolbar">
+      <div class="filter-toolbar" data-aos="fade-up" data-aos-delay="80">
         <div class="filter-group">
           <span class="filter-group-label">Category</span>
           <div class="product-filters">
-            <button class="filter-chip active" data-filter-type="category" data-filter-value="all">All</button>
-            <button class="filter-chip" data-filter-type="category" data-filter-value="women">Women</button>
-            <button class="filter-chip" data-filter-type="category" data-filter-value="men">Men</button>
-            <button class="filter-chip" data-filter-type="category" data-filter-value="children">Children</button>
-            <button class="filter-chip" data-filter-type="category" data-filter-value="accessories">Accessories</button>
+            <button class="filter-chip active" data-filter-type="category" data-filter-value="all" data-aos="fade-up" data-aos-delay="0">All</button>
+            <button class="filter-chip" data-filter-type="category" data-filter-value="women" data-aos="fade-up" data-aos-delay="60">Women</button>
+            <button class="filter-chip" data-filter-type="category" data-filter-value="men" data-aos="fade-up" data-aos-delay="120">Men</button>
+            <button class="filter-chip" data-filter-type="category" data-filter-value="children" data-aos="fade-up" data-aos-delay="180">Children</button>
+            <button class="filter-chip" data-filter-type="category" data-filter-value="accessories" data-aos="fade-up" data-aos-delay="240">Accessories</button>
           </div>
         </div>
 
         <div class="filter-group">
           <span class="filter-group-label">Edit</span>
           <div class="product-filters">
-            <button class="filter-chip active" data-filter-type="tag" data-filter-value="all">All edits</button>
-            <button class="filter-chip" data-filter-type="tag" data-filter-value="trending">Trending</button>
-            <button class="filter-chip" data-filter-type="tag" data-filter-value="just-dropped">Just Dropped</button>
-            <button class="filter-chip" data-filter-type="tag" data-filter-value="editors">Editor's Picks</button>
+            <button class="filter-chip active" data-filter-type="tag" data-filter-value="all" data-aos="fade-up" data-aos-delay="0">All edits</button>
+            <button class="filter-chip" data-filter-type="tag" data-filter-value="trending" data-aos="fade-up" data-aos-delay="60">Trending</button>
+            <button class="filter-chip" data-filter-type="tag" data-filter-value="just-dropped" data-aos="fade-up" data-aos-delay="120">Just Dropped</button>
+            <button class="filter-chip" data-filter-type="tag" data-filter-value="editors-picks" data-aos="fade-up" data-aos-delay="180">Editor's Picks</button>
           </div>
         </div>
       </div>
 
-      <div class="row product-wrap g-4"></div>
+      <div class="row product-wrap g-4" id="homepage-product-wrap">
+        <div class="col-12 bomnous-products-loading" id="homepage-products-loading" role="status" aria-label="Loading products">
+          <div class="bomnous-skeleton-wrap text-center py-5 px-3">
+            <div class="d-inline-flex align-items-center gap-2 text-muted small mb-0">
+              <span class="bomnous-skeleton-dot" aria-hidden="true"></span>
+              <span>Loading pieces from the catalog…</span>
+            </div>
+            <div class="row g-3 mt-3 justify-content-center">
+              <div class="col-6 col-md-3"><div class="bomnous-skeleton-card"></div></div>
+              <div class="col-6 col-md-3"><div class="bomnous-skeleton-card"></div></div>
+              <div class="col-6 col-md-3 d-none d-md-block"><div class="bomnous-skeleton-card"></div></div>
+              <div class="col-6 col-md-3 d-none d-md-block"><div class="bomnous-skeleton-card"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center justify-content-lg-end mt-4">
+        <a class="btn btn-outline-dark" id="homepage-view-more" href="shop.html">
+          View full shop
+          <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Smart sections: Trending + New shops -->
+<section class="product-section pt-0" id="smart-sections">
+  <div class="container">
+    <div class="product-section-shell mb-4" data-aos="fade-up">
+      <div class="product-section-header">
+        <div>
+          <span class="section-eyebrow">Trending this week</span>
+          <h2 class="section-title mb-2">What shoppers are saving right now</h2>
+          <p class="product-section-copy mb-0" id="trending-summary">Fresh picks from across Bomnous.</p>
+        </div>
+        <div class="product-section-stat">
+          <strong id="trending-count">0</strong>
+          <span>pieces</span>
+        </div>
+      </div>
+      <div class="row product-wrap g-4" id="trending-wrap">
+        <div class="col-12 text-muted small">Loading trending pieces…</div>
+      </div>
+      <div class="d-flex justify-content-end mt-3">
+        <a class="ai-text-link" href="search.html?tag=trending">See more trending</a>
+      </div>
+    </div>
+
+    <div class="product-section-shell" data-aos="fade-up">
+      <div class="product-section-header">
+        <div>
+          <span class="section-eyebrow">New shops</span>
+          <h2 class="section-title mb-2">Meet the latest sellers</h2>
+          <p class="product-section-copy mb-0" id="newshops-summary">New storefronts joining the feed.</p>
+        </div>
+      </div>
+      <div class="d-grid gap-3" id="newshops-wrap">
+        <div class="text-muted small">Loading shops…</div>
+      </div>
+      <div class="d-flex justify-content-end mt-3">
+        <a class="ai-text-link" href="shop.html">Browse all shops</a>
+      </div>
     </div>
   </div>
 </section>
@@ -282,7 +375,7 @@
         <div class="container">
             <div class="ai-stylist-panel">
                 <div class="row ai-stylist-layout g-4">
-                    <div class="col-lg-7">
+                    <div class="col-lg-7" data-aos="fade-up">
                         <span class="section-eyebrow">Personal AI stylist</span>
                         <h2 class="ai-stylist-title">Describe the moment. Let AI build the look.</h2>
                         <p class="ai-stylist-copy">Tell Bomnous where you're going, how you want to feel, and what you love wearing, and your AI stylist will guide you to looks that fit your taste, budget, and occasion.</p>
@@ -299,11 +392,11 @@
                             </div>
                         </div>
                         <div class="ai-stylist-actions">
-                            <a href="shop.html" class="btn btn-default" style="white-space: nowrap !important; width: fit-content !important; min-width: 18rem !important; max-width: none !important;"><span class="bomnous-cta-label">Try the AI concept</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                            <a href="shop.html" class="ai-text-link">See styled product edits</a>
+                            <a href="stylist.html" class="btn btn-default bomnous-ai-cta-primary"><span class="bomnous-cta-label">Try the AI stylist</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                            <a href="search.html" class="ai-text-link">Discover pieces by mood</a>
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-5" data-aos="fade-up" data-aos-delay="200">
                         <div class="ai-stylist-demo-card">
                             <div class="ai-demo-header">
                                 <span class="ai-demo-dot"></span>
@@ -358,7 +451,7 @@
 
     <section class="discover-preview-section pt-0" id="discover-preview">
         <div class="container">
-            <div class="section-heading-row">
+            <div class="section-heading-row" data-aos="fade-up">
                 <div>
                     <span class="section-eyebrow">Shop by aesthetic</span>
                     <h3 class="section-title mb-2">Explore Looks By Mood, Moment, and Energy</h3>
@@ -366,7 +459,7 @@
                 <a href="shop.html" class="ai-text-link">See full shop</a>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-3 d-flex">
+                <div class="col-md-6 col-lg-3 d-flex" data-aos="zoom-in" data-aos-delay="0">
                     <a href="search.html?aesthetic=soft-luxury" class="discover-card discover-card-large w-100">
                         <img class="discover-card__img" src="https://images.pexels.com/photos/6995902/pexels-photo-6995902.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Soft luxury: elegant neutral outfit, refined styling" width="600" height="800" loading="lazy" decoding="async">
                         <span class="discover-card__overlay" aria-hidden="true"></span>
@@ -376,7 +469,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6 col-lg-3 d-flex">
+                <div class="col-md-6 col-lg-3 d-flex" data-aos="zoom-in" data-aos-delay="100">
                     <a href="search.html?aesthetic=event-ready" class="discover-card w-100">
                         <img class="discover-card__img" src="https://images.pexels.com/photos/36195499/pexels-photo-36195499.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Event ready: full-length evening gown for dinner or formal events" width="600" height="800" loading="lazy" decoding="async">
                         <span class="discover-card__overlay" aria-hidden="true"></span>
@@ -386,7 +479,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6 col-lg-3 d-flex">
+                <div class="col-md-6 col-lg-3 d-flex" data-aos="zoom-in" data-aos-delay="200">
                     <a href="search.html?aesthetic=smart-casual" class="discover-card w-100">
                         <img class="discover-card__img" src="https://images.pexels.com/photos/6311637/pexels-photo-6311637.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Smart casual: neat sweater and jeans, polished but relaxed" width="600" height="800" loading="lazy" decoding="async">
                         <span class="discover-card__overlay" aria-hidden="true"></span>
@@ -396,7 +489,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-md-6 col-lg-3 d-flex">
+                <div class="col-md-6 col-lg-3 d-flex" data-aos="zoom-in" data-aos-delay="300">
                     <a href="search.html?aesthetic=cultural-blend" class="discover-card w-100">
                         <img class="discover-card__img" src="https://images.pexels.com/photos/29168547/pexels-photo-29168547.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Cultural blend: African fashion in vibrant Nigerian colours" width="600" height="800" loading="lazy" decoding="async">
                         <span class="discover-card__overlay" aria-hidden="true"></span>
@@ -412,7 +505,7 @@
 
     <section class="brand-story-banner pt-0">
         <div class="container">
-            <div class="seasonal-banner bomnous-main-banner">
+            <div class="seasonal-banner bomnous-main-banner" data-aos="fade-up">
                 <div class="seasonal-banner-copy">
                     <span class="section-eyebrow">Bomnous edit</span>
                     <h2>Fashion discovery, seller visibility, and softer luxury in one experience.</h2>
@@ -425,7 +518,7 @@
 
     <section class="brand-story-banner pt-0">
         <div class="container">
-            <div class="seasonal-banner seller-spotlight-banner">
+            <div class="seasonal-banner seller-spotlight-banner" data-aos="fade-up">
                 <div class="seasonal-banner-copy">
                     <span class="section-eyebrow">Seller spotlight</span>
                     <h2>Meet the independent brands shaping fashion in North Cyprus.</h2>
@@ -436,43 +529,25 @@
         </div>
     </section>
 
-    <footer class="bomnous-footer">
+    <footer class="bomnous-footer bomnous-footer--global" id="bomnous-site-footer" role="contentinfo">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-5">
+            <div class="row g-4 g-lg-5 align-items-start">
+                <div class="col-12 col-lg-4">
                     <a class="navbar-brand bomnous-logo bomnous-footer-logo" href="index.html">BOMNOUS</a>
-                    <p class="bomnous-footer-copy">A modern fashion discovery platform for curated global style, thoughtful shopping, and seller visibility.</p>
-                    <div class="bomnous-footer-meta">
-                        <span>Based in a global-first fashion mindset</span>
-                        <span>Built for shoppers, stylists, and future sellers</span>
-                    </div>
+                    <p class="bomnous-footer-tagline mb-0">Curated Fashion. Intelligent Discovery.</p>
                 </div>
-                <div class="col-lg-2 col-md-4">
-                    <h4 class="bomnous-footer-title">Explore</h4>
-                    <ul class="bomnous-footer-list">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <ul class="bomnous-footer-nav" aria-label="Site">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li><a href="#discover-preview">Discover</a></li>
-                        <li><a href="#ai-stylist">AI Stylist</a></li>
+                        <li><a href="search.html">Discover</a></li>
+                        <li><a href="stylist.html">AI Stylist</a></li>
+                        <li><a href="auth.html?next=onboarding.html">Sell on Bomnous</a></li>
+                        <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4">
-                    <h4 class="bomnous-footer-title">Customer</h4>
-                    <ul class="bomnous-footer-list">
-                        <li><a href="wishlist.html">Wishlist</a></li>
-                        <li><a href="carts.html">Cart</a></li>
-                        <li><a href="myaccount.html">Account</a></li>
-                        <li><a href="Contact.html">Support</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-4">
-                    <h4 class="bomnous-footer-title">Contact</h4>
-                    <ul class="bomnous-footer-list">
-                        <li><a href="mailto:hello@bomnous.com">hello@bomnous.com</a></li>
-                        <li><a href="tel:+234000000000">+234 000 000 000</a></li>
-                        <li><span>Lagos, North Cyprus, Europe-facing</span></li>
-                    </ul>
-                    <div class="bomnous-footer-socials">
+                <div class="col-12 col-md-6 col-lg-4 text-md-end">
+                    <p class="bomnous-footer-made mb-3 mb-md-2">Made with love in North Cyprus 🇨🇾</p>
+                    <div class="bomnous-footer-socials justify-content-md-end">
                         <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                         <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
                         <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
@@ -480,19 +555,20 @@
                     </div>
                 </div>
             </div>
-            <div class="bomnous-footer-bottom">
-                <p>© 2026 Bomnous Shops. Designed for curated fashion discovery.</p>
-                <div class="bomnous-footer-bottom-links">
-                    <a href="about.html">About</a>
-                    <a href="Contact.html">Contact</a>
-                    <a href="myaccount.html">Sign in</a>
-                </div>
+            <div class="bomnous-footer-bottom bomnous-footer-bottom--single mt-4 pt-4">
+                <p class="text-center w-100 mb-0">© 2026 Bomnous. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-
-
+    <!-- API origin when static site and API use different ports (e.g. 8080 / 8000) -->
+    <script>
+      (function () {
+        if (typeof window.BOMNOUS_API_BASE === "undefined" || window.BOMNOUS_API_BASE === "") {
+          window.BOMNOUS_API_BASE = "http://" + (window.location && window.location.hostname ? window.location.hostname : "127.0.0.1") + ":8000";
+        }
+      })();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
@@ -501,8 +577,11 @@
         crossorigin="anonymous"></script>
     <!-- Swiper Slider JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
-    <script src="js/products.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/products.js?v=20260425-smartshops"></script>
+    <script src="js/bomnous-nav.js"></script>
+    <script src="js/script.js?v=20260425-smartshops"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/bomnous-aos-boot.js"></script>
 </body>
 
 </html>

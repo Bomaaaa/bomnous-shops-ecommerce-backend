@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from app.db import SessionLocal, get_db
-from app.models import Product, User
+from app.models import Product, Shop, User
 from app.schemas.product import ProductCreate, ProductResponse, ProductUpdate
+from app.product_search import search_products_public
 from app.utils.security import get_current_user
 
 
@@ -22,7 +23,10 @@ def create_product(product: ProductCreate, db: Session = Depends(get_db),  curre
             detail="Only sellers can create products"
         )
     
-    new_product = Product(**product.model_dump(), seller_id=current_user.id)
+    # `shop_name` is response-only; ignore any unexpected fields defensively.
+    payload = product.model_dump()
+    payload.pop("shop_name", None)
+    new_product = Product(**payload, seller_id=current_user.id)
     db.add(new_product)
     db.commit()
     db.refresh(new_product)
@@ -32,7 +36,45 @@ def create_product(product: ProductCreate, db: Session = Depends(get_db),  curre
 # GET ALL PRODUCTS
 @router.get("/", response_model=list[ProductResponse])
 def get_products(db: Session = Depends(get_db)):
-    return db.query(Product).all()
+    rows = (
+        db.query(Product, Shop.name.label("shop_name"))
+        .join(Shop, Product.shop_id == Shop.id)
+        .order_by(Product.id)
+        .all()
+    )
+    out = []
+    for p, shop_name in rows:
+        data = ProductResponse.model_validate(p).model_dump()
+        data["shop_name"] = shop_name
+        out.append(data)
+    return out
+
+
+@router.get("/search", response_model=list[ProductResponse])
+def api_products_search(
+    db: Session = Depends(get_db),
+    q: str | None = Query(default=None, max_length=120),
+    category: str | None = Query(default=None, max_length=40),
+    aesthetic: str | None = Query(default=None, max_length=40),
+    tag: str | None = Query(default=None, max_length=40),
+    min_price: float | None = Query(default=None, ge=0),
+    max_price: float | None = Query(default=None, ge=0),
+    sort: str | None = Query(default=None, max_length=30),
+    limit: int = Query(default=200, ge=1, le=500),
+):
+    """GET /api/products/search — same filters as /products/search; q matches name, description, category, aesthetic_tag, tag."""
+    return search_products_public(
+        db,
+        q=q,
+        category=category,
+        aesthetic=aesthetic,
+        tag=tag,
+        min_price=min_price,
+        max_price=max_price,
+        sort=sort,
+        limit=limit,
+    )
+
 
 # Sellers can see only their products
 @router.get("/my-products", response_model=list[ProductResponse])
