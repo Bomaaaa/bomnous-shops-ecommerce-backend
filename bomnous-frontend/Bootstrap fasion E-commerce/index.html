@@ -561,11 +561,11 @@
         </div>
     </footer>
 
-    <!-- API origin when static site and API use different ports (e.g. 8080 / 8000) -->
+    <!-- API origin: defaults to production Railway; override for local FastAPI if needed -->
     <script>
       (function () {
         if (typeof window.BOMNOUS_API_BASE === "undefined" || window.BOMNOUS_API_BASE === "") {
-          window.BOMNOUS_API_BASE = "http://" + (window.location && window.location.hostname ? window.location.hostname : "127.0.0.1") + ":8000";
+          window.BOMNOUS_API_BASE = "https://bomnous-shops-ecommerce-backend-production.up.railway.app";
         }
       })();
     </script>

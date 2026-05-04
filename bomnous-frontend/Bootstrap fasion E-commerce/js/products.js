@@ -3,7 +3,7 @@
  * otherwise uses STATIC_PRODUCTS. Category + tag filters apply to the active catalog.
  *
  * Configure API origin (if not same host/port as the static site):
- *   <script>window.BOMNOUS_API_BASE = "http://127.0.0.1:8000";</script>
+ *   <script>window.BOMNOUS_API_BASE = "https://bomnous-shops-ecommerce-backend-production.up.railway.app";</script>
  * before this file, or set at runtime before DOMContentLoaded.
  */
 (function () {
@@ -118,7 +118,7 @@
     if (typeof window !== "undefined" && window.BOMNOUS_API_BASE !== undefined && window.BOMNOUS_API_BASE !== "") {
       return String(window.BOMNOUS_API_BASE).replace(/\/$/, "");
     }
-    return "http://127.0.0.1:8000";
+    return "https://bomnous-shops-ecommerce-backend-production.up.railway.app";
   }
 
   function titleFromCategory(category) {
@@ -196,7 +196,7 @@
 
   /**
    * Fetches GET {API_BASE}/api/products once; on failure or empty list uses static data.
-   * API origin defaults to http://127.0.0.1:8000; override with window.BOMNOUS_API_BASE.
+   * API origin defaults to production Railway URL; override with window.BOMNOUS_API_BASE.
    */
   function loadProductsFromApi() {
     if (loadPromise) {

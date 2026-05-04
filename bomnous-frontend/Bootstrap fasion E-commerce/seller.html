@@ -299,8 +299,7 @@
           if (typeof window !== "undefined" && window.BOMNOUS_API_BASE !== undefined && window.BOMNOUS_API_BASE !== "") {
             return String(window.BOMNOUS_API_BASE).replace(/\/$/, "");
           }
-          var host = (typeof window !== "undefined" && window.location && window.location.hostname) ? window.location.hostname : "127.0.0.1";
-          return "http://" + host + ":8000";
+          return "https://bomnous-shops-ecommerce-backend-production.up.railway.app";
         }
 
         function getToken() {
@@ -443,7 +442,7 @@
             renderProductsTable(data);
             document.getElementById("seller-products-subtitle").textContent = String(data.length) + " products in your catalog.";
           } catch (e) {
-            setAlert("seller-products-error", "Could not reach the API. Is the backend running on port 8000?");
+            setAlert("seller-products-error", "Could not reach the API. Check your connection or try again later.");
             document.getElementById("seller-products-subtitle").textContent = "Offline.";
           }
         }
@@ -487,7 +486,7 @@
             form.reset();
             await loadProducts();
           } catch (e) {
-            setAlert("seller-add-error", "Could not reach the API. Is the backend running on port 8000?");
+            setAlert("seller-add-error", "Could not reach the API. Check your connection or try again later.");
           } finally {
             submit.disabled = false;
             submit.innerHTML = '<i class="bi bi-plus-circle me-2"></i>Add product';

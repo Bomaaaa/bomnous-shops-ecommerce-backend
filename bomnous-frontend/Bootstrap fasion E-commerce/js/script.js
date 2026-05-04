@@ -352,8 +352,7 @@
       if (typeof window !== "undefined" && window.BOMNOUS_API_BASE !== undefined && window.BOMNOUS_API_BASE !== "") {
         return String(window.BOMNOUS_API_BASE).replace(/\/$/, "");
       }
-      const host = window.location && window.location.hostname ? window.location.hostname : "127.0.0.1";
-      return `http://${host}:8000`;
+      return "https://bomnous-shops-ecommerce-backend-production.up.railway.app";
     }
 
     const titleNode = shopSection.querySelector(".shop-toolbar-copy .section-title");
@@ -415,12 +414,12 @@
     } catch (e) {
       setEmptyState(
         "Shop offline",
-        "Could not reach the API. Is the backend running on port 8000?",
+        "Could not reach the API. Check your connection or try again later.",
         `
           <div class="col-12">
             <div class="product-empty-state">
               <p>Shop page is offline right now.</p>
-              <small class="text-muted">Start the backend API and refresh this page.</small>
+              <small class="text-muted">Refresh this page or try again later.</small>
             </div>
           </div>
         `
@@ -900,7 +899,7 @@
     const apiBase =
       window.BomnousStore && typeof window.BomnousStore.getApiBase === "function"
         ? window.BomnousStore.getApiBase()
-        : "http://127.0.0.1:8000";
+        : "https://bomnous-shops-ecommerce-backend-production.up.railway.app";
 
     function scrollToBottom() {
       windowEl.scrollTop = windowEl.scrollHeight + 9999;
@@ -1185,8 +1184,7 @@
       if (typeof window !== "undefined" && window.BOMNOUS_API_BASE !== undefined && window.BOMNOUS_API_BASE !== "") {
         return String(window.BOMNOUS_API_BASE).replace(/\/$/, "");
       }
-      const host = window.location && window.location.hostname ? window.location.hostname : "127.0.0.1";
-      return `http://${host}:8000`;
+      return "https://bomnous-shops-ecommerce-backend-production.up.railway.app";
     }
 
     const base = apiBase();

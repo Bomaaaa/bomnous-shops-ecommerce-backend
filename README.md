@@ -157,7 +157,7 @@ python3 -m http.server 8080 --bind 0.0.0.0
 
 Open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) (or your machine’s LAN IP on the same port).
 
-The UI calls the API on **port 8000** using the **same hostname** as the page. If you need a fixed API origin, set this **before** loading `js/products.js` / main scripts:
+The bundled HTML defaults the API to **production** on Railway. To use a **local** FastAPI instance instead, set this **before** loading `js/products.js` / main scripts:
 
 ```html
 <script>window.BOMNOUS_API_BASE = "http://127.0.0.1:8000";</script>

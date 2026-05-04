@@ -8,8 +8,7 @@
     if (typeof window !== "undefined" && window.BOMNOUS_API_BASE !== undefined && window.BOMNOUS_API_BASE !== "") {
       return String(window.BOMNOUS_API_BASE).replace(/\/$/, "");
     }
-    var host = window.location && window.location.hostname ? window.location.hostname : "127.0.0.1";
-    return "http://" + host + ":8000";
+    return "https://bomnous-shops-ecommerce-backend-production.up.railway.app";
   }
 
   function getToken() {
