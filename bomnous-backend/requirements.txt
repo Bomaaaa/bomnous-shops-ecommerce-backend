@@ -8,4 +8,4 @@ passlib[bcrypt]
 python-jose
 email-validator
 google-genai
-
+bcrypt==4.0.1
