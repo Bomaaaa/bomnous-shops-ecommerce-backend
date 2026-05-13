@@ -2,29 +2,48 @@
 """
 Update Bomnous product images using the Pexels API.
 
+Requires:
+  - DATABASE_URL (same as the FastAPI app — use Railway Postgres URL to update production)
+  - PEXELS_API_KEY (https://www.pexels.com/api/ — never commit the key)
+
 Run from your backend root:
   cd bomnous-backend
-  conda activate bomnous-ai-shop
+  export DATABASE_URL="postgresql+psycopg2://..."   # or rely on .env
+  export PEXELS_API_KEY="your_key"
   python update_product_images.py
+
+Railway: copy DATABASE_URL from the Postgres service (or link it to the API service), run this
+script once from your laptop with those env vars, or run a one-off job on Railway with the
+same variables.
 """
 
 import os
 import sys
 import time
 import requests
+from dotenv import load_dotenv
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 
+load_dotenv(os.path.join(ROOT, ".env"))
+
 from app.db import SessionLocal
 from app.models import Product
 
-PEXELS_API_KEY = "a9W8GYNbFLEKt9QnE63ryPyHyio0RMNhOM4FIMQWfV6H7lzbrjEddE9f"
+PEXELS_API_KEY = (os.environ.get("PEXELS_API_KEY") or "").strip()
 PEXELS_SEARCH_URL = "https://api.pexels.com/v1/search"
 
-HEADERS = {
-    "Authorization": PEXELS_API_KEY
-}
+
+def _headers() -> dict[str, str]:
+    if not PEXELS_API_KEY:
+        print(
+            "Missing PEXELS_API_KEY. Set it in the environment or bomnous-backend/.env\n"
+            "  export PEXELS_API_KEY=...\n"
+            "Create a key at https://www.pexels.com/api/"
+        )
+        sys.exit(1)
+    return {"Authorization": PEXELS_API_KEY}
 
 # Custom search queries per product name for best results
 CUSTOM_QUERIES = {
@@ -68,7 +87,7 @@ def search_pexels(query: str) -> tuple[str | None, str | None]:
     try:
         response = requests.get(
             PEXELS_SEARCH_URL,
-            headers=HEADERS,
+            headers=_headers(),
             params={"query": query, "per_page": 5, "orientation": "portrait"},
             timeout=10
         )
@@ -91,6 +110,21 @@ def search_pexels(query: str) -> tuple[str | None, str | None]:
 
 
 def main():
+    db_url = (os.environ.get("DATABASE_URL") or "").strip()
+    if not db_url:
+        print("Missing DATABASE_URL. Point it at the database you want to update (e.g. Railway Postgres).")
+        sys.exit(1)
+    if "railway.internal" in db_url.lower():
+        print(
+            "DATABASE_URL uses a Railway *internal* host (e.g. postgres.railway.internal).\n"
+            "That hostname only works inside Railway's network — not from your laptop.\n\n"
+            "Fix: In Railway → your Postgres service → Variables, use the **public** URL:\n"
+            "  • Look for DATABASE_PUBLIC_URL, or 'Public network' / 'Connect externally', or\n"
+            "  • A host like *.proxy.rlwy.net / region.railway.app (not *.railway.internal).\n\n"
+            "Then: export DATABASE_URL='<that public postgresql://...>'"
+        )
+        sys.exit(1)
+    _headers()  # validate Pexels key before touching the DB
     db = SessionLocal()
     try:
         products = db.query(Product).order_by(Product.id).all()

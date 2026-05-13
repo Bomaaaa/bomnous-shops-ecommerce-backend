@@ -11,12 +11,20 @@ from sqlalchemy import pool
 from alembic import context
 
 
+def _database_url() -> str:
+    url = (os.environ.get("DATABASE_URL") or "").strip()
+    if not url:
+        raise RuntimeError(
+            "DATABASE_URL is missing or empty. Set it for migrations (e.g. Railway Variables)."
+        )
+    return url
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 
-config.set_main_option("sqlalchemy.url", os.environ.get("DATABASE_URL"))
+config.set_main_option("sqlalchemy.url", _database_url())
 
 
 # Interpret the config file for Python logging.

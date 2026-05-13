@@ -165,6 +165,76 @@ The bundled HTML defaults the API to **production** on Railway. To use a **local
 
 ---
 
+## Railway: FastAPI (private DB) vs your laptop (public DB)
+
+Railway gives you **two ways** to connect to the same Postgres. They solve **different problems**; you are not choosing one forever—you use **both patterns** in the right place.
+
+| Where code runs | Which database URL | Why |
+|-----------------|-------------------|-----|
+| **FastAPI service on Railway** | **Private** `DATABASE_URL` (hostname like `*.railway.internal` or Railway’s **private** reference) | API and Postgres sit **inside** Railway’s network. No public internet hop for normal traffic, no egress warning for that path, smaller attack surface. |
+| **Your own laptop** (e.g. `python update_product_images.py`) | **Public** URL (`DATABASE_PUBLIC_URL` or proxy host like `*.proxy.rlwy.net`) | Your PC is **outside** Railway. It **cannot resolve** private `*.railway.internal` names, so you must use the URL Railway exposes for **external** clients—**only while the script runs**. |
+
+**Important:** The **browser / Vercel** never talks to Postgres. Shoppers only call **your FastAPI HTTPS URL**. Only the **Python API** (on Railway) should have `DATABASE_URL` for Postgres.
+
+### Part A — FastAPI on Railway (always use private DB)
+
+1. Open [Railway](https://railway.app) → your **project** with **Postgres** + your **API** (FastAPI) service.
+2. Click your **FastAPI** service → **Variables** (or **Settings → Variables**).
+3. Find **`DATABASE_URL`**.
+4. Set it to the **private** connection from Postgres **reference** (Railway’s UI: **New variable** → **Add reference** → pick your **Postgres** service → choose the variable usually named **`DATABASE_URL`** on Postgres — **not** `DATABASE_PUBLIC_URL`).  
+   Railway may show it as a reference like `${{ Postgres.DATABASE_URL}}`; exact labels change, but the rule is: **same project, private reference, internal hostname.**
+5. If you previously added a second variable that pointed the API at **`DATABASE_PUBLIC_URL`**, remove that wiring from the **API** service so routine API→DB traffic is **not** forced through the public proxy.
+6. **Redeploy** the FastAPI service (or push a commit) so the new variable is picked up.
+7. **Check:** open `https://<your-api-host>/docs` and hit a route that uses the DB (e.g. `GET /api/products/`). If it works, the API is using the DB correctly.
+
+### Part B — Your laptop (one-off scripts only; use public URL)
+
+Use this **only** when you run maintenance scripts **on your computer** (not on Railway).
+
+1. Railway → **PostgreSQL** service → **Variables**.
+2. Copy **`DATABASE_PUBLIC_URL`** (or whatever Railway labels the **public / external** `postgresql://…` connection). It must **not** contain `railway.internal`.
+3. On your machine:
+
+```bash
+cd bomnous-backend
+export DATABASE_URL='paste-the-public-postgresql-url-here'
+export PEXELS_API_KEY='your-pexels-api-key'
+python update_product_images.py
+```
+
+4. When finished, **close that terminal tab** or run `unset DATABASE_URL PEXELS_API_KEY`. Do not save these values into a file you commit to git.
+
+### Security (simple rules)
+
+1. **Secrets live in:** Railway **Variables**, and local **`bomnous-backend/.env`** (already in `.gitignore`). **Never** commit `.env` or paste DB URLs into GitHub issues, chat, or frontend code.
+2. **Who sees the DB password?** Only Railway (for the API) and **you** when you copy the public URL for a script. If a password was ever pasted in a screenshot or public chat, **rotate** it in Railway Postgres settings and update variables.
+3. **Vercel** only needs static files + `BOMNOUS_API_BASE` pointing at your **API** — **not** the database URL. The database must not be reachable from random browsers; only your backend connects.
+4. **Pexels:** keep `PEXELS_API_KEY` in Railway (if you ever run Pexels from a worker) or only in your local shell / `.env` for scripts — not in the repo.
+
+---
+
+## Vercel and Railway product images
+
+The storefront reads **`image_url` / `image_hover_url` from your production database** (via `GET /api/products/`). **Vercel only hosts HTML/JS/CSS**; it does not copy rows from your laptop’s Postgres.
+
+- If **`update_product_images.py`** was only run **locally**, **Railway’s DB still has whatever was inserted at deploy** (often relative paths like `image/product-1-1.jpg`). The browser then loads those paths from **your Vercel site**, which serves the **bundled Bootstrap template images** — so it looks like everything “reverted.”
+- **Fix:** update **the same database Railway uses**, using a URL your machine can reach:
+
+  ```bash
+  cd bomnous-backend
+  export DATABASE_URL='postgresql://…'   # must be **public** — see below
+  export PEXELS_API_KEY='…'              # https://www.pexels.com/api/
+  python update_product_images.py
+  ```
+
+  **Which `DATABASE_URL` to use here:** from your **laptop**, use Postgres **`DATABASE_PUBLIC_URL`** (see [Railway: FastAPI vs laptop](#railway-fastapi-private-db-vs-your-laptop-public-db) above). Your **FastAPI service** on Railway should keep using the **private** reference instead.
+
+  Alternatively, **`seed_bomnous.py`** already assigns **remote Unsplash/Pexels-style URLs** to new seeds — but it **skips** if the `products` table is non-empty, so for a DB that was created with placeholders you either run the script above or reset data and seed again.
+
+- **Quick check:** open `https://<your-railway-api>/api/products/` in a browser; if `image_url` values are not `https://…`, the frontend is behaving correctly — the data still needs updating on the server.
+
+---
+
 ## Demo accounts (after seed)
 
 Seed password for **all seeded seller accounts**: **`demo12345`**
@@ -210,6 +280,8 @@ Use **Sign in** afterward with the same email and password.
 | **401 / invalid token** | `SECRET_KEY` / JWT settings; sign in again. |
 | **AI stylist errors** | `GROQ_API_KEY` and `GROQ_MODEL` in `.env`; restart uvicorn after edits. |
 | **Seed skipped** | Products already exist; use empty DB or clear products (and dependents) before re-seeding. |
+| **Vercel shows template product photos** | Production DB still has relative `image_url`s; run `update_product_images.py` (or re-seed) against **Railway’s** `DATABASE_URL`. See [Vercel and Railway product images](#vercel-and-railway-product-images). |
+| **`FATAL: database "railway " does not exist`** (note the space) | A **trailing space** in `DATABASE_URL` after the database name (often from a bad copy/paste in Railway Variables). Edit the variable so the URL ends with `/railway` with **no space**. The app and Alembic also **`.strip()`** the URL to tolerate stray whitespace. |
 
 ---
 

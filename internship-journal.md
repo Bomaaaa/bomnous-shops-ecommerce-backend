@@ -15,3 +15,17 @@
 **Status:** Complete
 
 ---
+
+**Date:** 2026-05-03
+
+**Task:** Production deployment (Railway + Vercel), production product images, database connection reliability, and deployment/security documentation.
+
+**What I did:** Pointed the static frontend’s default **`BOMNOUS_API_BASE`** at the live **Railway FastAPI** URL so the Vercel-hosted UI loads real catalog data. Ran **`update_product_images.py`** against the **production** Postgres using **`DATABASE_PUBLIC_URL`** from my laptop (the internal `postgres.railway.internal` URL only works inside Railway). Documented in **`README.md`** the split between **private `DATABASE_URL`** on the FastAPI service (API ↔ Postgres inside Railway, avoids egress/public-endpoint warnings) versus **public URL only for one-off local scripts**. Fixed a deploy failure where Postgres reported **`database "railway " does not exist`** by trimming **`DATABASE_URL`** in **`app/db.py`** and **`alembic/env.py`** so stray spaces in Railway variables do not break Alembic or the app. Hardened **`update_product_images.py`** to require **`PEXELS_API_KEY`** from the environment (no key in source), detect **`railway.internal`** when running locally and print a clear hint, and extended the README with troubleshooting and security habits (secrets in Railway / `.env`, rotating anything pasted in chat or logs).
+
+**What I learned:** “Deployed backend” does not automatically mean the **same** database I used locally: image URLs and product rows live in **whatever Postgres Railway uses**, so maintenance scripts must target that URL. Private DNS names are a **network boundary** issue, not a bug—laptops need the public TCP proxy URL for Postgres, while services in the same Railway project should use the **referenced private** connection. A single trailing space in a connection string is enough for PostgreSQL to look for a **different database name**; defensive `.strip()` on URLs saves hours of confusing `FATAL` errors.
+
+**Challenges:** Mixing up internal vs public `DATABASE_URL` caused DNS errors locally and Railway UI warnings about egress when the API was pointed at a public DB endpoint; separating “API variable” vs “laptop export” fixed both. Remembering to **rotate** credentials if they ever appeared in shared logs or chat is now part of my checklist for any future deploy.
+
+**Status:** Complete
+
+---

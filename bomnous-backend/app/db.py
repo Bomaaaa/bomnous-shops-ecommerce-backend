@@ -10,9 +10,13 @@ import os
 
 
 load_dotenv()  # Load environment variables from .env file
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-
+# Strip whitespace — Railway/UI pastes sometimes add a trailing space after the DB name
+# (e.g. .../railway ) which makes Postgres look for database "railway " and fail.
+DATABASE_URL = (os.getenv("DATABASE_URL") or "").strip()
+if not DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL is missing or empty. Set it in the environment (e.g. Railway Variables or .env)."
+    )
 
 engine = create_engine(DATABASE_URL, echo=True)
 
